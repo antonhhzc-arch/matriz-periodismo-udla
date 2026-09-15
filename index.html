@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía de Contacto Periodístico</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        udla: {
+                            maroon: '#9a2039',
+                            dark: '#7a182b',
+                            light: '#fdf8f8',
+                            gold: '#d4af37'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f4f5f7; }
+        
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #9a2039; }
+
+        /* Loader Animation */
+        .loader {
+            border: 4px solid #fdf8f8;
+            border-top: 4px solid #9a2039;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* Estilos para el HTML generado por Gemini */
+        .ai-content h3 { font-size: 1.35rem; font-weight: 800; color: #9a2039; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+        .ai-content h4 { font-size: 1.1rem; font-weight: 700; color: #1f2937; margin-top: 1.5rem; margin-bottom: 0.75rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.25rem;}
+        .ai-content .metric-container { display: flex; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+        .ai-content .metric-badge { background: #fdf8f8; border: 1px solid #9a2039; color: #9a2039; padding: 0.5rem 1rem; border-radius: 9999px; font-weight: 700; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 0.5rem; }
+        .ai-content ul { list-style-type: none; padding-left: 0; margin-bottom: 1.5rem; color: #374151; }
+        .ai-content li { margin-bottom: 0.75rem; position: relative; padding-left: 1.75rem; line-height: 1.5; }
+        .ai-content li::before { content: '✓'; position: absolute; left: 0; top: 0; font-weight: bold; color: #9a2039; }
+        .ai-content li.improvement::before { content: '✎'; color: #d97706; }
+        .ai-content blockquote { background-color: #fdf8f8; border-left: 4px solid #9a2039; padding: 1.25rem; font-style: italic; color: #1f2937; border-radius: 0 0.5rem 0.5rem 0; margin-top: 1rem; }
+        .ai-content p { margin-bottom: 1rem; line-height: 1.6; color: #4b5563; }
+        .ai-content strong { color: #1f2937; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col text-gray-800">
+
+    <header class="bg-udla-maroon shadow-md relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <!-- Logo provided by user -->
+                <div class="h-14 w-14 flex items-center justify-center overflow-hidden rounded-full border-2 border-white/20 shadow-sm bg-white">
+                    <img src="0e901f1a1241928079c88f5b4bffea24b3f16ed7c62c19010b08590184c1896e.png" alt="Logo UDLA" class="h-full w-full object-cover">
+                </div>
+                <div>
+                    <h1 class="text-xl sm:text-2xl font-bold text-white tracking-tight">Guía de Contacto Periodístico</h1>
+                    <p class="text-white/80 text-sm font-medium">Asistente de Redacción Académica</p>
+                </div>
+            </div>
+            <div class="hidden md:flex items-center text-white/90 text-sm font-medium bg-udla-dark px-4 py-2 rounded-lg border border-white/10">
+                <i class="fa-solid fa-graduation-cap mr-2"></i> Formación Práctica
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <!-- Left Column: Editor & Results (Takes 2/3 space on desktop) -->
+        <div class="lg:col-span-2 space-y-6">
+            
+            <!-- Interactive Card -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+                <div class="p-6 sm:p-8">
+                    
+                    <!-- Tabs -->
+                    <div class="flex flex-wrap gap-2 mb-6 bg-gray-50 p-1 rounded-xl inline-flex w-full sm:w-auto">
+                        <button onclick="switchTab('correo')" id="tab-correo" class="tab-btn flex-1 sm:flex-none px-5 py-2.5 rounded-lg text-sm font-semibold transition-all bg-white text-udla-maroon shadow-sm border border-gray-200 flex items-center justify-center">
+                            <i class="fa-regular fa-envelope mr-2"></i> Correo
+                        </button>
+                        <button onclick="switchTab('whatsapp')" id="tab-whatsapp" class="tab-btn flex-1 sm:flex-none px-5 py-2.5 rounded-lg text-sm font-medium transition-all text-gray-500 hover:text-gray-700 hover:bg-gray-100 flex items-center justify-center">
+                            <i class="fa-brands fa-whatsapp mr-2"></i> WhatsApp
+                        </button>
+                        <button onclick="switchTab('llamada')" id="tab-llamada" class="tab-btn flex-1 sm:flex-none px-5 py-2.5 rounded-lg text-sm font-medium transition-all text-gray-500 hover:text-gray-700 hover:bg-gray-100 flex items-center justify-center">
+                            <i class="fa-solid fa-phone mr-2"></i> Llamada
+                        </button>
+                    </div>
+
+                    <div id="panel-texto" class="transition-opacity duration-300">
+                        <h2 class="text-lg font-bold text-gray-800 mb-2 flex items-center">
+                            <i class="fa-solid fa-pen-nib text-udla-maroon mr-2"></i> Redacta tu mensaje
+                        </h2>
+                        <p class="text-sm text-gray-500 mb-4">Pega aquí el borrador de tu mensaje. La IA lo evaluará buscando asertividad y claridad periodística.</p>
+                        
+                        <div class="relative">
+                            <textarea id="message-input" rows="7" 
+                                class="w-full bg-gray-50 border border-gray-200 text-gray-800 text-sm rounded-xl focus:ring-2 focus:ring-udla-maroon focus:border-udla-maroon block p-4 transition-colors resize-y" 
+                                placeholder="Escribe aquí tu borrador..."></textarea>
+                        </div>
+
+                        <div class="mt-5 flex justify-between items-center">
+                            <span id="error-msg" class="text-red-500 text-sm font-medium opacity-0 transition-opacity">Ingresa un texto para evaluar.</span>
+                            <button onclick="processAction()" id="btn-action-text" class="bg-udla-maroon hover:bg-udla-dark text-white font-semibold py-3 px-6 rounded-xl shadow-sm transition-all flex items-center">
+                                Evaluar Mensaje <i class="fa-solid fa-arrow-right ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="panel-formulario" class="hidden transition-opacity duration-300">
+                        <h2 class="text-lg font-bold text-gray-800 mb-2 flex items-center">
+                            <i class="fa-solid fa-headset text-udla-maroon mr-2"></i> Preparación de Llamada
+                        </h2>
+                        <p class="text-sm text-gray-500 mb-6">Completa estos datos para generar un guion asertivo aplicando la regla de los 30 segundos.</p>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">Tu Nombre y Cargo</label>
+                                <input type="text" id="input-estudiante" placeholder="Ej: Juan Pérez, Periodista UDLA Channel" class="w-full bg-gray-50 border border-gray-200 text-sm rounded-lg focus:ring-udla-maroon focus:border-udla-maroon p-3">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">Nombre y Cargo de la Fuente</label>
+                                <input type="text" id="input-fuente" placeholder="Ej: Dra. Gómez, Analista Económica" class="w-full bg-gray-50 border border-gray-200 text-sm rounded-lg focus:ring-udla-maroon focus:border-udla-maroon p-3">
+                            </div>
+                            <div class="sm:col-span-2">
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">Tema Central del Reportaje</label>
+                                <input type="text" id="input-tema" placeholder="Ej: Impacto de cortes de luz en el comercio" class="w-full bg-gray-50 border border-gray-200 text-sm rounded-lg focus:ring-udla-maroon focus:border-udla-maroon p-3">
+                            </div>
+                            <div class="sm:col-span-2">
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">Objetivo (¿Qué información exacta necesitas?)</label>
+                                <textarea id="input-objetivo" rows="2" placeholder="Ej: Necesito saber qué medidas urgentes sugieren para los restaurantes afectados" class="w-full bg-gray-50 border border-gray-200 text-sm rounded-lg focus:ring-udla-maroon focus:border-udla-maroon p-3"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 flex justify-between items-center">
+                            <span id="error-form" class="text-red-500 text-sm font-medium opacity-0 transition-opacity">Completa todos los campos.</span>
+                            <button onclick="processAction()" id="btn-action-form" class="bg-gray-800 hover:bg-black text-white font-semibold py-3 px-6 rounded-xl shadow-sm transition-all flex items-center">
+                                Generar Guion <i class="fa-solid fa-wand-magic-sparkles ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="results-container" class="bg-white rounded-2xl shadow-sm border border-gray-200 hidden overflow-hidden scroll-mt-6">
+                <div class="bg-gray-50 px-6 py-4 border-b border-gray-200 flex justify-between items-center">
+                    <h2 class="text-base font-bold text-gray-800 flex items-center" id="results-title">
+                        <i class="fa-solid fa-clipboard-check text-green-600 mr-2"></i> Retroalimentación Académica
+                    </h2>
+                </div>
+                
+                <div class="p-6 relative min-h-[200px]">
+                    <!-- Loader -->
+                    <div id="loading-spinner" class="absolute inset-0 bg-white/95 z-10 flex flex-col items-center justify-center hidden">
+                        <div class="loader mb-4"></div>
+                        <p class="text-sm text-gray-600 font-medium animate-pulse">Analizando estructura y asertividad...</p>
+                    </div>
+                    
+                    <!-- Content injected here -->
+                    <div id="ai-response-content" class="ai-content"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column: Tips & Rules (Takes 1/3 space on desktop) -->
+        <div class="space-y-6">
+            
+            <!-- Principios Académicos Card -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+                <div class="p-5 border-b border-gray-100 bg-gray-50 flex items-center gap-3">
+                    <div class="bg-udla-maroon/10 p-2 rounded-lg text-udla-maroon"><i class="fa-solid fa-book-open"></i></div>
+                    <h3 class="font-bold text-gray-800">Principios Clave</h3>
+                </div>
+                <div class="p-5 space-y-4">
+                    <div class="flex items-start">
+                        <i class="fa-solid fa-check text-green-600 mt-1 mr-3 font-bold"></i>
+                        <div>
+                            <p class="font-semibold text-sm text-gray-800">Asertividad sin disculpas</p>
+                            <p class="text-xs text-gray-500 mt-0.5">Eres un profesional buscando información pública. No pidas perdón por hacer tu trabajo (Evita: "perdón la molestia").</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <i class="fa-solid fa-check text-green-600 mt-1 mr-3 font-bold"></i>
+                        <div>
+                            <p class="font-semibold text-sm text-gray-800">Incentiva la participación</p>
+                            <p class="text-xs text-gray-500 mt-0.5">Explica a la fuente por qué su voz específica es valiosa para la nota ("su perspectiva técnica es clave para equilibrar el reportaje").</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <i class="fa-solid fa-check text-green-600 mt-1 mr-3 font-bold"></i>
+                        <div>
+                            <p class="font-semibold text-sm text-gray-800">Tiempos Claros (Deadline)</p>
+                            <p class="text-xs text-gray-500 mt-0.5">Siempre propón un horizonte de tiempo claro o menciona el cierre de edición. Da opciones pero marca el ritmo.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Escenarios Rápidos Card -->
+            <div class="bg-gray-800 rounded-2xl shadow-sm border border-gray-700 overflow-hidden text-white">
+                <div class="p-5 border-b border-gray-700 bg-gray-900/50">
+                    <h3 class="font-bold flex items-center">
+                        <i class="fa-solid fa-bolt text-yellow-400 mr-2"></i> Escenarios Rápidos
+                    </h3>
+                </div>
+                <div class="p-5 space-y-5 text-sm">
+                    <div>
+                        <p class="font-semibold text-gray-200 mb-1"><i class="fa-solid fa-clock-rotate-left text-blue-400 mr-1.5"></i> Seguimiento (El Deadline)</p>
+                        <p class="text-gray-400 italic text-xs leading-relaxed pl-5 border-l-2 border-gray-600">"Hola [Nombre], escribo para dar seguimiento a la solicitud de entrevista. Nuestro cierre de edición es hoy a las 17:00. Nos interesa incluir su postura para equilibrar la nota. Quedo atento a su confirmación."</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-gray-200 mb-1"><i class="fa-solid fa-fire text-red-400 mr-1.5"></i> Urgencia (Breaking News)</p>
+                        <p class="text-gray-400 italic text-xs leading-relaxed pl-5 border-l-2 border-gray-600">"Hola [Nombre]. Soy [Tú], de UDLA Channel. Estamos cubriendo [suceso] en tiempo real. ¿Puede confirmarnos [dato]? Su reporte es fundamental en este momento para nuestra audiencia."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Tab Management
+        let currentMode = 'correo'; 
+        
+        const placeholders = {
+            'correo': 'Escribe el borrador de tu correo. Ejemplo: "Estimado/a [Nombre], Soy [Tu Nombre] de UDLA Channel. Escribo porque estamos trabajando en..."',
+            'whatsapp': 'Escribe tu mensaje de WhatsApp. Ejemplo: "Hola [Nombre], buenos días. Soy [Tu Nombre] de UDLA Channel. Le escribo porque..."'
+        };
+
+        function switchTab(mode) {
+            currentMode = mode;
+            
+            // Reset styles for all tabs
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.className = 'tab-btn flex-1 sm:flex-none px-5 py-2.5 rounded-lg text-sm font-medium transition-all text-gray-500 hover:text-gray-700 hover:bg-gray-100 flex items-center justify-center border border-transparent';
+            });
+            
+            // Active tab styling
+            const activeBtn = document.getElementById(`tab-${mode}`);
+            activeBtn.className = 'tab-btn flex-1 sm:flex-none px-5 py-2.5 rounded-lg text-sm font-semibold transition-all bg-white text-udla-maroon shadow-sm border border-gray-200 flex items-center justify-center';
+            
+            // Toggle Panels
+            const textPanel = document.getElementById('panel-texto');
+            const formPanel = document.getElementById('panel-formulario');
+            
+            if (mode === 'llamada') {
+                textPanel.classList.add('hidden');
+                formPanel.classList.remove('hidden');
+            } else {
+                formPanel.classList.add('hidden');
+                textPanel.classList.remove('hidden');
+                document.getElementById('message-input').placeholder = placeholders[mode];
+            }
+        }
+
+        // Action Handler (Delegates to Evaluate or Generate based on mode)
+        async function processAction() {
+            const resultsContainer = document.getElementById('results-container');
+            const evalContent = document.getElementById('ai-response-content');
+            const spinner = document.getElementById('loading-spinner');
+            
+            let prompt = "";
+            
+            // Validation & Prompt Building
+            if (currentMode === 'llamada') {
+                const est = document.getElementById('input-estudiante').value.trim();
+                const fte = document.getElementById('input-fuente').value.trim();
+                const tem = document.getElementById('input-tema').value.trim();
+                const obj = document.getElementById('input-objetivo').value.trim();
+                
+                if (!est || !fte || !tem || !obj) {
+                    document.getElementById('error-form').style.opacity = '1';
+                    return;
+                }
+                document.getElementById('error-form').style.opacity = '0';
+                
+                prompt = `Actúa como un instructor de periodismo senior (estilo Fundación Gabo o NPR). 
+                Crea un guion de llamada estructurado basándote en los siguientes datos:
+                - Estudiante: ${est}
+                - Fuente: ${fte}
+                - Tema Central: ${tem}
+                - Objetivo de la llamada: ${obj}
+                
+                REGLAS ESTRICTAS: No evalúes nada, solo proporciona la guía de acción. Mantén un tono académico, directo y profesional.
+                
+                FORMATO DE RESPUESTA EN HTML LIMPIO (Usa las clases H3, H4, UL, LI, P, y STRONG. No devuelvas bloques markdown):
+                <h3><i class="fa-solid fa-phone-volume"></i> Guion de Llamada Estructurado</h3>
+                <p>Usa este esquema para mantener el control de la entrevista desde el primer segundo.</p>
+                <h4>1. El Rompehielo (Regla de los 30s)</h4>
+                <ul><li>[Escribe qué debe decir exactamente para presentarse asertivamente]</li></ul>
+                <h4>2. Propósito y Control</h4>
+                <ul><li>[Escribe cómo debe plantear el tema de forma directa pero amable]</li></ul>
+                <h4>3. Escudo Ético</h4>
+                <ul><li>[Escribe la frase exacta para pedir permiso para grabar, asumiendo control]</li></ul>
+                <h4>4. La Primera Pregunta</h4>
+                <ul><li>[Redacta la primera pregunta directa basada en el objetivo provisto]</li></ul>`;
+                
+                document.getElementById('results-title').innerHTML = '<i class="fa-solid fa-map text-blue-600 mr-2"></i> Guía de Acción Generada';
+
+            } else {
+                const textInput = document.getElementById('message-input').value.trim();
+                if (!textInput) {
+                    document.getElementById('error-msg').style.opacity = '1';
+                    return;
+                }
+                document.getElementById('error-msg').style.opacity = '0';
+                
+                const platform = currentMode === 'correo' ? 'correo electrónico' : 'mensaje de WhatsApp';
+                
+                prompt = `Actúa como un Editor Periodístico riguroso pero estrictamente académico y formativo de una gran sala de redacción. Evalúa el siguiente borrador de ${platform} escrito por un estudiante de periodismo hacia una fuente.
+                
+                REGLAS ESTRICTAS PARA TU RESPUESTA:
+                - Mantén un tono constructivo, profesional y académico. PROHIBIDO usar lenguaje vulgar, coloquial excesivo o frases inapropiadas (jamás uses frases como "lamer las botas").
+                - Penaliza el uso de disculpas ("perdón la molestia"), rodeos, o diminutivos.
+                - Sugiere formas asertivas e inteligentes de alentar a la fuente a participar (resaltar su experiencia, impacto en la sociedad, equilibrio informativo).
+                
+                FORMATO DE RESPUESTA EN HTML LIMPIO (Sin bloques markdown, usa las clases especificadas):
+                <div class="metric-container">
+                    <span class="metric-badge"><i class="fa-solid fa-ranking-star"></i> Rango: [Inventa un rango divertido sobre cómo es percibido, ej: Reportero Novato, Periodista Asertivo, Enviado Especial]</span>
+                    <span class="metric-badge"><i class="fa-solid fa-percent"></i> Probabilidad de entrevista: [Porcentaje estimado]%</span>
+                </div>
+                <h4>Análisis del Editor</h4>
+                <ul>
+                    <li>[Punto fuerte o lo que hizo bien]</li>
+                    <li class="improvement">[Área crítica de mejora enfocada en la asertividad y quitar rodeos]</li>
+                    <li class="improvement">[Sugerencia constructiva para alentar mejor a la fuente]</li>
+                </ul>
+                <h4>El "Gold Standard" (Texto Optimizado)</h4>
+                <p class="text-sm text-gray-500 mb-2">Así se enviaría desde una sala de redacción profesional:</p>
+                <blockquote>[Escribe aquí el texto completamente corregido, directo, asertivo y formal]</blockquote>
+                
+                Texto a evaluar:
+                "${textInput}"`;
+                
+                document.getElementById('results-title').innerHTML = '<i class="fa-solid fa-clipboard-check text-green-600 mr-2"></i> Evaluación Académica';
+            }
+
+            // UI Changes for loading
+            resultsContainer.classList.remove('hidden');
+            evalContent.innerHTML = '';
+            spinner.classList.remove('hidden');
+            resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            // API Call
+            const apiKey = "AQ.Ab8RN6L73WjOdEiw6p4BNGvFQaPp6IhbL3wmHVcs0I-E29h6sQ"; 
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+
+            const payload = {
+                contents: [{ parts: [{ text: prompt }] }]
+            };
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+                
+                if (result.candidates && result.candidates.length > 0) {
+                    let htmlResponse = result.candidates[0].content.parts[0].text;
+                    htmlResponse = htmlResponse.replace(/```html/g, '').replace(/```/g, '').trim();
+                    evalContent.innerHTML = htmlResponse;
+                } else {
+                    evalContent.innerHTML = '<div class="text-red-600 bg-red-50 p-4 rounded-lg"><i class="fa-solid fa-triangle-exclamation mr-2"></i> Error al procesar la respuesta. Por favor intenta de nuevo.</div>';
+                }
+            } catch (error) {
+                evalContent.innerHTML = '<div class="text-red-600 bg-red-50 p-4 rounded-lg"><i class="fa-solid fa-wifi mr-2"></i> Error de conexión con la IA. Verifica tu internet.</div>';
+            } finally {
+                spinner.classList.add('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
