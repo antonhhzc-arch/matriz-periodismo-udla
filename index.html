@@ -1,392 +1,1242 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guía de Contacto Periodístico</title>
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        udla: {
-                            maroon: '#9a2039',
-                            dark: '#7a182b',
-                            light: '#fdf8f8',
-                            gold: '#d4af37'
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        body { font-family: 'Inter', sans-serif; background-color: #f4f5f7; }
-        
-        /* Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #f1f1f1; }
-        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #9a2039; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía de Contacto Periodístico · UDLA Channel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --granate:#9a2039; --granate-osc:#6c1428; --granate-tinte:#f6e9ec;
+  --tinta:#231d20; --gris:#665e63; --linea:#dcd5d9; --fondo:#efecee; --papel:#ffffff;
+  --oro:#c29a2e;
+  --ok:#2d6a45; --ok-t:#e4efe7; --ajuste:#85580c; --ajuste-t:#f7edd8; --falta:#a3203a; --falta-t:#f8e3e7;
+  --sans:'Archivo',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --serif:'Newsreader',Georgia,'Times New Roman',serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--fondo);color:var(--tinta);font:16px/1.5 var(--sans)}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--oro);outline-offset:2px}
+[hidden]{display:none!important}
 
-        /* Loader Animation */
-        .loader {
-            border: 4px solid #fdf8f8;
-            border-top: 4px solid #9a2039;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+.barra{background:var(--granate);color:#fff}
+.barra-in{max-width:1180px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;gap:14px}
+.logo{width:68px;height:68px;border-radius:50%;background:transparent;box-shadow:0 0 0 2px rgba(255,255,255,.85);display:grid;place-items:center;overflow:hidden;flex:none}
+.logo img{width:100%;height:100%;object-fit:contain}
+.logo.sin-img{background:#fff}
+.logo .mono{display:none;color:var(--granate);font-weight:800;font-stretch:110%;font-size:1.05rem}
+.logo.sin-img .mono{display:block}
+.barra h1{margin:0;font-size:1.35rem;line-height:1.15;font-weight:750;font-stretch:92%}
+.barra p{margin:2px 0 0;font-size:.9rem;opacity:.85}
 
-        /* Estilos para el HTML generado por Gemini */
-        .ai-content h3 { font-size: 1.35rem; font-weight: 800; color: #9a2039; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
-        .ai-content h4 { font-size: 1.1rem; font-weight: 700; color: #1f2937; margin-top: 1.5rem; margin-bottom: 0.75rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.25rem;}
-        .ai-content .metric-container { display: flex; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
-        .ai-content .metric-badge { background: #fdf8f8; border: 1px solid #9a2039; color: #9a2039; padding: 0.5rem 1rem; border-radius: 9999px; font-weight: 700; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 0.5rem; }
-        .ai-content ul { list-style-type: none; padding-left: 0; margin-bottom: 1.5rem; color: #374151; }
-        .ai-content li { margin-bottom: 0.75rem; position: relative; padding-left: 1.75rem; line-height: 1.5; }
-        .ai-content li::before { content: '✓'; position: absolute; left: 0; top: 0; font-weight: bold; color: #9a2039; }
-        .ai-content li.improvement::before { content: '✎'; color: #d97706; }
-        .ai-content blockquote { background-color: #fdf8f8; border-left: 4px solid #9a2039; padding: 1.25rem; font-style: italic; color: #1f2937; border-radius: 0 0.5rem 0.5rem 0; margin-top: 1rem; }
-        .ai-content p { margin-bottom: 1rem; line-height: 1.6; color: #4b5563; }
-        .ai-content strong { color: #1f2937; }
-    </style>
+.contenedor{max-width:1180px;margin:0 auto;padding:20px}
+
+.modos{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px}
+.modo{display:flex;align-items:center;gap:12px;text-align:left;background:var(--papel);border:1.5px solid var(--linea);border-radius:12px;padding:14px 16px;cursor:pointer;transition:border-color .15s,background .15s}
+.modo svg{width:28px;height:28px;flex:none;stroke:var(--granate)}
+.modo strong{display:block;font-size:1.05rem;font-weight:700}
+.modo small{display:block;color:var(--gris);font-size:.82rem;line-height:1.3}
+.modo:hover{border-color:var(--granate)}
+.modo[aria-selected="true"]{background:var(--granate);border-color:var(--granate);color:#fff}
+.modo[aria-selected="true"] svg{stroke:#fff}
+.modo[aria-selected="true"] small{color:rgba(255,255,255,.85)}
+
+.cuerpo{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:20px;align-items:start}
+
+.panel{background:var(--papel);border:1px solid var(--linea);border-radius:12px;padding:18px 20px;margin-bottom:14px}
+.panel h2{margin:0 0 4px;font-size:1.1rem;font-weight:700}
+.ayuda{margin:0 0 14px;color:var(--gris);font-size:.9rem}
+
+.segmentos{display:flex;gap:4px;background:var(--fondo);padding:4px;border-radius:10px;margin-bottom:12px}
+.seg{flex:1;border:0;background:transparent;padding:9px 8px;border-radius:7px;cursor:pointer;font-weight:600;font-size:.92rem;color:var(--gris)}
+.seg[aria-checked="true"]{background:var(--papel);color:var(--granate);box-shadow:0 1px 2px rgba(35,29,32,.15)}
+.consejo{margin:0;font-size:.95rem}
+details.mas{margin-top:10px;font-size:.9rem}
+details.mas summary{cursor:pointer;color:var(--granate);font-weight:600}
+details.mas ul{margin:8px 0 0;padding-left:18px}
+details.mas li{margin-bottom:5px}
+
+.rejilla{display:grid;grid-template-columns:1fr 1fr;gap:12px 14px}
+.campo{display:flex;flex-direction:column;gap:4px;min-width:0}
+.campo.ancho{grid-column:1/-1}
+.campo label{font-size:.88rem;font-weight:600}
+.campo .pista{font-size:.78rem;color:var(--gris);line-height:1.3}
+input,select,textarea{width:100%;background:#faf9fa;border:1px solid var(--linea);border-radius:8px;padding:9px 11px}
+input:focus,select:focus,textarea:focus{border-color:var(--granate);background:#fff;outline:none;box-shadow:0 0 0 3px var(--granate-tinte)}
+textarea{resize:vertical}
+#borrador{font-family:var(--serif);font-size:1.08rem;line-height:1.55;min-height:230px;padding:14px 16px}
+
+.acciones{display:flex;align-items:center;gap:10px;margin-top:12px;flex-wrap:wrap}
+.contador{font-size:.85rem;color:var(--gris);margin-right:auto}
+.btn{border-radius:9px;padding:11px 18px;font-weight:650;cursor:pointer;border:1.5px solid transparent}
+.btn-pri{background:var(--granate);color:#fff}
+.btn-pri:hover{background:var(--granate-osc)}
+.btn-sec{background:transparent;border-color:var(--linea);color:var(--tinta)}
+.btn-sec:hover{border-color:var(--granate);color:var(--granate)}
+.error{color:var(--falta);font-size:.9rem;margin:8px 0 0;min-height:1.2em}
+
+.col-resultado{position:sticky;top:16px;max-height:calc(100vh - 32px);overflow:auto;padding-bottom:4px;scrollbar-width:thin}
+.vacio{border:1.5px dashed var(--linea);border-radius:12px;padding:28px 22px;color:var(--gris);background:rgba(255,255,255,.5)}
+.vacio h2{color:var(--tinta);font-size:1.05rem;margin:0 0 6px}
+.vacio p{margin:0}
+
+.credencial{background:var(--papel);border:1px solid var(--linea);border-radius:14px;overflow:hidden;margin-bottom:14px;box-shadow:0 14px 30px -22px rgba(80,20,35,.55)}
+.credencial.entra{animation:colgar .5s cubic-bezier(.2,.8,.3,1.2)}
+@keyframes colgar{from{transform:translateY(-14px) rotate(-2.5deg);opacity:0}to{transform:none;opacity:1}}
+.banda{background:var(--granate);color:#fff;padding:24px 20px 12px;position:relative;display:flex;justify-content:space-between;align-items:flex-end;gap:10px;border-bottom:4px solid var(--oro)}
+.ranura{position:absolute;top:9px;left:50%;width:48px;height:8px;margin-left:-24px;border-radius:5px;background:var(--fondo)}
+.prensa{font-size:1.7rem;font-weight:800;font-stretch:125%;letter-spacing:.06em;line-height:1}
+.banda-medio{font-size:.85rem;opacity:.9;text-align:right;line-height:1.25}
+.cred-cuerpo{padding:16px 20px 18px}
+.cred-nombre{font-size:.9rem;color:var(--gris);margin:0}
+.rango{margin:2px 0 4px;font-size:1.75rem;line-height:1.1;font-weight:800;font-stretch:88%;color:var(--granate)}
+.rango-nota{margin:0 0 14px;font-size:.95rem}
+.medidor-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.medidor-top span{font-size:.88rem;font-weight:600}
+.medidor-top strong{font-size:1.6rem;font-weight:800;font-stretch:90%;font-variant-numeric:tabular-nums}
+.pista-barra{height:10px;border-radius:6px;background:var(--fondo);overflow:hidden;margin-top:4px}
+.relleno{height:100%;border-radius:6px;transition:width .6s ease}
+.cred-pie{margin:10px 0 0;font-size:.78rem;color:var(--gris)}
+
+.criterios{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 14px;padding:0;list-style:none}
+.criterios li{display:flex;align-items:center;gap:6px;font-size:.84rem;font-weight:600;padding:5px 10px 5px 7px;border-radius:20px}
+.criterios i{font-style:normal;width:18px;height:18px;border-radius:50%;display:grid;place-items:center;font-size:.72rem;color:#fff}
+.c-ok{background:var(--ok-t);color:var(--ok)} .c-ok i{background:var(--ok)}
+.c-ajustar{background:var(--ajuste-t);color:var(--ajuste)} .c-ajustar i{background:var(--ajuste)}
+.c-falta{background:var(--falta-t);color:var(--falta)} .c-falta i{background:var(--falta)}
+
+.bloque{background:var(--papel);border:1px solid var(--linea);border-radius:12px;padding:16px 18px;margin-bottom:14px}
+.bloque h3{margin:0 0 10px;font-size:1.02rem;font-weight:700}
+.obs{list-style:none;margin:0;padding:0}
+.obs li{border-left:3px solid var(--linea);padding:2px 0 2px 12px;margin-bottom:12px}
+.obs li.falta{border-color:var(--falta)}
+.obs li.ajustar{border-color:var(--ajuste)}
+.obs li.ok{border-color:var(--ok)}
+.obs li.nota{border-color:var(--oro)}
+.bloque-h{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:8px}
+.bloque-h h3,.bloque-h h2{margin:0}
+.btn-link{background:none;border:0;padding:0;color:var(--granate);font-weight:650;font-size:.86rem;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.estructura .acc{grid-column:2;margin-top:2px}
+#mejora.aparece{animation:aparecer .35s ease}
+.mejora{background:var(--papel);border:1.5px solid var(--granate);border-radius:14px;padding:22px 24px;margin-top:6px;scroll-margin-top:16px}
+.mejora>h2{margin:0 0 4px;font-size:1.25rem;font-weight:750}
+#mejora #ficha{border:0;padding:0;margin:0;background:none}
+#mejora #ficha-titulo,#mejora #ficha-ayuda{display:none}
+#mejora .rejilla{grid-template-columns:repeat(3,minmax(0,1fr))}
+#generado{margin-top:18px;padding-top:16px;border-top:1px solid var(--linea)}
+.campo label[data-motivo]::after{content:attr(data-motivo);margin-left:8px;font-size:.72rem;font-weight:650;padding:1px 8px;border-radius:10px;background:var(--falta-t);color:var(--falta);white-space:nowrap}
+.campo[data-tipo="ajuste"] label[data-motivo]::after{background:var(--ajuste-t);color:var(--ajuste)}
+.campo[data-tipo] input,.campo[data-tipo] select{border-color:#e3b9c2}
+@media (max-width:900px){#mejora .rejilla{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){#mejora .rejilla{grid-template-columns:1fr}.mejora{padding:18px 16px}}
+@keyframes aparecer{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){#mejora.aparece{animation:none}}
+.bloque-h small{color:var(--gris);font-size:.85rem;white-space:nowrap}
+.estructura{list-style:none;margin:0;padding:0}
+.estructura li{display:grid;grid-template-columns:20px 1fr;gap:2px 10px;padding:7px 0;border-top:1px solid #f0eaed}
+.estructura li:first-child{border-top:0;padding-top:0}
+.estructura i{font-style:normal;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font-size:.7rem;color:#fff;margin-top:1px}
+.estructura .e-ok i{background:var(--ok)}
+.estructura .e-parcial i{background:var(--ajuste)}
+.estructura .e-falta i{background:var(--falta)}
+.estructura span{font-size:.93rem;font-weight:600}
+.estructura .e-ok span{font-weight:500;color:var(--gris)}
+.estructura em{grid-column:2;font-style:normal;font-family:var(--serif);font-size:1rem;color:#433b40}
+.estructura em::before{content:"Ej.: ";font-family:var(--sans);font-size:.8rem;color:var(--gris)}
+.obs b{display:block;font-weight:650;font-size:.95rem}
+.obs p{margin:2px 0 0;font-size:.9rem;color:#433b40}
+.frags{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
+.frags q{font-family:var(--serif);font-size:.95rem;background:var(--fondo);padding:1px 8px;border-radius:5px;quotes:"«" "»"}
+.subt{font-size:.85rem;font-weight:700;color:var(--gris);margin:14px 0 8px}
+
+.modelo{font-family:var(--serif);font-size:1.06rem;line-height:1.6;white-space:pre-wrap;background:#fbf8f9;border:1px solid #ecdfe3;border-radius:8px;padding:14px 16px;margin:0}
+.modelo mark,.guion mark{background:var(--ajuste-t);color:var(--ajuste);border-radius:3px;padding:0 3px;font-family:var(--sans);font-size:.88em}
+.bloque-cab{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px}
+.bloque-cab h3{margin:0}
+.btn-mini{font-size:.85rem;padding:6px 12px;border-radius:7px}
+.nota-modelo{font-size:.82rem;color:var(--gris);margin:8px 0 0}
+
+.hoja ol.pasos{list-style:none;counter-reset:paso;margin:0;padding:0}
+.pasos>li{counter-increment:paso;position:relative;padding:0 0 16px 40px}
+.pasos>li::before{content:counter(paso);position:absolute;left:0;top:0;width:28px;height:28px;border-radius:50%;background:var(--granate);color:#fff;display:grid;place-items:center;font-weight:700;font-size:.88rem}
+.pasos>li:not(:last-child)::after{content:"";position:absolute;left:13.5px;top:32px;bottom:4px;width:1px;background:var(--linea)}
+.pasos h4{margin:3px 0 6px;font-size:1rem}
+.guion{font-family:var(--serif);font-size:1.05rem;line-height:1.55;background:#fbf8f9;border-left:3px solid var(--granate);padding:8px 12px;margin:0 0 6px;border-radius:0 6px 6px 0}
+.pasos ul{margin:0;padding-left:18px;font-size:.93rem}
+.pasos ul li{margin-bottom:4px}
+.pasos .nota{font-size:.88rem;color:#433b40;margin:4px 0 0}
+
+@media (max-width:900px){
+  .cuerpo{grid-template-columns:1fr}
+  .col-resultado{position:static;max-height:none;overflow:visible}
+}
+@media (max-width:560px){
+  .logo{width:56px;height:56px}
+  .contenedor{padding:14px}
+  .rejilla{grid-template-columns:1fr}
+  .modo{flex-direction:column;align-items:center;text-align:center;gap:6px;padding:12px 6px}
+  .modo small{display:none}
+  .barra h1{font-size:1.12rem}
+  .rango{font-size:1.5rem}
+}
+@media (prefers-reduced-motion:reduce){
+  .credencial.entra{animation:none}
+  .relleno{transition:none}
+}
+@media print{
+  body{background:#fff}
+  .barra,.modos,.col-trabajo,.no-imprimir{display:none!important}
+  .cuerpo{display:block}
+  .col-resultado{position:static;max-height:none;overflow:visible}
+  .bloque{border:0;padding:0}
+}
+</style>
 </head>
-<body class="min-h-screen flex flex-col text-gray-800">
+<body>
 
-    <header class="bg-udla-maroon shadow-md relative z-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
-            <div class="flex items-center space-x-4">
-                <!-- Logo provided by user -->
-                <div class="h-14 w-14 flex items-center justify-center overflow-hidden rounded-full border-2 border-white/20 shadow-sm bg-white">
-                    <img src="0e901f1a1241928079c88f5b4bffea24b3f16ed7c62c19010b08590184c1896e.png" alt="Logo UDLA" class="h-full w-full object-cover">
-                </div>
-                <div>
-                    <h1 class="text-xl sm:text-2xl font-bold text-white tracking-tight">Guía de Contacto Periodístico</h1>
-                    <p class="text-white/80 text-sm font-medium">Asistente de Redacción Académica</p>
-                </div>
-            </div>
-            <div class="hidden md:flex items-center text-white/90 text-sm font-medium bg-udla-dark px-4 py-2 rounded-lg border border-white/10">
-                <i class="fa-solid fa-graduation-cap mr-2"></i> Formación Práctica
-            </div>
+<header class="barra">
+  <div class="barra-in">
+    <span class="logo">
+            <img src="data:image/png;base64,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" alt="Logo de UDLA Channel Periodismo" onerror="this.parentNode.classList.add('sin-img');this.remove();">
+      <span class="mono" aria-hidden="true">UC</span>
+    </span>
+    <div>
+      <h1>Guía de Contacto Periodístico</h1>
+      <p>UDLA Channel</p>
+    </div>
+  </div>
+</header>
+
+<main class="contenedor">
+  <nav class="modos" role="tablist" aria-label="Canal de contacto">
+    <button class="modo" role="tab" data-modo="correo" aria-selected="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 7 8.5-7"/></svg>
+      <span><strong>Correo</strong><small>Primer contacto formal, con asunto</small></span>
+    </button>
+    <button class="modo" role="tab" data-modo="whatsapp" aria-selected="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11.5a8 8 0 0 1-11.8 7L4 20l1.5-4A8 8 0 1 1 20 11.5Z"/></svg>
+      <span><strong>WhatsApp</strong><small>Directo, se lee sin hacer scroll</small></span>
+    </button>
+    <button class="modo" role="tab" data-modo="llamada" aria-selected="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h3.5l1.5 4.5-2.2 1.4a11 11 0 0 0 6.3 6.3l1.4-2.2L20 15.5V19a1.5 1.5 0 0 1-1.6 1.5A16 16 0 0 1 3.5 5.6 1.5 1.5 0 0 1 5 4Z"/></svg>
+      <span><strong>Llamada</strong><small>Hoja de apoyo para la conversación</small></span>
+    </button>
+  </nav>
+
+  <div class="cuerpo">
+    <section class="col-trabajo">
+
+      <div class="panel" data-solo="correo whatsapp">
+        <div class="segmentos" role="radiogroup" aria-label="Situación">
+          <button class="seg" role="radio" data-esc="anticipado" aria-checked="true">Con anticipación</button>
+          <button class="seg" role="radio" data-esc="urgencia" aria-checked="false">Urgencia</button>
+          <button class="seg" role="radio" data-esc="seguimiento" aria-checked="false">Seguimiento</button>
         </div>
-    </header>
+        <p class="consejo" id="consejo"></p>
+        <details class="mas"><summary>Más consejos para este caso</summary><ul id="consejos-lista"></ul></details>
+      </div>
 
-    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full grid grid-cols-1 lg:grid-cols-3 gap-8">
-        
-        <!-- Left Column: Editor & Results (Takes 2/3 space on desktop) -->
-        <div class="lg:col-span-2 space-y-6">
-            
-            <!-- Interactive Card -->
-            <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
-                <div class="p-6 sm:p-8">
-                    
-                    <!-- Tabs -->
-                    <div class="flex flex-wrap gap-2 mb-6 bg-gray-50 p-1 rounded-xl inline-flex w-full sm:w-auto">
-                        <button onclick="switchTab('correo')" id="tab-correo" class="tab-btn flex-1 sm:flex-none px-5 py-2.5 rounded-lg text-sm font-semibold transition-all bg-white text-udla-maroon shadow-sm border border-gray-200 flex items-center justify-center">
-                            <i class="fa-regular fa-envelope mr-2"></i> Correo
-                        </button>
-                        <button onclick="switchTab('whatsapp')" id="tab-whatsapp" class="tab-btn flex-1 sm:flex-none px-5 py-2.5 rounded-lg text-sm font-medium transition-all text-gray-500 hover:text-gray-700 hover:bg-gray-100 flex items-center justify-center">
-                            <i class="fa-brands fa-whatsapp mr-2"></i> WhatsApp
-                        </button>
-                        <button onclick="switchTab('llamada')" id="tab-llamada" class="tab-btn flex-1 sm:flex-none px-5 py-2.5 rounded-lg text-sm font-medium transition-all text-gray-500 hover:text-gray-700 hover:bg-gray-100 flex items-center justify-center">
-                            <i class="fa-solid fa-phone mr-2"></i> Llamada
-                        </button>
-                    </div>
 
-                    <div id="panel-texto" class="transition-opacity duration-300">
-                        <h2 class="text-lg font-bold text-gray-800 mb-2 flex items-center">
-                            <i class="fa-solid fa-pen-nib text-udla-maroon mr-2"></i> Redacta tu mensaje
-                        </h2>
-                        <p class="text-sm text-gray-500 mb-4">Pega aquí el borrador de tu mensaje. La IA lo evaluará buscando asertividad y claridad periodística.</p>
-                        
-                        <div class="relative">
-                            <textarea id="message-input" rows="7" 
-                                class="w-full bg-gray-50 border border-gray-200 text-gray-800 text-sm rounded-xl focus:ring-2 focus:ring-udla-maroon focus:border-udla-maroon block p-4 transition-colors resize-y" 
-                                placeholder="Escribe aquí tu borrador..."></textarea>
-                        </div>
-
-                        <div class="mt-5 flex justify-between items-center">
-                            <span id="error-msg" class="text-red-500 text-sm font-medium opacity-0 transition-opacity">Ingresa un texto para evaluar.</span>
-                            <button onclick="processAction()" id="btn-action-text" class="bg-udla-maroon hover:bg-udla-dark text-white font-semibold py-3 px-6 rounded-xl shadow-sm transition-all flex items-center">
-                                Evaluar Mensaje <i class="fa-solid fa-arrow-right ml-2"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div id="panel-formulario" class="hidden transition-opacity duration-300">
-                        <h2 class="text-lg font-bold text-gray-800 mb-2 flex items-center">
-                            <i class="fa-solid fa-headset text-udla-maroon mr-2"></i> Preparación de Llamada
-                        </h2>
-                        <p class="text-sm text-gray-500 mb-6">Completa estos datos para generar un guion asertivo aplicando la regla de los 30 segundos.</p>
-                        
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                            <div>
-                                <label class="block text-sm font-semibold text-gray-700 mb-1">Tu Nombre y Cargo</label>
-                                <input type="text" id="input-estudiante" placeholder="Ej: Juan Pérez, Periodista UDLA Channel" class="w-full bg-gray-50 border border-gray-200 text-sm rounded-lg focus:ring-udla-maroon focus:border-udla-maroon p-3">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-semibold text-gray-700 mb-1">Nombre y Cargo de la Fuente</label>
-                                <input type="text" id="input-fuente" placeholder="Ej: Dra. Gómez, Analista Económica" class="w-full bg-gray-50 border border-gray-200 text-sm rounded-lg focus:ring-udla-maroon focus:border-udla-maroon p-3">
-                            </div>
-                            <div class="sm:col-span-2">
-                                <label class="block text-sm font-semibold text-gray-700 mb-1">Tema Central del Reportaje</label>
-                                <input type="text" id="input-tema" placeholder="Ej: Impacto de cortes de luz en el comercio" class="w-full bg-gray-50 border border-gray-200 text-sm rounded-lg focus:ring-udla-maroon focus:border-udla-maroon p-3">
-                            </div>
-                            <div class="sm:col-span-2">
-                                <label class="block text-sm font-semibold text-gray-700 mb-1">Objetivo (¿Qué información exacta necesitas?)</label>
-                                <textarea id="input-objetivo" rows="2" placeholder="Ej: Necesito saber qué medidas urgentes sugieren para los restaurantes afectados" class="w-full bg-gray-50 border border-gray-200 text-sm rounded-lg focus:ring-udla-maroon focus:border-udla-maroon p-3"></textarea>
-                            </div>
-                        </div>
-
-                        <div class="mt-6 flex justify-between items-center">
-                            <span id="error-form" class="text-red-500 text-sm font-medium opacity-0 transition-opacity">Completa todos los campos.</span>
-                            <button onclick="processAction()" id="btn-action-form" class="bg-gray-800 hover:bg-black text-white font-semibold py-3 px-6 rounded-xl shadow-sm transition-all flex items-center">
-                                Generar Guion <i class="fa-solid fa-wand-magic-sparkles ml-2"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="results-container" class="bg-white rounded-2xl shadow-sm border border-gray-200 hidden overflow-hidden scroll-mt-6">
-                <div class="bg-gray-50 px-6 py-4 border-b border-gray-200 flex justify-between items-center">
-                    <h2 class="text-base font-bold text-gray-800 flex items-center" id="results-title">
-                        <i class="fa-solid fa-clipboard-check text-green-600 mr-2"></i> Retroalimentación Académica
-                    </h2>
-                </div>
-                
-                <div class="p-6 relative min-h-[200px]">
-                    <!-- Loader -->
-                    <div id="loading-spinner" class="absolute inset-0 bg-white/95 z-10 flex flex-col items-center justify-center hidden">
-                        <div class="loader mb-4"></div>
-                        <p class="text-sm text-gray-600 font-medium animate-pulse">Analizando estructura y asertividad...</p>
-                    </div>
-                    
-                    <!-- Content injected here -->
-                    <div id="ai-response-content" class="ai-content"></div>
-                </div>
-            </div>
+      <div class="panel" data-solo="correo whatsapp">
+        <h2><label for="borrador">Tu borrador</label></h2>
+        <p class="ayuda">Pégalo tal como lo enviarías.</p>
+        <textarea id="borrador" rows="10" spellcheck="true"></textarea>
+        <div class="acciones">
+          <span class="contador" id="contador">0 palabras</span>
+          <button class="btn btn-sec" id="btn-ejemplo" type="button">Probar con un borrador con errores</button>
+          <button class="btn btn-pri" id="btn-revisar" type="button">Revisar mensaje</button>
         </div>
+        <p class="error" id="error" role="alert"></p>
+      </div>
 
-        <!-- Right Column: Tips & Rules (Takes 1/3 space on desktop) -->
-        <div class="space-y-6">
-            
-            <!-- Principios Académicos Card -->
-            <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
-                <div class="p-5 border-b border-gray-100 bg-gray-50 flex items-center gap-3">
-                    <div class="bg-udla-maroon/10 p-2 rounded-lg text-udla-maroon"><i class="fa-solid fa-book-open"></i></div>
-                    <h3 class="font-bold text-gray-800">Principios Clave</h3>
-                </div>
-                <div class="p-5 space-y-4">
-                    <div class="flex items-start">
-                        <i class="fa-solid fa-check text-green-600 mt-1 mr-3 font-bold"></i>
-                        <div>
-                            <p class="font-semibold text-sm text-gray-800">Asertividad sin disculpas</p>
-                            <p class="text-xs text-gray-500 mt-0.5">Eres un profesional buscando información pública. No pidas perdón por hacer tu trabajo (Evita: "perdón la molestia").</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start">
-                        <i class="fa-solid fa-check text-green-600 mt-1 mr-3 font-bold"></i>
-                        <div>
-                            <p class="font-semibold text-sm text-gray-800">Incentiva la participación</p>
-                            <p class="text-xs text-gray-500 mt-0.5">Explica a la fuente por qué su voz específica es valiosa para la nota ("su perspectiva técnica es clave para equilibrar el reportaje").</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start">
-                        <i class="fa-solid fa-check text-green-600 mt-1 mr-3 font-bold"></i>
-                        <div>
-                            <p class="font-semibold text-sm text-gray-800">Tiempos Claros (Deadline)</p>
-                            <p class="text-xs text-gray-500 mt-0.5">Siempre propón un horizonte de tiempo claro o menciona el cierre de edición. Da opciones pero marca el ritmo.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div id="zona-llamada"></div>
 
-            <!-- Escenarios Rápidos Card -->
-            <div class="bg-gray-800 rounded-2xl shadow-sm border border-gray-700 overflow-hidden text-white">
-                <div class="p-5 border-b border-gray-700 bg-gray-900/50">
-                    <h3 class="font-bold flex items-center">
-                        <i class="fa-solid fa-bolt text-yellow-400 mr-2"></i> Escenarios Rápidos
-                    </h3>
-                </div>
-                <div class="p-5 space-y-5 text-sm">
-                    <div>
-                        <p class="font-semibold text-gray-200 mb-1"><i class="fa-solid fa-clock-rotate-left text-blue-400 mr-1.5"></i> Seguimiento (El Deadline)</p>
-                        <p class="text-gray-400 italic text-xs leading-relaxed pl-5 border-l-2 border-gray-600">"Hola [Nombre], escribo para dar seguimiento a la solicitud de entrevista. Nuestro cierre de edición es hoy a las 17:00. Nos interesa incluir su postura para equilibrar la nota. Quedo atento a su confirmación."</p>
-                    </div>
-                    <div>
-                        <p class="font-semibold text-gray-200 mb-1"><i class="fa-solid fa-fire text-red-400 mr-1.5"></i> Urgencia (Breaking News)</p>
-                        <p class="text-gray-400 italic text-xs leading-relaxed pl-5 border-l-2 border-gray-600">"Hola [Nombre]. Soy [Tú], de UDLA Channel. Estamos cubriendo [suceso] en tiempo real. ¿Puede confirmarnos [dato]? Su reporte es fundamental en este momento para nuestra audiencia."</p>
-                    </div>
-                </div>
-            </div>
+      <div class="panel" data-solo="llamada">
+        <div class="acciones" style="margin-top:0">
+          <span class="contador">La hoja no evalúa: te acompaña durante la llamada.</span>
+          <button class="btn btn-pri" id="btn-hoja" type="button">Armar hoja de llamada</button>
         </div>
-    </main>
+      </div>
+    </section>
 
-    <script>
-        // Tab Management
-        let currentMode = 'correo'; 
-        
-        const placeholders = {
-            'correo': 'Escribe el borrador de tu correo. Ejemplo: "Estimado/a [Nombre], Soy [Tu Nombre] de UDLA Channel. Escribo porque estamos trabajando en..."',
-            'whatsapp': 'Escribe tu mensaje de WhatsApp. Ejemplo: "Hola [Nombre], buenos días. Soy [Tu Nombre] de UDLA Channel. Le escribo porque..."'
-        };
+    <aside class="col-resultado" id="resultado" aria-live="polite"></aside>
+  </div>
 
-        function switchTab(mode) {
-            currentMode = mode;
-            
-            // Reset styles for all tabs
-            document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.className = 'tab-btn flex-1 sm:flex-none px-5 py-2.5 rounded-lg text-sm font-medium transition-all text-gray-500 hover:text-gray-700 hover:bg-gray-100 flex items-center justify-center border border-transparent';
-            });
-            
-            // Active tab styling
-            const activeBtn = document.getElementById(`tab-${mode}`);
-            activeBtn.className = 'tab-btn flex-1 sm:flex-none px-5 py-2.5 rounded-lg text-sm font-semibold transition-all bg-white text-udla-maroon shadow-sm border border-gray-200 flex items-center justify-center';
-            
-            // Toggle Panels
-            const textPanel = document.getElementById('panel-texto');
-            const formPanel = document.getElementById('panel-formulario');
-            
-            if (mode === 'llamada') {
-                textPanel.classList.add('hidden');
-                formPanel.classList.remove('hidden');
-            } else {
-                formPanel.classList.add('hidden');
-                textPanel.classList.remove('hidden');
-                document.getElementById('message-input').placeholder = placeholders[mode];
-            }
-        }
+  <section class="mejora" id="mejora" hidden>
+    <h2>Genera tu mensaje corregido</h2>
+    <p class="ayuda">Los datos que encontramos en tu borrador ya están escritos. Completa o corrige los marcados, presiona «Generar mensaje» y compara el resultado con tu versión.</p>
+    <div id="zona-mejora">
+      <form class="panel" id="ficha" autocomplete="off" onsubmit="return false">
+        <h2 id="ficha-titulo">Ficha de la llamada</h2>
+        <p class="ayuda" id="ficha-ayuda">Con estos datos armamos tu hoja de apoyo para la llamada.</p>
+        <div class="rejilla">
+          <div class="campo" data-solo="correo whatsapp llamada">
+            <label for="f-nombre">Tu nombre</label>
+            <input id="f-nombre" placeholder="Ej.: Daniela Noguera">
+          </div>
+          <div class="campo" data-solo="correo whatsapp llamada">
+            <label for="f-fuente">Fuente, con su título o cargo</label>
+            <input id="f-fuente" placeholder="Ej.: Mag. Karla Meneses">
+            <span class="pista">Escribe el título antes del nombre: Sr., Sra., Dr., Dra., Mag., Ing., Lic.</span>
+          </div>
+          <div class="campo ancho" data-solo="correo whatsapp llamada">
+            <label for="f-porque">Por qué buscas a esta fuente</label>
+            <input id="f-porque" placeholder="Ej.: docente de economía especializada en política energética">
+            <span class="pista">Completa la frase «por su experiencia como…»</span>
+          </div>
+          <div class="campo ancho" data-solo="correo whatsapp llamada">
+            <label for="f-tema">Tema del reportaje</label>
+            <input id="f-tema" placeholder="Ej.: la crisis energética en Ecuador">
+          </div>
+          <div class="campo ancho" data-solo="correo whatsapp">
+            <label for="f-angulo">Ángulo principal (opcional)</label>
+            <input id="f-angulo" placeholder="Ej.: el impacto de los apagones en la economía local">
+            <span class="pista">Uno solo. Los demás subtemas se conversan en la entrevista.</span>
+          </div>
+          <div class="campo" data-solo="correo whatsapp">
+            <label for="f-peticion">Qué le pides</label>
+            <select id="f-peticion">
+              <option value="entrevista">Una entrevista</option>
+              <option value="postura">Su postura o declaración</option>
+              <option value="dato">Confirmar un dato</option>
+              <option value="nota">Una nota de voz</option>
+              <option value="documentos">Datos o documentos</option>
+            </select>
+          </div>
+          <div class="campo" data-solo="correo whatsapp" data-esc="anticipado urgencia">
+            <label for="f-formato">Formato</label>
+            <select id="f-formato">
+              <option value="">Elige…</option>
+              <option value="presencial">Presencial</option>
+              <option value="video">Videollamada</option>
+              <option value="telefono">Llamada telefónica</option>
+              <option value="escrito">Respuesta por escrito</option>
+              <option value="nota">Nota de voz</option>
+            </select>
+          </div>
+          <div class="campo ancho" data-solo="correo">
+            <label for="f-asunto">Asunto del correo</label>
+            <input id="f-asunto" placeholder="Ej.: Entrevista para UDLA Channel: apagones y comercio en Quito">
+          </div>
+          <div class="campo" data-solo="correo whatsapp" data-esc="anticipado">
+            <label for="f-fecha">Fecha propuesta</label>
+            <input id="f-fecha" type="date">
+          </div>
+          <div class="campo" data-solo="correo whatsapp" data-esc="anticipado">
+            <label for="f-hora">Hora propuesta</label>
+            <input id="f-hora" type="time">
+          </div>
+          <div class="campo" data-solo="correo whatsapp" data-esc="anticipado urgencia" data-sin-formato="escrito nota">
+            <label for="f-duracion">Duración (minutos)</label>
+            <input id="f-duracion" type="number" min="5" max="120" step="5" placeholder="Ej.: 15">
+          </div>
+          <div class="campo" data-solo="correo whatsapp" data-esc="anticipado" data-formato="presencial">
+            <label for="f-lugar">Lugar</label>
+            <input id="f-lugar" placeholder="Ej.: el set de UDLA Channel, campus UDLA Park">
+          </div>
+          <div class="campo" data-solo="correo whatsapp" data-esc="seguimiento">
+            <label for="f-previo">Fecha del primer contacto</label>
+            <input id="f-previo" type="date">
+          </div>
+          <div class="campo" data-solo="correo whatsapp llamada" data-esc="urgencia seguimiento">
+            <label for="f-cierre">Cierre de edición</label>
+            <input id="f-cierre" type="datetime-local">
+          </div>
+          <div class="campo ancho" data-solo="llamada">
+            <label for="f-objetivo">Qué necesitas saber</label>
+            <input id="f-objetivo" placeholder="Ej.: qué medidas pueden tomar los negocios pequeños durante los cortes">
+          </div>
+          <div class="campo ancho" data-solo="llamada">
+            <label for="f-preguntas">Preguntas clave</label>
+            <textarea id="f-preguntas" rows="4" placeholder="Una pregunta por línea. Prioriza preguntas abiertas: ¿cómo?, ¿por qué?, ¿qué pasaría si…?"></textarea>
+          </div>
+          <div class="campo" data-solo="llamada">
+            <label for="f-graba">¿Vas a grabar?</label>
+            <select id="f-graba"><option value="si">Sí</option><option value="no">No, tomaré notas</option></select>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="acciones">
+      <span class="contador" id="faltan-txt"></span>
+      <button class="btn btn-pri" id="btn-generar" type="button">Generar mensaje</button>
+    </div>
+    <div id="generado" hidden>
+      <div class="bloque-cab"><h3>Tu mensaje corregido</h3><button class="btn btn-sec btn-mini" type="button" id="btn-copiar">Copiar</button></div>
+      <pre class="modelo" id="modelo-txt"></pre>
+      <p class="nota-modelo" id="modelo-nota"></p>
+    </div>
+  </section>
+</main>
 
-        // Action Handler (Delegates to Evaluate or Generate based on mode)
-        async function processAction() {
-            const resultsContainer = document.getElementById('results-container');
-            const evalContent = document.getElementById('ai-response-content');
-            const spinner = document.getElementById('loading-spinner');
-            
-            let prompt = "";
-            
-            // Validation & Prompt Building
-            if (currentMode === 'llamada') {
-                const est = document.getElementById('input-estudiante').value.trim();
-                const fte = document.getElementById('input-fuente').value.trim();
-                const tem = document.getElementById('input-tema').value.trim();
-                const obj = document.getElementById('input-objetivo').value.trim();
-                
-                if (!est || !fte || !tem || !obj) {
-                    document.getElementById('error-form').style.opacity = '1';
-                    return;
-                }
-                document.getElementById('error-form').style.opacity = '0';
-                
-                prompt = `Actúa como un instructor de periodismo senior (estilo Fundación Gabo o NPR). 
-                Crea un guion de llamada estructurado basándote en los siguientes datos:
-                - Estudiante: ${est}
-                - Fuente: ${fte}
-                - Tema Central: ${tem}
-                - Objetivo de la llamada: ${obj}
-                
-                REGLAS ESTRICTAS: No evalúes nada, solo proporciona la guía de acción. Mantén un tono académico, directo y profesional.
-                
-                FORMATO DE RESPUESTA EN HTML LIMPIO (Usa las clases H3, H4, UL, LI, P, y STRONG. No devuelvas bloques markdown):
-                <h3><i class="fa-solid fa-phone-volume"></i> Guion de Llamada Estructurado</h3>
-                <p>Usa este esquema para mantener el control de la entrevista desde el primer segundo.</p>
-                <h4>1. El Rompehielo (Regla de los 30s)</h4>
-                <ul><li>[Escribe qué debe decir exactamente para presentarse asertivamente]</li></ul>
-                <h4>2. Propósito y Control</h4>
-                <ul><li>[Escribe cómo debe plantear el tema de forma directa pero amable]</li></ul>
-                <h4>3. Escudo Ético</h4>
-                <ul><li>[Escribe la frase exacta para pedir permiso para grabar, asumiendo control]</li></ul>
-                <h4>4. La Primera Pregunta</h4>
-                <ul><li>[Redacta la primera pregunta directa basada en el objetivo provisto]</li></ul>`;
-                
-                document.getElementById('results-title').innerHTML = '<i class="fa-solid fa-map text-blue-600 mr-2"></i> Guía de Acción Generada';
+<!-- ============ MOTOR DE REVISIÓN (capa 1, funciona sin internet) ============ -->
+<script id="motor">
+/* Capa 2 (IA): apagada. Cuando exista un intermediario, poner habilitada:true y su URL. */
+const CONFIG_IA = { habilitada: false, endpoint: '' };
 
-            } else {
-                const textInput = document.getElementById('message-input').value.trim();
-                if (!textInput) {
-                    document.getElementById('error-msg').style.opacity = '1';
-                    return;
-                }
-                document.getElementById('error-msg').style.opacity = '0';
-                
-                const platform = currentMode === 'correo' ? 'correo electrónico' : 'mensaje de WhatsApp';
-                
-                prompt = `Actúa como un Editor Periodístico riguroso pero estrictamente académico y formativo de una gran sala de redacción. Evalúa el siguiente borrador de ${platform} escrito por un estudiante de periodismo hacia una fuente.
-                
-                REGLAS ESTRICTAS PARA TU RESPUESTA:
-                - Mantén un tono constructivo, profesional y académico. PROHIBIDO usar lenguaje vulgar, coloquial excesivo o frases inapropiadas (jamás uses frases como "lamer las botas").
-                - Penaliza el uso de disculpas ("perdón la molestia"), rodeos, o diminutivos.
-                - Sugiere formas asertivas e inteligentes de alentar a la fuente a participar (resaltar su experiencia, impacto en la sociedad, equilibrio informativo).
-                
-                FORMATO DE RESPUESTA EN HTML LIMPIO (Sin bloques markdown, usa las clases especificadas):
-                <div class="metric-container">
-                    <span class="metric-badge"><i class="fa-solid fa-ranking-star"></i> Rango: [Inventa un rango divertido sobre cómo es percibido, ej: Reportero Novato, Periodista Asertivo, Enviado Especial]</span>
-                    <span class="metric-badge"><i class="fa-solid fa-percent"></i> Probabilidad de entrevista: [Porcentaje estimado]%</span>
-                </div>
-                <h4>Análisis del Editor</h4>
-                <ul>
-                    <li>[Punto fuerte o lo que hizo bien]</li>
-                    <li class="improvement">[Área crítica de mejora enfocada en la asertividad y quitar rodeos]</li>
-                    <li class="improvement">[Sugerencia constructiva para alentar mejor a la fuente]</li>
-                </ul>
-                <h4>El "Gold Standard" (Texto Optimizado)</h4>
-                <p class="text-sm text-gray-500 mb-2">Así se enviaría desde una sala de redacción profesional:</p>
-                <blockquote>[Escribe aquí el texto completamente corregido, directo, asertivo y formal]</blockquote>
-                
-                Texto a evaluar:
-                "${textInput}"`;
-                
-                document.getElementById('results-title').innerHTML = '<i class="fa-solid fa-clipboard-check text-green-600 mr-2"></i> Evaluación Académica';
-            }
+const norm = s => (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+function alinear(raw){
+  let out = '';
+  for (const ch of raw.split('')){
+    let n = ch.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    if (n.length !== 1) n = n.length ? n[0] : ' ';
+    out += n;
+  }
+  return out;
+}
+function hallar(re, raw, tn){
+  const flags = re.flags.includes('g') ? re.flags : re.flags + 'g';
+  const g = new RegExp(re.source, flags);
+  const out = []; let m;
+  while ((m = g.exec(tn))){
+    if (!m[0].length){ g.lastIndex++; continue; }
+    out.push(raw.substr(m.index, m[0].length).trim());
+  }
+  return out;
+}
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const minInicial = s => (!s ? s : (s.length > 1 && /[A-ZÁÉÍÓÚÑ]/.test(s[1])) ? s : s[0].toLowerCase() + s.slice(1));
+const sinPuntoFinal = s => (s || '').replace(/[.\s]+$/, '');
 
-            // UI Changes for loading
-            resultsContainer.classList.remove('hidden');
-            evalContent.innerHTML = '';
-            spinner.classList.remove('hidden');
-            resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            
-            // API Call
-            const apiKey = "AQ.Ab8RN6IblfgcLKZwo+l4_WVgrX1ULymI18G0oKrn5Hwbu1rQarw"; 
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-preview:generateContent?key=${apiKey}`;
+const STOP = new Set('para como sobre entre desde hasta donde cuando porque quien quienes cuales esta este estos estas esos esas aquel tiene tienen hacer puede pueden nuestro nuestra nuestros ellos ellas usted ustedes todos todas otros otras mismo misma parte tema temas caso casos forma manera sector ecuador quito ciudad actual nueva nuevo'.split(' '));
+const palabrasClave = s => [...new Set(norm(s).split(/[^a-z0-9]+/).filter(w => w.length >= 5 && !STOP.has(w)))];
+const tieneRaiz = (tn, kw) => new RegExp('\\b' + kw.slice(0, Math.min(kw.length, 6))).test(tn);
 
-            const payload = {
-                contents: [{ parts: [{ text: prompt }] }]
-            };
+const TITULOS = new Set('dr dra mag msc mgs mgtr ing lic phd sr sra srta prof arq abg econ ec don dona doctor doctora magister ingeniero ingeniera licenciado licenciada profesor profesora senor senora'.split(' '));
+const tokensNombre = s => norm(s).split(/[^a-z]+/).filter(w => w.length >= 3 && !TITULOS.has(w));
+const mencionaNombre = (tn, s) => tokensNombre(s).some(w => new RegExp('\\b' + w + '\\b').test(tn));
 
-            try {
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
+const MESES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+const DIAS = ['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
+const DIAS_N = DIAS.map(norm);
+const pad = n => String(n).padStart(2, '0');
+const isoDe = d => `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+const hoyIso = () => isoDe(new Date());
+const masDiasIso = n => { const d = new Date(); d.setDate(d.getDate()+n); return isoDe(d); };
+function fechaLarga(iso){
+  if (!iso) return '';
+  const [y,m,d] = iso.split('-').map(Number);
+  return `${DIAS[new Date(y,m-1,d).getDay()]} ${d} de ${MESES[m-1]}`;
+}
+function horaTexto(hhmm){
+  if (!hhmm) return '';
+  const [h, mi] = hhmm.split(':').map(Number);
+  let t = `${h % 12 || 12}:${pad(mi)} ${h < 12 ? 'a. m.' : 'p. m.'}`;
+  if (h === 12 && mi === 0) t += ' (mediodía)';
+  return t;
+}
+const aLas = hhmm => hhmm ? `${(Number(hhmm.split(':')[0]) % 12 || 12) === 1 ? 'a la' : 'a las'} ${horaTexto(hhmm)}` : '';
+function cierreTexto(dtl){
+  if (!dtl) return '';
+  const [d, t] = dtl.split('T');
+  if (d === hoyIso()) return `hoy ${aLas(t)}`;
+  if (d === masDiasIso(1)) return `mañana ${aLas(t)}`;
+  return `el ${fechaLarga(d)} ${aLas(t)}`;
+}
+function anioProbable(dia, mesIdx){
+  const hoy = new Date(); hoy.setHours(0,0,0,0);
+  let y = hoy.getFullYear();
+  if ((hoy - new Date(y, mesIdx, dia)) / 86400000 > 60) y++;
+  return y;
+}
+function saludoHora(){
+  const h = new Date().getHours();
+  return h < 12 ? 'Buenos días' : h < 19 ? 'Buenas tardes' : 'Buenas noches';
+}
 
-                const result = await response.json();
-                
-                if (result.candidates && result.candidates.length > 0) {
-                    let htmlResponse = result.candidates[0].content.parts[0].text;
-                    htmlResponse = htmlResponse.replace(/```html/g, '').replace(/```/g, '').trim();
-                    evalContent.innerHTML = htmlResponse;
-                } else {
-                    evalContent.innerHTML = '<div class="text-red-600 bg-red-50 p-4 rounded-lg"><i class="fa-solid fa-triangle-exclamation mr-2"></i> Error al procesar la respuesta. Por favor intenta de nuevo.</div>';
-                }
-            } catch (error) {
-                evalContent.innerHTML = '<div class="text-red-600 bg-red-50 p-4 rounded-lg"><i class="fa-solid fa-wifi mr-2"></i> Error de conexión con la IA. Verifica tu internet.</div>';
-            } finally {
-                spinner.classList.add('hidden');
-            }
-        }
-    </script>
+const MES_RE = '(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|setiembre|octubre|noviembre|diciembre)';
+const RE = {
+  placeholder: /x{3,}|\[[^\]\n]{1,40}\]|\{[^}\n]{1,40}\}|_{3,}|\b(fulano|fulana|mengano|tu nombre|nombre de la fuente|nombre del medio|tema central|nombre de la persona|cargo de la fuente)\b/,
+  medioCompleto: /udla\s*channel/,
+  medioParcial: /\budla\b|universidad de (las )?americas/,
+  rol: /periodist|reporter|productor|productora|\beditor|corresponsal|presentador|presentadora|estudiante de periodismo|\bprensa\b/,
+  presentacion: /\b(soy|me llamo|mi nombre es|por parte de)\s+[a-z]{3,}/,
+  temaGenerico: /reportaje|\bnota\b|cobertura|investigacion|cronica|documental|programa|noticia/,
+  pedidoGeneral: /entrevist|conversar|conversacion|dialog|postura|declaracion|pronunciamiento|testimonio|opinion|criterio|confirm|verific|nota de voz|\baudio|por escrito|\bdato|documento|informe|cifra|particip|invitar|invitacion|colabor|contar con (usted|su)/,
+  pedido: {
+    entrevista: /entrevist|conversa|dialog|testimonio|particip/,
+    postura: /postura|declaracion|pronunciamiento|posicion|opinion|criterio|comentario|version/,
+    dato: /confirm|verific|\bdato/,
+    nota: /nota de voz|\baudio/,
+    documentos: /\bdatos\b|documento|informe|cifra|estadistic/
+  },
+  cierreSuave: /quedo atent|espero su (respuesta|confirmacion)|me (confirma|confirme)|confirmarme|agradezco su respuesta/,
+  relevancia: /\b(su|tu) (experiencia|trayectoria|trabajo|investigacion|investigaciones|conocimiento|analisis|perspectiva|mirada|criterio|voz|postura|rol|cargo|estudios|especialidad)\b|\bcomo (experto|experta|especialista|docente|investigador|investigadora|autoridad|representante|vocero|vocera|director|directora|presidente|presidenta|gerente|coordinador|coordinadora|dirigente|testigo|residente|profesional|economista|abogado|abogada|medico|medica)\b|\bpor ser\b|\ben su calidad de\b/,
+  fecha: new RegExp('\\b(lunes|martes|miercoles|jueves|viernes|sabado|domingo|hoy|manana|esta semana|proxima semana|semana que viene)\\b|\\b\\d{1,2}\\s+de\\s+' + MES_RE + '\\b|\\b\\d{1,2}/\\d{1,2}\\b'),
+  hora: /\b\d{1,2}(:\d{2})?\s*(a\.?\s?m|p\.?\s?m)(?![a-z])|\b\d{1,2}(:\d{2})?\s*(h|hrs?|horas)\b|\b\d{1,2}:\d{2}\b|\bmediodia\b|\ba las? \d{1,2}\b/,
+  formato: /presencial|en persona|zoom|google meet|\bmeet\b|teams|videollamada|video llamada|virtual|llamada|telefon|por escrito|nota de voz|\baudio\b|\bset\b|estudio|instalaciones/,
+  duracion: /\b\d{1,3}\s*(min\b|minutos)|media hora|una hora|\b\d{1,2}\s*horas?\b/,
+  cierre: /cierre|cerramos|al aire|antes de publicar|publicamos|en vivo|antes de las? \d/,
+  asap: /lo antes posible|lo mas pronto posible|a la brevedad|urgente/,
+  previo: /seguimiento|mensaje anterior|correo anterior|le escribi|le contacte|te escribi|invitacion (que|enviada|anterior)|solicitud (que|enviada|anterior)|mi (mensaje|correo|invitacion|solicitud)/,
+  docesAm: /\b12(:00)?\s*a\.?\s?m(?![a-z])/,
+  diaFecha: new RegExp('\\b(lunes|martes|miercoles|jueves|viernes|sabado|domingo)\\s*,?\\s*(\\d{1,2})\\s+de\\s+' + MES_RE + '(?:\\s+(?:de|del)\\s+(\\d{4}))?', 'g'),
+  fechaSola: new RegExp('\\b(\\d{1,2})\\s+de\\s+' + MES_RE + '\\b'),
+  disculpas: /\bperdon\b|\bdisculp[a-z]*|\blamento (molestar|interrumpir|escribir|contactar|la molestia)|\bsiento (molestar|interrumpir|escribir)|\bmolestias?\b|\bmolestar(le|lo|la|te)?\b|\bincomodar(le|lo|la|te)?\b/,
+  atenuadores: /\bbrevemente\b|\bbreves? (entrevista|conversacion|llamada|momento|consulta|espacio|reunion)\b|\b(ratito|momentito|minutito|minutitos|rapidito|cortito|poquito|preguntita|preguntitas|favorcito|llamadita|entrevistita|segundito|cosita|tiempito)\b|\b(robar|quitar)(le|te)? (un poco de |unos minutos de |unos minutos |un momento de )?(su |tu )?tiempo|\bde ser posible\b|\bsi fuera posible\b|\bsi es posible\b|\bsi (usted )?(pudiera|podria)\b|\bquisiera ver si\b|\b(solo|solamente) (queria|quisiera)\b|\bno se si (podria|pueda|tendria)\b|\bsin compromiso\b|\bqueria ver si\b/,
+  burocracia: /^\s*presente\s*[.:,-]*\s*$|\bpresente\s*\.\s*-|\bse digne\b|\bdignarse\b|\bme dirijo a usted|\bpor medio de (la|el) presente\b|\bla presente\b|\bsirvase\b|\btenga a bien\b|\bcomedidamente\b|\breciban? un (cordial|respetuoso|atento|afectuoso) saludo por parte de\b|\bme permito\b|\bsin otro particular\b|\bquedo a sus ordenes\b|\bsu digno cargo\b|\bmuy respetuosamente\b/m,
+  exigencia: /\b(requerimos|requiero|requerir|requiere que|necesitamos que|necesito que|exigimos|exijo|es obligatorio|es indispensable que|debe (usted )?(responder|enviar|atender|confirmar))\b/,
+  reclamo: /\bcomo no (me |nos )?(ha|han|habia) (respondido|contestado)|\bno (he|hemos) (recibido|tenido) (respuesta|contestacion)|\bsigo esperando\b|\bseguimos esperando\b|\baun no (me |nos )?(responde|contesta|ha respondido)|\bpor (segunda|tercera|cuarta|enesima) vez\b|\bvuelvo a insistir\b|\binsisto\b|\ble vuelvo a escribir\b|\bsi nos va a (dar|conceder) [a-z ]{0,30}o no\b/,
+  tu: /\bte (escribo|contacto|busco|invito|pido|agradezco|comento|cuento|propongo|llamo)\b|\bcontigo\b|\b(podrias|tendrias|puedes|tienes|quieres)\b|\btu (experiencia|trabajo|opinion|postura|tiempo|perspectiva|analisis|agenda|respuesta)\b/,
+  usted: /\busted\b|\ble (escribo|contacto|invito|agradezco|propongo|llamo|pido|comento)\b|\b(podria|tendria)\b|\bsu (experiencia|trabajo|opinion|postura|tiempo|perspectiva|analisis|agenda|respuesta|participacion)\b/,
+  ofensivo: /\b(mmv|mamaverga|mama ?verga|mamahuevo|mamaguevo|verga|vergas|vergazo|vrg|vrga|hpta|hptas|hpt|hdp|hijueputa|hijue ?puta|hijo ?de ?puta|hijo e puta|puta|putas|puto|putos|putamadre|mierda|mierdas|mrd|carajo|cabron|cabrona|cabrones|chucha|conchatumadre|ctm|ptm|csm|malparido|malparida|huevon|huevona|guevon|webon|weon|gueon|cojudo|cojuda|pendejo|pendeja|pendejos|imbecil|idiota|estupido|estupida|maricon|marica|longo|longa|mongolico|culero|joder|jodido|jodida|fuck|fucking|shit|wtf|motherfucker)\b/,
+  amenaza: /\bsi no (me |nos )?(responde|contesta|atiende|colabora|da la entrevista|nos da la entrevista|quiere hablar)[a-z ,]{0,40}\b(publicar|publicaremos|diremos|vamos a|voy a|informaremos|expondremos|denunciar|denunciaremos|pondremos|sacaremos)|\b(vamos a|voy a|vamos) (publicar|decir|poner|informar|exponer|contar|denunciar) que (usted |ud )?(se nego|no quiso|no respondio|no contesto|evadio|se escondio|oculta|tiene algo que ocultar)|\batengase a las consecuencias\b|\blo vamos a (exponer|quemar|denunciar)\b|\ble conviene (responder|hablar|contestar|colaborar)\b|\b(tendra|habra) consecuencias\b|\bsabemos donde (vive|trabaja|esta)\b|\ble guste o no\b|\bva a quedar (muy )?mal\b|\bquedara (muy )?mal\b|\bpublicaremos (igual|de todas formas|sin su version)/,
+  apuro: /(?:^|[,;:¡!¿.])\s*(muevete|muevase|muevanse|mueve|mueva|apurate|apurese|apurense|apurele|apura|apure|pilas|al toque|volando|rapido|rapidito|ya mismo|de una)(?=\s*(?:[,.;:!?]|$))|\s(muevete|muevase|mueve|mueva|apurate|apurese|apura|apure|rapido|ya mismo|de una)\s*[.!]*\s*$|\b(apurate|apurese|apurense|apurele|dese prisa|de prisa|no se demore|no te demores|no demore|no me haga esperar|no me hagas esperar|sin falta|para ayer|para ya|cuanto antes|urgentisimo|urgentemente|es urgente|de urgencia|con urgencia|estoy apurad[oa]|estamos apurad[oa]s|no tengo mucho tiempo|no tenemos mucho tiempo)\b|\b(responda|conteste|contesta|responde|envie|envia|mande|manda|confirme|confirma|escriba|escribe|diga|dime|digame|llame|llama|hagalo|haga|pase|pasa)(me|nos|lo|la)? (rapido|ya|ya mismo|de una|pronto|urgente|enseguida|al toque|de inmediato|inmediatamente)\b/m,
+  informal: /\b(bro|brother|broder|mi pana|panita|panas|nanito|nanita|mi llave|parce|parcero|xq|pq|porq|xfa|xfavor|porfa|porfis|plis|pliss|please|tqm|grax+|salu2|ntp|tmb|jaj[aj]*|jej[ej]*|jij[ij]*|jsjs[a-z]*|xd+|lol|oki|okis|chevere|bacan|bacansote|full|cachas|dale)\b|(?:^|\s)[qk](?=\s[a-z])/,
+  vocativo: /\b(hola|oye|buenas|buenos dias|buenas tardes|que fue|q fue|que mas|ey|hey|saludos)\s*,?\s*(pana|bro|man|loco|loca|veci|compa|parce|mae|nano|nana|amigo|amiga|jefe|jefa|mi pana)\b/,
+  familiar: /\b(mija|mijo|mijita|mijito|mi amor|mi reina|mi rey|mi vida|mamita|papito|corazoncito|mi cielo|carino|carinito|besos|besitos|abrazote)\b|\b(hola|buenos dias|buenas tardes|buenas noches|buenas|gracias)\s*,?\s*(linda|lindo|guapa|guapo|preciosa|bella|hermosa|reina|corazon)\b/,
+  sensible: /\b(victima|fallecid|muert|asesinat|femicidio|feminicidio|desaparecid|accidente|incendio|terremoto|sismo|inundacion|deslave|aluvion|damnificad|herid|violencia|agresion|abuso|secuestr|masacre|tragedia|duelo|atentado|explosion)/,
+  autoridad: /\b(ministr|viceministr|alcald|prefect|gobernador|concejal|asambleista|secretari[oa] (de|general|nacional)|director[a]? (general|nacional|ejecutiv)|gerente|vocer|presidente|presidenta|comandante|jefe de|jefa de|fiscal|juez|jueza|superintendente|rector|rectora|defensor del pueblo)/,
+  menores: /\b(nino|nina|ninos|ninas|menores? de edad|adolescentes?|colegial|colegiales|escolares?|infancia|infantil|estudiantes de colegio|bebes?)\b/,
+  saludo: /^(estimad|buen(os|as)|hola|senor|senora|distinguid|apreciad|saludos|mag\b|dr\b|dra\b|ing\b|lic\b|econ\b)/
+};
+
+const ORTO = [
+  ['enforcar','enfocar'],['haber si','a ver si'],['ha ver','a ver'],['a sido','ha sido'],['osea','o sea'],
+  ['atraves','a través'],['atravez','a través'],['tambien','también'],['dias','días'],['informacion','información'],
+  ['reportage','reportaje'],['periodico','periódico'],['podria','podría'],['podrias','podrías'],['tendria','tendría'],
+  ['quisieramos','quisiéramos'],['gustaria','gustaría'],['agradeceria','agradecería'],['agradeceriamos','agradeceríamos'],
+  ['estariamos','estaríamos'],['disposicion','disposición'],['comunicacion','comunicación'],['energetica','energética'],
+  ['economia','economía'],['analisis','análisis'],['sesion','sesión'],['publicacion','publicación'],['despues','después'],
+  ['aqui','aquí'],['miercoles','miércoles'],['sabado','sábado'],['esque','es que'],['hechar','echar'],
+  ['nesecito','necesito'],['nesecitamos','necesitamos'],['conversacion','conversación'],['participacion','participación'],
+  ['investigacion','investigación'],['opinion','opinión'],['telefono','teléfono'],['numero','número'],['area','área'],
+  ['rapido','rápido'],['tecnico','técnico'],['politica','política'],['porfavor','por favor'],['enserio','en serio'],
+  ['apartir','a partir']
+].map(([m, s]) => [new RegExp('(^|[^\\p{L}])' + m + '(?![\\p{L}])', 'iu'), m, s]);
+
+const RANGOS = [
+  { min: 85, titulo: 'Corresponsal de planta', nota: 'La fuente ve oficio periodístico. Envíalo y prepara tus preguntas.' },
+  { min: 70, titulo: 'Reportero de calle', nota: 'Te van a tomar en serio. Ajusta los detalles marcados y subes de rango.' },
+  { min: 50, titulo: 'Practicante con credencial', nota: 'Se nota que eres del medio, pero a la fuente todavía le quedan dudas.' },
+  { min: 30, titulo: 'Grabadora sin pilas', nota: 'La intención está, pero a la fuente le faltan datos para decir que sí.' },
+  { min: 0,  titulo: 'Remitente desconocido', nota: 'Así, la fuente difícilmente sabría que le escribe un periodista.' }
+];
+const RANGO_RETIRADA = { min: 0, titulo: 'Credencial retirada', nota: 'Con este lenguaje ninguna fuente respondería, y el nombre de UDLA Channel quedaría expuesto.' };
+const ETIQUETAS_ESTRUCTURA = {
+  saludo: 'Saludo con el nombre de la fuente', identidad: 'Quién eres y de qué medio', tema: 'Tema del reportaje',
+  porque: 'Por qué buscas a esa persona', pedido: 'Qué le pides', cuandoA: 'Fecha y hora propuestas', cuandoU: 'Cierre de edición',
+  previo: 'Referencia al primer contacto', pregunta: 'Pregunta final', firma: 'Despedida y firma'
+};
+const diasHasta = iso => { const [y,m,d] = iso.split('-').map(Number); const h = new Date(); h.setHours(0,0,0,0); return Math.round((new Date(y,m-1,d) - h) / 86400000); };
+const CONECTORES = new Set('de del la las el los en y a ante sobre para con por un una e o'.split(' '));
+function recortar(t, max){
+  const pal = t.split(/\s+/); let out = [];
+  for (const w of pal){ if ((out.concat(w).join(' ')).length > max) break; out.push(w); }
+  while (out.length > 1 && CONECTORES.has(norm(out[out.length-1]))) out.pop();
+  return out.join(' ');
+}
+
+const CRITERIOS = [
+  ['identidad','Identidad'], ['proposito','Propósito'], ['fuente','Por qué esa fuente'],
+  ['logistica','Logística'], ['tono','Tono'], ['forma','Forma']
+];
+const FORMATO = {
+  presencial: { frase: 'una entrevista presencial', corto: 'en persona' },
+  video:      { frase: 'una videollamada', corto: 'por videollamada' },
+  telefono:   { frase: 'una llamada', corto: 'por teléfono' },
+  escrito:    { frase: 'una respuesta por escrito', corto: 'por escrito' },
+  nota:       { frase: 'una nota de voz', corto: 'por nota de voz' }
+};
+const PETICION = {
+  entrevista: { sust: 'una entrevista', verbo: f => `conversar con nosotros${f.formato && FORMATO[f.formato] ? ' ' + FORMATO[f.formato].corto : ''}` },
+  postura:    { sust: 'su postura sobre el tema', verbo: () => 'compartirnos su postura' },
+  dato:       { sust: 'la confirmación de un dato', verbo: () => 'confirmarnos un dato puntual' },
+  nota:       { sust: 'una nota de voz', verbo: () => 'enviarnos una nota de voz de un minuto' },
+  documentos: { sust: 'datos o documentos de referencia', verbo: () => 'compartirnos los datos o documentos disponibles' }
+};
+
+function evaluar(raw, f, canal, escenario){
+  const tn = alinear(raw);
+  const low = raw.toLowerCase();
+  const palabras = (tn.match(/[a-z0-9]+/g) || []).length;
+  const obs = [];
+  let puntos = 100, tope = 100;
+  const add = (crit, nivel, peso, titulo, detalle, frag = [], grave = false) => {
+    obs.push({ crit, nivel, titulo, detalle, grave, frag: [...new Set(frag)].filter(Boolean).slice(0, 4) });
+    puntos -= peso;
+  };
+
+  if (palabras < 8){
+    add('forma', 'falta', 30, 'Esto todavía no es un mensaje a una fuente', `«${raw.trim().slice(0, 40)}» no le dice a la fuente quién escribe, de qué medio, para qué la busca ni cuándo. Revisa la estructura: cada elemento marcado con ✕ tiene un ejemplo con tus datos. Arma el mensaje con todos antes de enviarlo.`);
+    tope = 8;
+  }
+  const ph = hallar(RE.placeholder, raw, tn);
+  if (ph.length){
+    add('forma', 'falta', 20, 'Quedaron espacios de plantilla sin llenar', 'La fuente notará que es un mensaje copiado. Reemplaza cada espacio con el dato real.', ph);
+    tope = Math.min(tope, 35);
+  }
+
+  /* Identidad */
+  if (f.nombre){
+    if (!mencionaNombre(tn, f.nombre)) add('identidad', 'falta', 8, 'No dices tu nombre', `Tu nombre (${f.nombre}) no aparece en el mensaje. Preséntate al inicio: «Soy ${f.nombre}, periodista de UDLA Channel».`);
+  } else if (!RE.presentacion.test(tn)){
+    add('identidad', 'falta', 8, 'No dices tu nombre', 'Preséntate al inicio: «Soy [tu nombre], periodista de UDLA Channel».');
+  }
+  const posMedio = tn.search(RE.medioCompleto);
+  if (posMedio === -1){
+    if (RE.medioParcial.test(tn)) add('identidad', 'ajustar', 5, 'Nombras la universidad, pero no el medio', 'La fuente habla con un medio, no con una tarea de clase. Escribe «UDLA Channel».');
+    else add('identidad', 'falta', 10, 'No mencionas el medio', 'Sin el medio, la fuente no sabe dónde aparecerá su voz. Incluye «UDLA Channel» al presentarte.');
+  } else if (canal === 'whatsapp' && posMedio > tn.length * 0.5){
+    add('identidad', 'ajustar', 3, 'Te identificas demasiado tarde', 'En WhatsApp la vista previa muestra solo el inicio. Di quién eres y de qué medio en la primera línea.');
+  }
+  if (!RE.rol.test(tn)) add('identidad', 'ajustar', 4, 'No indicas tu rol', 'Decir «periodista de UDLA Channel» le da a la fuente el marco de la conversación.');
+
+  /* Propósito */
+  const kwTema = palabrasClave(f.tema + ' ' + (f.angulo || ''));
+  if (kwTema.length){
+    if (!kwTema.some(k => tieneRaiz(tn, k))) add('proposito', 'falta', 10, 'No se entiende de qué trata el reportaje', `El tema de la ficha («${f.tema}») no aparece en el mensaje. Nómbralo en una sola frase.`);
+  } else if (!RE.temaGenerico.test(tn)){
+    add('proposito', 'falta', 8, 'No explicas el tema', 'Di en una frase sobre qué es el reportaje: «Preparamos un reportaje sobre…».');
+  }
+  if (!RE.pedidoGeneral.test(tn)){
+    add('proposito', 'falta', 8, 'No queda claro qué le pides', 'Nombra la acción concreta: una entrevista, su postura, confirmar un dato o una nota de voz.');
+  } else if (f.peticion && !RE.pedido[f.peticion].test(tn)){
+    add('proposito', 'ajustar', 4, 'Lo que pides no coincide con la ficha', `En la ficha indicas que buscas ${PETICION[f.peticion].sust}, pero el mensaje no lo dice con claridad.`);
+  }
+  const ultimaPregunta = raw.lastIndexOf('?');
+  if (ultimaPregunta === -1){
+    if (RE.cierreSuave.test(tn)) add('proposito', 'ajustar', 4, 'Cierra con una pregunta directa', 'Una pregunta que se responde con un sí («¿Podemos contar con su participación?») facilita la respuesta más que «quedo atento».');
+    else add('proposito', 'falta', 7, 'El mensaje no pide una respuesta', 'Termina con una pregunta concreta: «¿Tendría disponibilidad el jueves a las 10:00 a. m.?».');
+  } else if (raw.length > 200 && ultimaPregunta < raw.length * 0.55){
+    add('proposito', 'ajustar', 4, 'La pregunta está al inicio, no al cierre', 'La única pregunta del mensaje plantea el tema. Cierra con una pregunta que invite a la fuente a confirmar.');
+  }
+  const viñetas = (raw.match(/^\s*([-•*–]|\d+[.)])\s+/gm) || []).length;
+  const maxComas = Math.max(0, ...tn.split(/[.;:\n!?]+/).map(s => (s.match(/,/g) || []).length));
+  if (maxComas >= 4 || viñetas >= 4){
+    add('proposito', 'ajustar', 6, 'Demasiados subtemas', 'Cuando enumeras muchos ángulos, la fuente no sabe cuál es el suyo. Quédate con uno o dos y guarda el resto para la entrevista.');
+  }
+
+  /* Por qué esa fuente */
+  if (f.fuente && !mencionaNombre(tn, f.fuente)){
+    add('fuente', 'ajustar', canal === 'correo' ? 5 : 3, 'No nombras a la fuente', `Saludar por su nombre («${f.fuente}») demuestra que el mensaje es para esa persona y no una plantilla masiva.`);
+  }
+  const relevante = RE.relevancia.test(tn) || palabrasClave(f.porque).some(k => tieneRaiz(tn, k));
+  if (!relevante){
+    if (escenario === 'anticipado') add('fuente', 'falta', 8, 'No explicas por qué buscas a esta persona', 'Es el mejor incentivo para que participe: «Por su experiencia como…, su análisis aporta…».');
+    else add('fuente', 'ajustar', 4, 'Agrega por qué su voz importa', 'Una frase sobre su experiencia o su rol le da a la fuente una razón para responder.');
+  }
+
+  /* Logística */
+  if (RE.docesAm.test(tn)){
+    add('logistica', 'falta', 10, '«12:00 a. m.» es medianoche', 'Para el mediodía escribe «12:00 p. m.» o «mediodía». Un error de hora hace dudar de todo el mensaje.', hallar(RE.docesAm, raw, tn));
+  }
+  RE.diaFecha.lastIndex = 0;
+  let m;
+  while ((m = RE.diaFecha.exec(tn))){
+    const mesIdx = MESES.indexOf(m[3] === 'setiembre' ? 'septiembre' : m[3]);
+    const dia = Number(m[2]);
+    const y = m[4] ? Number(m[4]) : (f.fecha ? Number(f.fecha.slice(0, 4)) : anioProbable(dia, mesIdx));
+    const real = new Date(y, mesIdx, dia).getDay();
+    if (DIAS_N[real] !== m[1]){
+      add('logistica', 'falta', 8, 'El día de la semana no coincide con la fecha', `El ${dia} de ${MESES[mesIdx]} de ${y} es ${DIAS[real]}, no ${DIAS[DIAS_N.indexOf(m[1])]}. La fuente no sabrá qué día reservar.`, [raw.substr(m.index, m[0].length)]);
+      break;
+    }
+  }
+  if (escenario === 'anticipado'){
+    if (!RE.fecha.test(tn)) add('logistica', 'falta', 8, 'No propones una fecha', 'Una fecha concreta convierte la invitación en una decisión fácil. Ofrece flexibilidad después de proponerla.');
+    if (!RE.hora.test(tn)) add('logistica', 'ajustar', 6, 'No propones una hora', 'Indica la hora exacta con a. m. o p. m.');
+    if (!RE.formato.test(tn)) add('logistica', 'ajustar', 5, 'No dices el formato', 'Aclara si es presencial, por videollamada, por teléfono o por escrito.');
+    if (!['escrito','nota'].includes(f.formato) && !RE.duracion.test(tn)) add('logistica', 'ajustar', 3, 'No dices cuánto dura', 'Una cifra («15 minutos») le permite a la fuente organizar su agenda y comunica seguridad.');
+    const fs = tn.match(RE.fechaSola);
+    if (f.fecha && fs){
+      const [, mm, dd] = f.fecha.split('-').map(Number);
+      const mesTxt = MESES.indexOf(fs[2] === 'setiembre' ? 'septiembre' : fs[2]) + 1;
+      if (Number(fs[1]) !== dd || mesTxt !== mm) add('logistica', 'ajustar', 5, 'La fecha no coincide con la ficha', `En la ficha pusiste ${fechaLarga(f.fecha)}, pero el mensaje dice «${raw.substr(fs.index, fs[0].length)}».`);
+    }
+    if (f.fecha && f.fecha < hoyIso()) add('logistica', 'ajustar', 4, 'La fecha de la ficha ya pasó', 'Revisa la fecha que propones.');
+  } else {
+    if (escenario === 'seguimiento' && !RE.previo.test(tn)) add('logistica', 'falta', 8, 'No recuerdas el primer contacto', 'Menciona que das seguimiento a tu invitación anterior para que la fuente ubique el tema.');
+    if (!(RE.cierre.test(tn) || RE.hora.test(tn))){
+      if (RE.asap.test(tn)) add('logistica', 'ajustar', 5, '«Lo antes posible» no es un plazo', 'Da la hora exacta de tu cierre de edición: «Cerramos hoy a las 5:00 p. m.».', hallar(RE.asap, raw, tn));
+      else add('logistica', 'falta', 10, 'No indicas tu cierre de edición', 'El cierre es la razón legítima de tu apuro. Dilo con hora exacta.');
+    }
+  }
+
+  /* Tono */
+  const disc = hallar(RE.disculpas, raw, tn);
+  if (disc.length) add('tono', 'falta', 10, 'Pides disculpas por hacer tu trabajo', 'Contactar fuentes es parte del oficio. Empieza por presentarte y agradece al final por su tiempo.', disc);
+  const aten = hallar(RE.atenuadores, raw, tn);
+  if (aten.length) add('tono', 'ajustar', Math.min(10, 4 * aten.length), 'Atenuadores que restan seguridad', 'Reemplázalos por datos concretos: «15 minutos» en lugar de «un ratito» o «brevemente»; una fecha y hora concretas en lugar de «de ser posible».', aten);
+  const buro = hallar(RE.burocracia, raw, tn);
+  if (buro.length) add('tono', 'ajustar', Math.min(12, 6 * buro.length), 'Fórmulas de oficio administrativo', 'Suenan a trámite, no a sala de redacción. Abre con «Buenos días, [nombre]:» y preséntate en primera persona: «Soy…».', buro);
+  const exig = hallar(RE.exigencia, raw, tn);
+  if (exig.length) add('tono', 'ajustar', 5, 'Suena a exigencia', 'La fuente no está obligada a responder. Invítala: «queremos invitarle a», «nos interesa incluir su voz».', exig);
+  const recl = hallar(RE.reclamo, raw, tn);
+  if (recl.length) add('tono', 'falta', 10, 'Suena a reclamo', 'El silencio de la fuente no es el argumento; tu cierre de edición sí lo es: «Cerramos hoy a las 5:00 p. m. y nos interesa incluir su voz».', recl);
+  const hayTu = RE.tu.test(tn), hayUsted = RE.usted.test(tn);
+  if (hayTu && hayUsted) add('tono', 'ajustar', 4, 'Mezclas «tú» y «usted»', 'Elige un solo trato. Para un primer contacto, «usted» es lo habitual.', hallar(RE.tu, raw, tn));
+  else if (hayTu && canal === 'correo' && escenario === 'anticipado') add('tono', 'ajustar', 2, 'Tuteo en un primer contacto formal', 'Salvo que ya tengas confianza con la fuente, usa «usted».');
+  const mayus = [...raw.matchAll(/(^|[^\p{L}])(\p{Lu}{4,})(?![\p{L}])/gu)].map(x => x[2]).filter(w => !['UDLA','CHANNEL'].includes(w));
+  if (mayus.length >= 3) add('tono', 'ajustar', 3, 'Demasiadas mayúsculas', 'En texto digital, las mayúsculas sostenidas se leen como gritos.', mayus);
+  const emojis = (raw.match(/\p{Extended_Pictographic}/gu) || []).length;
+  if (canal === 'correo' && emojis) add('tono', 'ajustar', 3, 'Emojis en un correo formal', 'Resérvalos para conversaciones con confianza.');
+  if (canal === 'whatsapp' && emojis > 2) add('tono', 'ajustar', 2, 'Demasiados emojis', 'Uno como máximo; el mensaje es profesional.');
+  if (/!{2,}|¡{2,}/.test(raw)) add('tono', 'ajustar', 2, 'Signos de exclamación repetidos', 'Uno basta.');
+
+  /* Forma */
+  if (canal === 'correo'){
+    if (!f.asunto) add('forma', 'ajustar', 6, 'Falta el asunto', 'El asunto decide si el correo se abre. Incluye el medio y el tema: «Entrevista para UDLA Channel: [tema]».');
+    else {
+      if (f.asunto.length > 75) add('forma', 'ajustar', 3, 'El asunto es muy largo', 'Hasta unos 70 caracteres se lee completo en la bandeja de entrada.');
+      const kwA = palabrasClave(f.asunto);
+      if (!/udla/.test(norm(f.asunto)) && !kwTema.some(k => kwA.some(a => a.slice(0, 6) === k.slice(0, 6)))) add('forma', 'ajustar', 3, 'El asunto no dice medio ni tema', 'Que la fuente sepa de qué se trata antes de abrirlo.');
+    }
+    const primera = alinear((raw.split('\n').find(l => l.trim()) || '').trim());
+    if (palabras >= 8 && !RE.saludo.test(primera)) add('forma', 'ajustar', 3, 'Empieza sin saludo', 'Abre con «Buenos días, [nombre de la fuente]:».');
+    const cola = tn.slice(-220);
+    if (palabras >= 8 && !((f.nombre && mencionaNombre(cola, f.nombre)) || RE.medioCompleto.test(cola))) add('forma', 'ajustar', 3, 'Falta la firma', 'Cierra con tu nombre y «Periodista | UDLA Channel».');
+    const minimo = escenario === 'anticipado' ? 60 : 35;
+    if (palabras >= 8 && palabras < minimo) add('forma', 'ajustar', 8, 'El correo es muy corto', 'Le falta contexto: quién eres, el tema, por qué esa fuente y una propuesta concreta.');
+    if (palabras > 260) add('forma', 'ajustar', 6, 'El correo es muy largo', 'Apunta a 100–200 palabras. Los detalles se conversan en la entrevista.');
+    if (raw.trim().split(/\n\s*\n/).length === 1 && palabras > 110) add('forma', 'ajustar', 3, 'Todo en un solo bloque', 'Separa en párrafos cortos: presentación, invitación, propuesta, cierre.');
+  } else {
+    const limite = escenario === 'anticipado' ? 100 : 75;
+    if (palabras > 150) add('forma', 'falta', 10, 'Demasiado largo para WhatsApp', `Tiene ${palabras} palabras. La fuente tendrá que hacer scroll antes de saber qué le pides. Apunta a menos de ${limite}.`);
+    else if (palabras > limite) add('forma', 'ajustar', 6, 'Largo para WhatsApp', `Tiene ${palabras} palabras. Apunta a menos de ${limite} para que se lea de un vistazo.`);
+    else if (palabras >= 8 && palabras < 18) add('forma', 'ajustar', 6, 'Muy escueto', 'Incluye quién eres, el tema y una propuesta concreta.');
+    if ((raw.match(/\n/g) || []).length > 8) add('forma', 'ajustar', 3, 'Demasiados saltos de línea', 'En WhatsApp conviene uno o dos bloques compactos.');
+  }
+  const orto = ORTO.filter(([re]) => re.test(low)).map(([, malo, bueno]) => `${malo} → ${bueno}`);
+  if (orto.length) add('forma', 'ajustar', Math.min(8, 2 * orto.length), 'Revisa la ortografía', 'Un error ortográfico resta credibilidad antes de que la fuente llegue a tu pedido.', orto);
+  if ((raw.match(/\?/g) || []).length > (raw.match(/¿/g) || []).length) add('forma', 'ajustar', 2, 'Falta el signo de apertura «¿»', 'En español las preguntas abren y cierran.');
+
+  /* Lenguaje ofensivo, presión e informalidad */
+  const leet = tn.replace(/[013457@$]/g, c => ({'0':'o','1':'i','3':'e','4':'a','5':'s','7':'t','@':'a','$':'s'}[c]));
+  const ofensivo = RE.ofensivo.test(leet) || RE.ofensivo.test(leet.replace(/([a-z])\1+/g, '$1'));
+  if (ofensivo){
+    add('tono', 'falta', 40, 'Lenguaje ofensivo', 'Un mensaje a una fuente no admite groserías ni insultos, ni siquiera en confianza o en broma. La fuente puede reenviarlo o hacerlo público, y compromete tu credibilidad y la de UDLA Channel. Elimina estas palabras antes de cualquier otra corrección.', hallar(RE.ofensivo, raw, tn), true);
+    tope = Math.min(tope, 5);
+  }
+  const amen = hallar(RE.amenaza, raw, tn);
+  if (amen.length){
+    add('tono', 'falta', 25, 'Presión o amenaza a la fuente', 'La fuente tiene derecho a no responder. Consignar que se buscó su versión es legítimo; usarlo para presionarla vulnera la ética periodística. Si no responde antes del cierre, la nota dirá: «Se solicitó su versión, pero hasta el cierre de esta edición no hubo respuesta».', amen, true);
+    tope = Math.min(tope, 20);
+  }
+  const apuro = hallar(RE.apuro, raw, tn).map(x => x.replace(/^[,;:¡!¿.\s]+|[.!\s]+$/g, '')).filter(Boolean);
+  if (apuro.length) add('tono', 'ajustar', Math.min(12, 5 * apuro.length), 'Suena a apuro o presión', 'Tu prisa es real, pero la fuente no tiene por qué compartirla y apurarla suele jugar en contra. En lugar de pedirle rapidez, dile tu hora de cierre y facilítale la respuesta: «Nuestro cierre es hoy a las 5:00 p. m. ¿Tendría disponibilidad para confirmarnos el dato antes de esa hora?».', apuro);
+  const inf = [...hallar(RE.informal, raw, tn), ...hallar(RE.vocativo, raw, tn)];
+  if (inf.length) add('tono', 'ajustar', Math.min(20, 5 * inf.length), 'Lenguaje demasiado informal', 'Con una fuente, incluso por WhatsApp, el registro es profesional. Escribe las palabras completas y evita jerga, abreviaciones y risas escritas.', inf);
+  const fam = hallar(RE.familiar, raw, tn);
+  if (fam.length) add('tono', 'falta', 15, 'Trato demasiado familiar', 'Las expresiones afectivas pueden incomodar a la fuente y restan seriedad. Usa su nombre y su título: «Buenos días, Mag. Meneses».', fam);
+
+  /* Escenarios posibles */
+  const avisos = [];
+  const nota = (titulo, detalle) => avisos.push({ nivel: 'nota', titulo, detalle, frag: [] });
+  const contexto = norm([f.tema, f.angulo, f.porque, raw].join(' '));
+  if (RE.sensible.test(contexto)) nota('Si la fuente vivió el hecho', 'Si es víctima, familiar o testigo afectado, reconoce la situación en una frase, pregunta si está en condiciones de hablar y acepta un no. Evita pedir detalles dolorosos por mensaje.');
+  if (RE.autoridad.test(norm((f.fuente || '') + ' ' + (f.porque || '')))) nota('Fuente institucional', 'Las autoridades suelen canalizar las entrevistas por su área de comunicación. Escribe también a esa dirección y guarda constancia de la solicitud y la hora en que la hiciste.');
+  if (RE.menores.test(contexto)) nota('Si involucra a menores de edad', 'Para entrevistarles necesitas la autorización de su madre, padre o representante legal, y debes cuidar su identidad según la edad y el tema.');
+  if (canal === 'correo' && escenario === 'urgencia') nota('El correo es lento para urgencias', 'Envíalo como respaldo, pero busca a la fuente también por WhatsApp o por teléfono.');
+  if (escenario === 'anticipado' && f.fecha){
+    const dias = diasHasta(f.fecha);
+    if (dias >= 0 && dias < 2) nota('Poca anticipación', `Propones ${dias === 0 ? 'hoy' : 'mañana'}. Con menos de 48 horas, ${canal === 'correo' ? 'el correo puede no leerse a tiempo: refuérzalo con WhatsApp o una llamada' : 'confirma con una llamada si no hay respuesta en unas horas'}.`);
+    const [yy, mm, dd] = f.fecha.split('-').map(Number);
+    const dow = new Date(yy, mm - 1, dd).getDay();
+    if (dow === 0 || dow === 6) nota('Propones un fin de semana', 'Confirma que la fuente atiende ese día y ofrece una alternativa entre semana.');
+  }
+  if (escenario === 'anticipado' && f.hora && !RE.docesAm.test(tn)){
+    const hh = Number(f.hora.split(':')[0]);
+    if (hh < 7 || hh >= 20) add('logistica', 'ajustar', 4, 'Horario poco habitual', `Propones ${horaTexto(f.hora)}. Un horario laboral facilita que la fuente acepte.`);
+  }
+  if (escenario === 'seguimiento' && f.previo){
+    const d = diasHasta(f.previo);
+    if (d > 0) add('logistica', 'ajustar', 3, 'La fecha del primer contacto es futura', 'Revisa esa fecha en la ficha.');
+    else if (d === 0 && !(f.cierre && f.cierre.slice(0, 10) === hoyIso())) nota('Seguimiento el mismo día', 'Si tu cierre no es hoy, espera al menos un día hábil antes de insistir.');
+  }
+  if (escenario !== 'anticipado' && f.cierre && new Date(f.cierre) < new Date()) add('logistica', 'ajustar', 3, 'El cierre de la ficha ya pasó', 'Actualiza la hora de cierre en la ficha.');
+
+  /* Estructura: qué elementos tiene el mensaje */
+  const primeraLinea = alinear((raw.split('\n').find(l => l.trim()) || '').trim());
+  const saludoOk = RE.saludo.test(primeraLinea);
+  const fuenteOk = f.fuente ? mencionaNombre(tn, f.fuente) : (primeraLinea.match(/[a-z]+/g) || []).length >= 3;
+  const nombreOk = f.nombre ? mencionaNombre(tn, f.nombre) : RE.presentacion.test(tn);
+  const nId = [nombreOk, RE.medioCompleto.test(tn), RE.rol.test(tn)].filter(Boolean).length;
+  const est = (ok, parcial) => ok ? 'ok' : parcial ? 'parcial' : 'falta';
+  const E = ejemplosEstructura(f, canal, escenario);
+  const filas = [
+    ['saludo', est(saludoOk && fuenteOk, saludoOk || (f.fuente && fuenteOk))],
+    ['identidad', est(nId === 3, nId > 0)],
+    ['tema', est(kwTema.length ? kwTema.some(k => tieneRaiz(tn, k)) : RE.temaGenerico.test(tn), false)],
+    ['porque', est(relevante, false)],
+    ['pedido', est(RE.pedidoGeneral.test(tn), false)],
+    escenario === 'anticipado'
+      ? ['cuandoA', est(RE.fecha.test(tn) && RE.hora.test(tn), RE.fecha.test(tn) || RE.hora.test(tn))]
+      : ['cuandoU', est(RE.cierre.test(tn) || RE.hora.test(tn), RE.asap.test(tn))],
+    escenario === 'seguimiento' ? ['previo', est(RE.previo.test(tn), false)] : null,
+    ['pregunta', ultimaPregunta === -1 ? est(false, RE.cierreSuave.test(tn)) : est(!(raw.length > 200 && ultimaPregunta < raw.length * 0.55), true)],
+    canal === 'correo' ? ['firma', est((f.nombre && mencionaNombre(tn.slice(-220), f.nombre)) || RE.medioCompleto.test(tn.slice(-220)), false)] : null
+  ].filter(Boolean);
+  const estructura = filas.map(([id, estado]) => ({ id, estado, etiqueta: ETIQUETAS_ESTRUCTURA[id], ejemplo: E[id] }));
+
+  if (palabras < 8) for (let i = obs.length - 1; i > 0; i--) if (!obs[i].grave) obs.splice(i, 1);
+  puntos = Math.min(puntos, tope);
+  const prob = ofensivo ? 5 : Math.max(5, Math.min(95, Math.round(puntos * 0.92 + 3)));
+  const rango = ofensivo ? RANGO_RETIRADA : RANGOS.find(r => prob >= r.min);
+  const estadoCrit = {};
+  for (const [id] of CRITERIOS){
+    const del = obs.filter(o => o.crit === id);
+    estadoCrit[id] = palabras < 8 || del.some(o => o.nivel === 'falta') ? 'falta' : del.length ? 'ajustar' : 'ok';
+  }
+  obs.sort((a, b) => (a.nivel === 'falta' ? 0 : 1) - (b.nivel === 'falta' ? 0 : 1));
+  return { prob, rango, obs, estadoCrit, palabras, estructura, avisos };
+}
+
+function ejemplosEstructura(f, canal, escenario){
+  const x = (v, e) => v || `[${e}]`;
+  const pet = PETICION[f.peticion] || PETICION.entrevista;
+  const fmt = FORMATO[f.formato];
+  const dur = f.duracion && !['escrito','nota'].includes(f.formato) ? ` de ${f.duracion} minutos` : '';
+  return {
+    saludo: `${saludoHora()}, ${x(f.fuente, 'nombre de la fuente')}${canal === 'correo' ? ':' : '.'}`,
+    identidad: `Soy ${x(f.nombre, 'tu nombre')}, periodista de UDLA Channel.`,
+    tema: `Estamos preparando un reportaje sobre ${x(sinPuntoFinal(minInicial(f.tema)), 'tema')}.`,
+    porque: `Por su experiencia como ${x(sinPuntoFinal(minInicial(f.porque)), 'cargo o experiencia')}, su análisis aporta el contexto que la audiencia necesita.`,
+    pedido: `Queremos invitarle a participar con ${sustantivoPedido(f)}.`,
+    cuandoA: pulir(`¿Tendría disponibilidad para ${fmt ? fmt.frase : 'una entrevista'}${dur} el ${x(fechaLarga(f.fecha), 'fecha')} ${f.hora ? aLas(f.hora) : 'a las [hora]'}?`),
+    cuandoU: pulir(`Nuestro cierre de edición es ${x(cierreTexto(f.cierre), 'hoy a las [hora]')}.`),
+    previo: `Le escribo para dar seguimiento a la invitación que le envié ${f.previo ? 'el ' + fechaLarga(f.previo) : 'anteriormente'}.`,
+    pregunta: escenario === 'urgencia' ? `¿Puede ${pet.verbo(f)} antes de esa hora?` : '¿Podemos contar con su participación?',
+    firma: `Atentamente, ${x(f.nombre, 'tu nombre')}, periodista de UDLA Channel.`
+  };
+}
+function sustantivoPedido(f){
+  const pet = PETICION[f.peticion] || PETICION.entrevista;
+  const ang = f.angulo ? sinPuntoFinal(minInicial(f.angulo)) : '';
+  if ((f.peticion || 'entrevista') === 'postura') return `su postura sobre ${ang || 'el tema'}`;
+  if (ang && ['entrevista','nota'].includes(f.peticion || 'entrevista')) return `${pet.sust} sobre ${ang}`;
+  return pet.sust;
+}
+
+const TEXTO_OK = {
+  identidad: 'Te presentas con tu nombre, tu rol y el medio.',
+  proposito: 'El tema y lo que pides están claros, y el mensaje pide una respuesta.',
+  fuente: 'Explicas por qué buscas a esta fuente.',
+  logistica: { anticipado: 'Propones fecha, hora, formato y duración.', urgencia: 'Indicas tu cierre de edición.', seguimiento: 'Recuerdas el primer contacto y usas el cierre como razón.' },
+  tono: 'Tono directo y cordial, sin disculpas ni fórmulas burocráticas.',
+  forma: 'Extensión y estructura adecuadas para el canal.'
+};
+
+/* Detección de datos presentes en el borrador (para prellenar la ficha) */
+function a24(h, mi, suf){
+  h = Number(h); mi = Number(mi || 0);
+  if (suf){ const pm = /p/.test(suf); if (pm && h < 12) h += 12; /* «12 a. m.» se asume como mediodía mal escrito */ }
+  return h < 24 && mi < 60 ? `${pad(h)}:${pad(mi)}` : '';
+}
+function detectar(raw){
+  const d = {};
+  const tn = alinear(raw);
+  const limpio = v => { v = (v || '').replace(/^[¿¡\s]+|[\s,;:]+$/g, '').replace(/\s+(y|e|o)$/i, '').trim(); return v && !RE.placeholder.test(norm(v)) ? v : ''; };
+  const NOM = "[A-ZÁÉÍÓÚÑ][a-záéíóúñü]+(?: [A-ZÁÉÍÓÚÑ][a-záéíóúñü]+){0,2}";
+  const TIT = "(?:(?:Mag|Msc|MSc|Mgs|Dr|Dra|Ing|Lic|Econ|Abg|Arq|Prof|Sr|Sra|Srta)\\.? )?";
+  const lineas = raw.split('\n').map(l => l.trim()).filter(Boolean);
+  const primera = lineas[0] || '';
+  let m = raw.match(new RegExp(`(?:[Ss]oy|me llamo|[Mm]i nombre es|por parte de) (${NOM})`));
+  if (m) d.nombre = m[1];
+  m = primera.match(new RegExp(`^(?:[Bb]uen[oa]s (?:d[ií]as|tardes|noches)|[Ee]stimad[oa]s?|[Hh]ola|[Dd]istinguid[oa]|[Aa]preciad[oa])[,\\s]+(${TIT}${NOM})`)) || primera.match(new RegExp(`^((?:Mag|Msc|MSc|Mgs|Dr|Dra|Ing|Lic|Econ|Abg|Arq|Prof)\\.? ${NOM})\\s*[,:]?$`));
+  if (m) d.fuente = m[1];
+  m = raw.match(/\b(?:reportaje|nota|cr[oó]nica|cobertura|investigaci[oó]n)\s+(?:sobre|acerca de)\s+([^.?!\n,]{4,100})/i) || raw.match(/\bcubriendo\s+([^.?!\n,]{4,90})/i);
+  if (m) d.tema = limpio(m[1]);
+  m = raw.match(/\b(?:enfocar(?:nos)?|centrar(?:nos)?)\s+en\s+([^.?!\n,]{4,90})/i) || raw.match(/\bentrevista\s+sobre\s+([^.?!\n,:]{4,90})/i);
+  if (m) d.angulo = limpio(m[1]);
+  m = raw.match(/por su (?:experiencia|trayectoria|trabajo|rol|conocimiento) como\s+([^,.;:\n]{3,80})/i);
+  if (m) d.porque = limpio(m[1]);
+  for (const k of ['nota','dato','postura','documentos','entrevista']) if (RE.pedido[k].test(tn)){ d.peticion = k; break; }
+  if (/presencial|en persona/.test(tn)) d.formato = 'presencial';
+  else if (/videollamada|video llamada|zoom|\bmeet\b|teams|virtual/.test(tn)) d.formato = 'video';
+  else if (/llamada|telefon/.test(tn)) d.formato = 'telefono';
+  else if (/por escrito/.test(tn)) d.formato = 'escrito';
+  m = tn.match(/\b(\d{1,3})\s*(?:min\b|minutos)/); if (m) d.duracion = m[1];
+  m = tn.match(RE.fechaSola);
+  if (m){ const mesIdx = MESES.indexOf(m[2] === 'setiembre' ? 'septiembre' : m[2]); d.fecha = `${anioProbable(Number(m[1]), mesIdx)}-${pad(mesIdx + 1)}-${pad(Number(m[1]))}`; }
+  const horaEn = t => { let x = t.match(/\b(\d{1,2})(?::(\d{2}))?\s*(a\.?\s?m|p\.?\s?m)(?![a-z])/); if (x) return a24(x[1], x[2], x[3]); x = t.match(/\b(\d{1,2}):(\d{2})\b/); return x ? a24(x[1], x[2]) : ''; };
+  const ic = tn.search(/cierre|cerramos|al aire|publicamos/);
+  if (ic >= 0){
+    const tramo = tn.slice(ic, ic + 70); const hc = horaEn(tramo);
+    if (hc) d.cierre = `${(/manana/.test(tramo) && !/de la manana/.test(tramo)) ? masDiasIso(1) : hoyIso()}T${hc}`;
+    const resto = tn.slice(0, ic) + ' ' + tn.slice(ic + 70); const h2 = horaEn(resto); if (h2) d.hora = h2;
+  } else { const h = horaEn(tn); if (h) d.hora = h; }
+  m = raw.match(/\ben\s+((?:las|los|el|la)\s+(?:instalaciones|set|estudio|sala|campus|oficinas?|auditorio)[^.,;\n]{0,60})/i);
+  if (m) d.lugar = limpio(m[1].split(/\s+a\s+las?\s+\d/)[0]);
+  return d;
+}
+
+const hueco = (v, etiqueta) => v ? v : `⟦${etiqueta}⟧`;
+function modelo(f, canal, escenario){
+  const nombre = hueco(f.nombre, 'tu nombre');
+  const fuente = hueco(f.fuente, 'fuente');
+  const tema = hueco(sinPuntoFinal(minInicial(f.tema)), 'tema');
+  const porque = hueco(sinPuntoFinal(minInicial(f.porque)), 'cargo o experiencia');
+  const pet = PETICION[f.peticion] || PETICION.entrevista;
+  const fmt = FORMATO[f.formato];
+  const porEscrito = ['escrito','nota'].includes(f.formato);
+  const dur = f.duracion && !porEscrito ? ` de ${f.duracion} minutos` : '';
+  const fecha = hueco(fechaLarga(f.fecha), 'fecha');
+  const hora = f.hora ? aLas(f.hora) : 'a las ⟦hora⟧';
+  const lugar = f.formato === 'presencial' ? `, en ${hueco(f.lugar, 'lugar')}` : '';
+  const cierre = hueco(cierreTexto(f.cierre), 'hora de cierre');
+  const saludo = saludoHora();
+  const firma = `${nombre}\nPeriodista | UDLA Channel`;
+  const temaCorto = f.tema ? recortar(sinPuntoFinal(f.tema).replace(/^(el|la|los|las|un|una)\s+/i, ''), 40) : '⟦tema⟧';
+  const sust = sustantivoPedido(f);
+
+  if (canal === 'correo'){
+    if (escenario === 'anticipado'){
+      const propuesta = porEscrito
+        ? `¿Tendría disponibilidad para enviarnos ${fmt.frase} hasta el ${fecha} ${hora}?`
+        : `¿Tendría disponibilidad para ${fmt ? fmt.frase : '⟦formato⟧'}${dur} el ${fecha} ${hora}${lugar}? Si prefiere otro horario, lo ajustamos a su agenda.`;
+      return `Asunto: ${f.asunto || `Entrevista para UDLA Channel: ${temaCorto}`}\n\n${saludo}, ${fuente}:\n\nSoy ${nombre}, periodista de UDLA Channel, el canal de la Universidad de Las Américas. Estamos preparando un reportaje sobre ${tema}.\n\nPor su experiencia como ${porque}, queremos invitarle a participar con ${sust}: su análisis aporta el contexto que nuestra audiencia necesita.\n\n${propuesta}\n\nGracias por su tiempo.\n\nAtentamente,\n${firma}`;
+    }
+    if (escenario === 'urgencia'){
+      const alterna = f.formato !== 'escrito' ? ' Si le resulta más práctico, una respuesta por escrito también nos sirve.' : '';
+      return `Asunto: ${f.asunto || `Consulta de UDLA Channel sobre ${temaCorto}`}\n\n${saludo}, ${fuente}:\n\nSoy ${nombre}, periodista de UDLA Channel. Estamos cubriendo ${tema} y queremos incluir su voz por su experiencia como ${porque}.\n\nNuestro cierre de edición es ${cierre}.${alterna} ¿Puede ${pet.verbo(f)} antes de esa hora?\n\nGracias por su tiempo.\n\n${firma}`;
+    }
+    const previo = f.previo ? `el ${fechaLarga(f.previo)}` : 'anteriormente';
+    return `Asunto: ${f.asunto || `Seguimiento: invitación de UDLA Channel sobre ${temaCorto}`}\n\n${saludo}, ${fuente}:\n\nLe escribo para dar seguimiento a la invitación que le envié ${previo} para participar en nuestro reportaje sobre ${tema}.\n\nPor su experiencia como ${porque}, su perspectiva es importante para presentar el tema con equilibrio. Cerramos la edición ${cierre} y nos interesa incluir su voz antes de esa hora.\n\nSi le resulta más práctico, puede responder por escrito o enviarnos una nota de voz. ¿Podemos contar con su participación?\n\nAtentamente,\n${firma}`;
+  }
+  if (escenario === 'anticipado'){
+    const pregunta = porEscrito
+      ? `¿Tendría disponibilidad para enviarnos ${fmt.frase} hasta el ${fecha} ${hora}?`
+      : `¿Tendría disponibilidad para ${fmt ? fmt.frase : '⟦formato⟧'}${dur} el ${fecha} ${hora}${lugar}? Si prefiere otro horario, lo ajustamos a su agenda.`;
+    return `${saludo}, ${fuente}. Soy ${nombre}, periodista de UDLA Channel. Preparamos un reportaje sobre ${tema} y, por su experiencia como ${porque}, queremos invitarle a participar con ${sust}.\n\n${pregunta}`;
+  }
+  if (escenario === 'urgencia'){
+    return `${saludo}, ${fuente}. Soy ${nombre}, periodista de UDLA Channel. Estamos cubriendo ${tema} y, por su experiencia como ${porque}, su voz es importante para la nota. Nuestro cierre es ${cierre}. ¿Puede ${pet.verbo(f)} antes de esa hora?`;
+  }
+  return `${saludo}, ${fuente}. Soy ${nombre}, periodista de UDLA Channel. Doy seguimiento a la invitación para nuestro reportaje sobre ${tema}. Cerramos ${cierre} y nos interesa incluir su voz. Una nota de voz o una respuesta por escrito también nos sirve. ¿Podemos contar con su participación?`;
+}
+const pulir = t => t.replace(/(a\. m\.|p\. m\.)\./g, '$1');
+const aHtml = t => esc(pulir(t)).replace(/⟦(.+?)⟧/g, '<mark>$1</mark>');
+const aPlano = t => pulir(t).replace(/⟦(.+?)⟧/g, '[$1]');
+
+/* Capa 2: devuelve null mientras CONFIG_IA esté apagada o si la conexión falla */
+async function analisisIA(payload){
+  if (!CONFIG_IA.habilitada || !CONFIG_IA.endpoint) return null;
+  try {
+    const r = await fetch(CONFIG_IA.endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+    if (!r.ok) return null;
+    return await r.json(); // formato esperado: { comentario: "texto" }
+  } catch (e) { return null; }
+}
+</script>
+
+<!-- ============ INTERFAZ ============ -->
+<script>
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const estado = { modo: 'correo', escenario: 'anticipado', borradores: { correo: '', whatsapp: '' }, revisado: false, generado: false, faltantes: new Map(), editados: new Set() };
+const CAMPOS_POR_ELEMENTO = { saludo: ['f-fuente'], identidad: ['f-nombre'], tema: ['f-tema', 'f-angulo'], porque: ['f-porque'], pedido: ['f-peticion'],
+  cuandoA: ['f-formato', 'f-fecha', 'f-hora', 'f-duracion', 'f-lugar'], cuandoU: ['f-cierre'], previo: ['f-previo'], pregunta: ['f-peticion'], firma: ['f-nombre'] };
+const MAPA_DET = { nombre: 'f-nombre', fuente: 'f-fuente', tema: 'f-tema', angulo: 'f-angulo', porque: 'f-porque', peticion: 'f-peticion',
+  formato: 'f-formato', duracion: 'f-duracion', fecha: 'f-fecha', hora: 'f-hora', lugar: 'f-lugar', cierre: 'f-cierre' };
+function aplicarDeteccion(d){
+  for (const [k, id] of Object.entries(MAPA_DET)){
+    if (estado.editados.has(id)) continue;
+    $('#' + id).value = k === 'peticion' ? (d.peticion || 'entrevista') : (d[k] || '');
+  }
+}
+function reiniciarFicha(){
+  estado.revisado = false; estado.generado = false; estado.faltantes = new Map();
+  $('#generado').hidden = true;
+  $('#btn-revisar').textContent = 'Revisar mensaje';
+}
+
+const CONSEJOS = {
+  anticipado: {
+    corto: { correo: 'Tienes tiempo: invita con un asunto claro, una fecha concreta y una pregunta final.', whatsapp: 'Úsalo si ya tienes el número de la fuente o si el correo no tuvo respuesta. Todo debe leerse de un vistazo.' },
+    lista: ['Presenta primero quién eres y de qué medio.', 'Un tema, uno o dos ángulos. El resto se conversa en la entrevista.', 'Explica por qué buscas a esa persona: es el mejor incentivo para que participe.', 'Propón fecha, hora, formato y duración; después ofrece ajustar a su agenda.', 'Cierra con una pregunta que se responda con un sí.']
+  },
+  urgencia: {
+    corto: { correo: 'El correo es lento para urgencias. Úsalo como respaldo de una llamada o un WhatsApp.', whatsapp: 'Identifícate en la primera línea, pide lo mínimo y marca tu cierre con hora exacta.' },
+    lista: ['Pide una sola cosa: un dato, su postura o una nota de voz.', 'El cierre de edición es tu razón legítima: dilo con hora exacta.', 'Ofrece la opción más fácil para la fuente: por escrito o audio.', 'Si la fuente está afectada por el hecho, prioriza su bienestar y acepta un no.', 'Contrasta el dato con una segunda fuente antes de publicar.']
+  },
+  seguimiento: {
+    corto: { correo: 'Recuerda la invitación anterior y usa tu cierre de edición como razón, no el silencio de la fuente.', whatsapp: 'Corto y sin reclamo: recuerda la invitación, marca el cierre y ofrece una alternativa más simple.' },
+    lista: ['Deja pasar un tiempo razonable según tu cierre antes de insistir.', 'No menciones que no te han respondido.', 'Ofrece una alternativa más simple: por escrito o nota de voz.', 'Si el tema es de interés público, explica que buscas incluir su versión para dar equilibrio.', 'Si no responde antes del cierre, registra en la nota que se buscó su versión.']
+  }
+};
+const PLACEHOLDERS = {
+  correo: 'Buenos días, …:\n\nSoy …, periodista de UDLA Channel…',
+  whatsapp: 'Buenos días, … Soy …, periodista de UDLA Channel…'
+};
+
+function leerFicha(){
+  const v = id => ($('#' + id)?.value || '').trim();
+  return { nombre: v('f-nombre'), fuente: v('f-fuente'), porque: v('f-porque'), tema: v('f-tema'), angulo: v('f-angulo'), peticion: v('f-peticion'), asunto: v('f-asunto'),
+    formato: v('f-formato'), duracion: v('f-duracion'), fecha: v('f-fecha'), hora: v('f-hora'), lugar: v('f-lugar'), previo: v('f-previo'),
+    cierre: v('f-cierre'), objetivo: v('f-objetivo'), preguntas: $('#f-preguntas').value, graba: v('f-graba') };
+}
+
+function actualizarVista(){
+  const { modo, escenario } = estado;
+  const formato = $('#f-formato').value;
+  const enMensaje = modo !== 'llamada';
+  const ficha = $('#ficha');
+  const destino = enMensaje ? $('#zona-mejora') : $('#zona-llamada');
+  if (ficha.parentNode !== destino) destino.appendChild(ficha);
+  ficha.hidden = false;
+  const mejoraAntes = $('#mejora').hidden;
+  $('#mejora').hidden = !(enMensaje && estado.revisado);
+  if (mejoraAntes && !$('#mejora').hidden){ $('#mejora').classList.remove('aparece'); void $('#mejora').offsetWidth; $('#mejora').classList.add('aparece'); }
+  $$('[data-solo]').forEach(el => {
+    let ver = el.dataset.solo.split(' ').includes(modo);
+    if (ver && enMensaje && el.dataset.esc) ver = el.dataset.esc.split(' ').includes(escenario);
+    if (ver && enMensaje && el.dataset.formato) ver = el.dataset.formato === formato;
+    if (ver && enMensaje && el.dataset.sinFormato) ver = !el.dataset.sinFormato.split(' ').includes(formato);
+    el.hidden = !ver;
+    if (el.classList.contains('campo')){
+      const tipo = enMensaje ? estado.faltantes.get(el.querySelector('input,select,textarea').id) : null;
+      const lab = el.querySelector('label');
+      if (tipo){ lab.dataset.motivo = tipo === 'falta' ? 'Falta en tu mensaje' : 'Conviene ajustar'; el.dataset.tipo = tipo; }
+      else { delete lab.dataset.motivo; delete el.dataset.tipo; }
+    }
+  });
+  if (enMensaje){
+    const n = $$('#ficha .campo[data-tipo="falta"]').filter(c => !c.hidden).length;
+    $('#faltan-txt').textContent = n ? `${n} ${n === 1 ? 'dato falta' : 'datos faltan'} en tu mensaje` : 'Tu mensaje incluye los datos esenciales';
+  }
+  $$('.modo').forEach(b => b.setAttribute('aria-selected', b.dataset.modo === modo));
+  $$('.seg').forEach(b => b.setAttribute('aria-checked', b.dataset.esc === escenario));
+  if (modo !== 'llamada'){
+    const c = CONSEJOS[escenario];
+    $('#consejo').textContent = c.corto[modo];
+    $('#consejos-lista').innerHTML = c.lista.map(t => `<li>${esc(t)}</li>`).join('');
+    $('#borrador').placeholder = PLACEHOLDERS[modo];
+  }
+  contar();
+}
+
+function contar(){
+  const n = ($('#borrador').value.match(/\S+/g) || []).length;
+  const guia = estado.modo === 'whatsapp' ? ', ideal: menos de 90' : estado.modo === 'correo' ? ', ideal: entre 100 y 200' : '';
+  $('#contador').textContent = `${n} ${n === 1 ? 'palabra' : 'palabras'}${guia}`;
+}
+
+function vacio(){
+  const txt = estado.modo === 'llamada'
+    ? ['Tu hoja de llamada aparecerá aquí', 'Llena la ficha y arma la hoja: apertura, consentimiento de grabación, tus preguntas y el cierre.']
+    : ['Tu credencial aparecerá aquí', 'Pega tu borrador y revísalo. Verás tu rango, qué le falta al mensaje y sugerencias concretas. Después podrás completar los datos que falten.'];
+  $('#resultado').innerHTML = `<div class="vacio"><h2>${txt[0]}</h2><p>${txt[1]}</p></div>`;
+}
+
+const colorProb = p => p >= 70 ? 'var(--ok)' : p >= 50 ? 'var(--oro)' : 'var(--falta)';
+const bajarEnMovil = () => { if (window.matchMedia('(max-width:900px)').matches) $('#resultado').scrollIntoView({ behavior: 'smooth', block: 'start' }); };
+
+async function revisar(auto = false){
+  if (auto !== true) auto = false;
+  const texto = $('#borrador').value;
+  if (!texto.trim()){ if (auto) return; $('#error').textContent = 'Pega tu borrador antes de revisarlo.'; $('#borrador').focus(); return; }
+  $('#error').textContent = '';
+  const { modo, escenario } = estado;
+  aplicarDeteccion(detectar(texto));
+  const f = leerFicha();
+  const r = evaluar(texto, f, modo, escenario);
+  const F = new Map();
+  const marcar = (id, tipo) => { if (F.get(id) !== 'falta') F.set(id, tipo); };
+  for (const e of r.estructura) if (e.estado !== 'ok' && e.id !== 'pregunta') (CAMPOS_POR_ELEMENTO[e.id] || []).forEach(id => { if (!(e.id === 'tema' && id === 'f-angulo')) marcar(id, 'falta'); });
+  if (modo === 'correo' && (!f.asunto || r.obs.some(o => /asunto/i.test(o.titulo)))) marcar('f-asunto', f.asunto ? 'ajuste' : 'falta');
+  if (r.obs.some(o => o.titulo === 'Demasiados subtemas')) marcar('f-angulo', 'ajuste');
+  if (escenario === 'anticipado'){
+    const tn = alinear(texto);
+    if (!RE.formato.test(tn)) marcar('f-formato', 'falta');
+    if (!['escrito','nota'].includes(f.formato) && !RE.duracion.test(tn)) marcar('f-duracion', 'falta');
+    if (r.obs.some(o => /12:00 a\. m\.|día de la semana|fecha no coincide|fecha de la ficha/.test(o.titulo))) marcar('f-fecha', 'ajuste');
+    if (r.obs.some(o => /12:00 a\. m\.|Horario poco/.test(o.titulo))) marcar('f-hora', 'ajuste');
+  }
+  estado.faltantes = F;
+  estado.revisado = true;
+  $('#btn-revisar').textContent = 'Revisar de nuevo';
+  actualizarVista();
+  const estadoTxt = { ok: 'bien', ajustar: 'por ajustar', falta: 'falta' };
+
+  const criteriosHtml = CRITERIOS.map(([id, et]) => {
+    const e = r.estadoCrit[id];
+    return `<li class="c-${e}" title="${estadoTxt[e]}"><i aria-hidden="true">${e === 'ok' ? '✓' : e === 'ajustar' ? '!' : '✕'}</i>${et}</li>`;
+  }).join('');
+  const obsHtml = r.obs.map(o => `<li class="${o.nivel}"><b>${esc(o.titulo)}</b><p>${esc(o.detalle)}</p>${o.frag.length ? `<div class="frags">${o.frag.map(x => `<q>${esc(x)}</q>`).join('')}</div>` : ''}</li>`).join('');
+  const oks = CRITERIOS.filter(([id]) => r.estadoCrit[id] === 'ok').map(([id]) => {
+    const t = TEXTO_OK[id]; return `<li class="ok"><b>${esc(typeof t === 'string' ? t : t[escenario])}</b></li>`;
+  }).join('');
+  const escTxt = { anticipado: 'con anticipación', urgencia: 'urgencia', seguimiento: 'seguimiento' }[escenario];
+
+  $('#resultado').innerHTML = `
+    <article class="credencial${auto ? '' : ' entra'}">
+      <div class="banda"><span class="ranura" aria-hidden="true"></span><span class="prensa">PRENSA</span><span class="banda-medio">UDLA Channel<br>${modo === 'correo' ? 'Correo' : 'WhatsApp'}, ${escTxt}</span></div>
+      <div class="cred-cuerpo">
+        <p class="cred-nombre">${esc(f.nombre || 'Periodista sin nombre en la ficha')}</p>
+        <p class="rango">${esc(r.rango.titulo)}</p>
+        <p class="rango-nota">${esc(r.rango.nota)}</p>
+        <div class="medidor-top"><span>Probabilidad estimada de respuesta</span><strong>${r.prob}%</strong></div>
+        <div class="pista-barra" role="img" aria-label="${r.prob} por ciento"><div class="relleno" style="width:0;background:${colorProb(r.prob)}"></div></div>
+        <p class="cred-pie">Indicador orientativo: estima qué tan bien arma tu mensaje las condiciones para un sí.</p>
+      </div>
+    </article>
+    <ul class="criterios" aria-label="Resumen por criterio">${criteriosHtml}</ul>
+    <section class="bloque">
+      <div class="bloque-h"><h3>Estructura del mensaje</h3><small>${r.estructura.filter(e => e.estado === 'ok').length} de ${r.estructura.length} elementos</small></div>
+      <ul class="estructura">${r.estructura.map(e => `<li class="e-${e.estado}"><i aria-hidden="true">${e.estado === 'ok' ? '✓' : e.estado === 'parcial' ? '!' : '✕'}</i><span>${esc(e.etiqueta)}${e.estado === 'parcial' ? ' (incompleto)' : e.estado === 'falta' ? ' (falta)' : ''}</span>${e.estado !== 'ok' ? `<em>${esc(e.ejemplo)}</em><div class="acc">${/\[/.test(e.ejemplo) && CAMPOS_POR_ELEMENTO[e.id] ? `<button type="button" class="btn-link" data-campo="${CAMPOS_POR_ELEMENTO[e.id][0]}">Completar el dato</button>` : `<button type="button" class="btn-link" data-copiar="${esc(e.ejemplo)}">Copiar frase</button>`}</div>` : ''}</li>`).join('')}</ul>
+    </section>
+    <section class="bloque">
+      <h3>Observaciones</h3>
+      ${r.obs.length ? `<ul class="obs">${obsHtml}</ul>` : '<p class="ayuda">No encontramos nada que ajustar.</p>'}
+      ${oks ? `<p class="subt">Bien resuelto</p><ul class="obs">${oks}</ul>` : ''}
+      <div id="bloque-ia" hidden></div>
+    </section>
+    ${r.avisos.length ? `<section class="bloque"><h3>Ten en cuenta</h3><ul class="obs">${r.avisos.map(a => `<li class="nota"><b>${esc(a.titulo)}</b><p>${esc(a.detalle)}</p></li>`).join('')}</ul></section>` : ''}
+    <section class="bloque">
+      <h3>Versión corregida</h3>
+      <p class="ayuda" style="margin-bottom:10px">Al final de la página puedes completar los datos que faltan y generar tu mensaje corregido.</p>
+      <button type="button" class="btn btn-sec btn-mini" data-ir="mejora">Ir a generar mensaje</button>
+    </section>`;
+
+  requestAnimationFrame(() => requestAnimationFrame(() => { const b = $('.relleno'); if (b) b.style.width = r.prob + '%'; }));
+  if (estado.generado) generar(true);
+  if (!auto) bajarEnMovil();
+
+  const ia = await analisisIA({ canal: modo, escenario, ficha: f, borrador: texto, revisionLocal: { prob: r.prob, observaciones: r.obs.map(o => o.titulo) } });
+  if (ia && ia.comentario){
+    const b = $('#bloque-ia');
+    b.innerHTML = `<p class="subt">Lectura del editor (IA)</p><p>${esc(ia.comentario)}</p>`;
+    b.hidden = false;
+  }
+}
+
+function generar(auto = false){
+  const t = modelo(leerFicha(), estado.modo, estado.escenario);
+  estado.textoModelo = aPlano(t);
+  $('#modelo-txt').innerHTML = aHtml(t);
+  $('#modelo-nota').textContent = /⟦/.test(t)
+    ? 'Lo resaltado sale de datos vacíos: complétalos arriba y el mensaje se actualiza.'
+    : 'Compáralo con tu borrador y reescribe el tuyo con lo que aprendiste. Si cambias un dato, el mensaje se actualiza.';
+  $('#generado').hidden = false;
+  estado.generado = true;
+  if (auto !== true) $('#generado').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function hojaLlamada(){
+  const f = leerFicha();
+  const h = (v, e) => v ? esc(v) : `<mark>${e}</mark>`;
+  const nombre = h(f.nombre, 'tu nombre'), fuente = h(f.fuente, 'fuente');
+  const tema = h(sinPuntoFinal(minInicial(f.tema)), 'tema'), porque = h(sinPuntoFinal(minInicial(f.porque)), 'cargo o experiencia');
+  const objetivo = h(sinPuntoFinal(minInicial(f.objetivo)), 'qué necesitas saber');
+  const cierre = f.cierre ? esc(cierreTexto(f.cierre)) : '<mark>hora de cierre</mark>';
+  const preguntas = f.preguntas.split('\n').map(s => s.trim()).filter(Boolean);
+  const n = preguntas.length;
+  const saludo = saludoHora();
+  const cant = n === 0 ? 'Son pocas preguntas' : n === 1 ? 'Es una pregunta' : `Son ${n} preguntas`;
+  const respaldo = `${saludo}, ${fuente}. Soy ${nombre}, periodista de UDLA Channel. Le llamé por el reportaje sobre ${tema}. Nuestro cierre es ${cierre}. ¿En qué momento le puedo llamar antes de esa hora?`;
+  const grab = f.graba === 'si'
+    ? `<li><h4>Consentimiento de grabación</h4><p class="guion">Para citarle con precisión, ¿me autoriza a grabar esta llamada?</p><p class="nota">Espera un sí explícito antes de grabar y deja registrada su respuesta al inicio del audio. Si dice que no, toma notas y confirma las citas textuales antes de colgar.</p></li>`
+    : `<li><h4>Aviso de notas</h4><p class="guion">Voy a tomar notas mientras conversamos y, al final, le confirmo las frases que citaré textualmente.</p></li>`;
+  const respaldoLimpio = pulir(respaldo);
+  const cab = [f.fuente, f.tema].filter(Boolean).map(esc).join('. ');
+
+  $('#resultado').innerHTML = `
+    <section class="bloque hoja">
+      <div class="bloque-cab"><h3>Hoja de llamada</h3><button class="btn btn-sec btn-mini no-imprimir" type="button" onclick="window.print()">Imprimir</button></div>
+      ${cab ? `<p class="ayuda">${cab}</p>` : ''}
+      <ol class="pasos">
+        <li><h4>Antes de marcar</h4><ul>
+          <li>Ten a mano esta hoja y dónde anotar.</li>
+          <li>${f.graba === 'si' ? 'Prueba la grabadora y verifica que tenga espacio y batería.' : 'Prepara tus notas para registrar frases textuales con la hora exacta.'}</li>
+          <li>Busca un lugar silencioso y con buena señal.</li>
+          <li>Ten listo el mensaje de respaldo por si no contesta.</li>
+        </ul></li>
+        <li><h4>Apertura</h4><p class="guion">${saludo}, ${fuente}. Soy ${nombre}, periodista de UDLA Channel. Le llamo por el reportaje que preparamos sobre ${tema}.</p></li>
+        <li><h4>Propósito</h4><p class="guion">Por su experiencia como ${porque}, queremos incluir su análisis sobre ${objetivo}. ${cant}. ¿Podemos conversar ahora?</p>
+          <p class="nota">Si no puede en ese momento: «¿En qué momento le puedo llamar? Nuestro cierre es ${pulir(cierre)}.»</p></li>
+        ${grab}
+        <li><h4>Preguntas clave</h4>
+          <ul>${n ? preguntas.map(p => `<li>${esc(p)}</li>`).join('') : '<li><mark>Escribe tus preguntas en la ficha</mark></li>'}</ul>
+          <p class="nota">Escucha la respuesta completa antes de pasar a la siguiente. Para profundizar: «¿Me puede dar un ejemplo?», «¿En qué dato se basa?», «¿Qué significa esto para la ciudadanía?».</p></li>
+        <li><h4>Cierre</h4><ul>
+          <li>«¿Cómo prefiere que aparezcan su nombre y su cargo?» Confirma la escritura letra por letra.</li>
+          <li>«¿Hay algo importante que no le haya preguntado?»</li>
+          <li>«¿A quién más recomienda consultar sobre este tema?»</li>
+          <li>Acuerda cómo contactarle si surge una duda antes del cierre.</li>
+          <li>Agradece su tiempo y cuéntale cuándo se publica o emite la nota, si ya lo sabes.</li>
+        </ul></li>
+        <li><h4>Después de colgar</h4><ul>
+          <li>Anota las citas textuales con el minuto de la grabación o la hora de tus notas.</li>
+          <li>Verifica cifras, nombres y cargos antes de escribir.</li>
+          <li>Envía un mensaje corto de agradecimiento.</li>
+        </ul></li>
+      </ol>
+    </section>
+    <section class="bloque">
+      <div class="bloque-cab"><h3>Si no contesta</h3><button class="btn btn-sec btn-mini no-imprimir" type="button" id="btn-copiar-resp">Copiar</button></div>
+      <p class="guion">${respaldoLimpio}</p>
+    </section>`;
+  const plano = respaldoLimpio.replace(/<mark>(.+?)<\/mark>/g, '[$1]').replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
+  $('#btn-copiar-resp').addEventListener('click', e => copiar(plano, e.currentTarget));
+  bajarEnMovil();
+}
+
+function copiar(texto, boton){
+  const listo = () => { const t = boton.textContent; boton.textContent = 'Copiado'; setTimeout(() => { boton.textContent = t; }, 1600); };
+  if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(texto).then(listo).catch(() => copiaAlterna(texto, listo));
+  else copiaAlterna(texto, listo);
+}
+function copiaAlterna(texto, listo){
+  const ta = document.createElement('textarea'); ta.value = texto; ta.style.position = 'fixed'; ta.style.opacity = '0';
+  document.body.appendChild(ta); ta.select();
+  try { document.execCommand('copy'); listo(); } catch (e) {}
+  ta.remove();
+}
+
+function cargarEjemplo(){
+  const { modo, escenario } = estado;
+  $$('#ficha input, #ficha select, #ficha textarea').forEach(el => { if (!['f-graba'].includes(el.id)) el.value = el.tagName === 'SELECT' ? el.options[0].value : ''; });
+  estado.editados = new Set(); reiniciarFicha();
+  if (escenario === 'anticipado'){
+    $('#borrador').value = modo === 'correo'
+      ? `Mag. Karla Meneses\nDocente de economía en la Universidad de las Américas\nPresente.-\n\nEstimada Karla, reciba un respetuoso saludo por parte de Daniela Noguera, periodista de UDLA CHANNEL, canal de la Universidad de las Américas (UDLA).\n\nDesde UDLA CHANNEL queremos realizar un reportaje sobre ¿Cuáles pueden ser las alternativas para lidiar con la crisis energética en Ecuador?\n\nConversar acerca de diferentes propuestas que plantean expertos para afrontar esta problemática. Nos queremos enfocar en el impacto de los apagones en la economía local, posibles soluciones implementadas y por implementar, consecuencias en la vida diaria, soluciones alrededor de las energías renovables, y como podemos disminuir los cortes de energía.\n\nMotivo por el cual, nos gustaría poder entrevistarle a usted sobre el tema.\n\nDe ser posible esta reportería la quisiéramos ejecutar el martes 1 de octubre en las instalaciones de periodismo en Udla Park a las 12:00 am\n\nDe antemano le agradezco por la atención que se digne a la presente.\n\nAtentamente,\nDaniela Noguera A.`
+      : `Buenos días, reciba un respetuoso saludo por parte de Nicole Chávez, periodista de UDLA CHANNEL, canal de la Universidad de las Américas.\n\nDesde UDLA CHANNEL queremos realizar un reportaje sobre XXXXXX.\n\nNos queremos enforcar en XXXXXXXX.\n\nQuisiéramos tener un testimonio de uno de los expertos.\n\nDe ser posible esta reportería la quisiéramos ejecutar el xxxxxx a las 09:00 am`;
+  } else if (escenario === 'urgencia'){
+    $('#borrador').value = `Hola buenas tardes, perdón la molestia, soy estudiante de la udla y quería ver si me podría ayudar con un ratito de su tiempo para una entrevista sobre el incendio, necesito que me responda lo antes posible. Gracias!!`;
+  } else {
+    $('#borrador').value = `Buenos días, como no me ha respondido le vuelvo a escribir. Necesitamos que nos confirme si nos va a dar la entrevista o no porque tenemos que entregar. Saludos`;
+  }
+  actualizarVista();
+  revisar();
+}
+
+$$('.modo').forEach(b => b.addEventListener('click', () => {
+  if (estado.modo !== 'llamada') estado.borradores[estado.modo] = $('#borrador').value;
+  estado.modo = b.dataset.modo;
+  if (estado.modo !== 'llamada') $('#borrador').value = estado.borradores[estado.modo] || '';
+  reiniciarFicha(); actualizarVista(); vacio();
+}));
+$$('.seg').forEach(b => b.addEventListener('click', () => { estado.escenario = b.dataset.esc; reiniciarFicha(); actualizarVista(); vacio(); }));
+$('#btn-generar').addEventListener('click', () => generar(false));
+$('#btn-copiar').addEventListener('click', e => copiar(estado.textoModelo || '', e.currentTarget));
+let temporizador;
+$('#ficha').addEventListener('input', e => {
+  if (!e.target.id) return;
+  estado.editados.add(e.target.id);
+  if (estado.modo === 'llamada' || !estado.revisado) return;
+  clearTimeout(temporizador);
+  temporizador = setTimeout(() => revisar(true), 500);
+});
+$('#resultado').addEventListener('click', e => {
+  const b = e.target.closest('[data-campo],[data-copiar],[data-ir]');
+  if (!b) return;
+  if (b.dataset.copiar) return copiar(b.dataset.copiar, b);
+  if (b.dataset.ir) return $('#' + b.dataset.ir).scrollIntoView({ behavior: 'smooth', block: 'start' });
+  const campo = $('#' + b.dataset.campo);
+  campo.scrollIntoView({ behavior: 'smooth', block: 'center' }); setTimeout(() => campo.focus({ preventScroll: true }), 350);
+});
+$('#f-formato').addEventListener('change', () => { estado.editados.add('f-formato'); if (estado.revisado && estado.modo !== 'llamada') revisar(true); else actualizarVista(); });
+$('#borrador').addEventListener('input', contar);
+$('#btn-revisar').addEventListener('click', () => revisar(false));
+$('#btn-ejemplo').addEventListener('click', cargarEjemplo);
+$('#btn-hoja').addEventListener('click', hojaLlamada);
+
+actualizarVista(); vacio();
+</script>
 </body>
 </html>
