@@ -55,6 +55,12 @@ button,input,select,textarea{font:inherit;color:inherit}
 .seg{flex:1;border:0;background:transparent;padding:9px 8px;border-radius:7px;cursor:pointer;font-weight:600;font-size:.92rem;color:var(--gris)}
 .seg[aria-checked="true"]{background:var(--papel);color:var(--granate);box-shadow:0 1px 2px rgba(35,29,32,.15)}
 .consejo{margin:0;font-size:.95rem}
+.destino{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:-2px 0 12px}
+.destino-et{font-size:.86rem;font-weight:650;color:var(--gris)}
+.destino .segmentos{margin:0;flex:1 1 260px;min-width:0}
+.destino-gen{margin:10px 0 14px}
+.pregunta-afectada{border-color:var(--oro);background:#fffaf0}
+.pregunta-afectada .acciones{margin-top:4px}
 details.mas{margin-top:10px;font-size:.9rem}
 details.mas summary{cursor:pointer;color:var(--granate);font-weight:600}
 details.mas ul{margin:8px 0 0;padding-left:18px}
@@ -171,7 +177,7 @@ textarea{resize:vertical}
 .pasos .nota{font-size:.88rem;color:#433b40;margin:4px 0 0}
 
 @media (max-width:900px){
-  .cuerpo{grid-template-columns:1fr}
+  .cuerpo{grid-template-columns:minmax(0,1fr)}
   .col-resultado{position:static;max-height:none;overflow:visible}
 }
 @media (max-width:560px){
@@ -236,6 +242,13 @@ textarea{resize:vertical}
           <button class="seg" role="radio" data-esc="urgencia" aria-checked="false">Urgencia</button>
           <button class="seg" role="radio" data-esc="seguimiento" aria-checked="false">Seguimiento</button>
         </div>
+<div class="destino">
+          <span class="destino-et">¿A quién le escribes?</span>
+          <div class="segmentos" role="radiogroup" aria-label="Destinatario">
+            <button class="seg dest" type="button" role="radio" data-dest="fuente" aria-checked="true">Directo a la fuente</button>
+            <button class="seg dest" type="button" role="radio" data-dest="dircom" aria-checked="false">A dirección de comunicación</button>
+          </div>
+        </div>
         <p class="consejo" id="consejo"></p>
         <details class="mas"><summary>Más consejos para este caso</summary><ul id="consejos-lista"></ul></details>
       </div>
@@ -247,7 +260,6 @@ textarea{resize:vertical}
         <textarea id="borrador" rows="10" spellcheck="true"></textarea>
         <div class="acciones">
           <span class="contador" id="contador">0 palabras</span>
-          <button class="btn btn-sec" id="btn-ejemplo" type="button">Probar con un borrador con errores</button>
           <button class="btn btn-pri" id="btn-revisar" type="button">Revisar mensaje</button>
         </div>
         <p class="error" id="error" role="alert"></p>
@@ -268,6 +280,13 @@ textarea{resize:vertical}
 
   <section class="mejora" id="mejora" hidden>
     <h2>Genera tu mensaje corregido</h2>
+    <div class="destino destino-gen">
+          <span class="destino-et">Dirigido a</span>
+          <div class="segmentos" role="radiogroup" aria-label="Destinatario">
+            <button class="seg dest" type="button" role="radio" data-dest="fuente" aria-checked="true">Directo a la fuente</button>
+            <button class="seg dest" type="button" role="radio" data-dest="dircom" aria-checked="false">A dirección de comunicación</button>
+          </div>
+        </div>
     <p class="ayuda">Los datos que encontramos en tu borrador ya están escritos. Completa o corrige los marcados, presiona «Generar mensaje» y compara el resultado con tu versión.</p>
     <div id="zona-mejora">
       <form class="panel" id="ficha" autocomplete="off" onsubmit="return false">
@@ -278,15 +297,34 @@ textarea{resize:vertical}
             <label for="f-nombre">Tu nombre</label>
             <input id="f-nombre" placeholder="Ej.: Daniela Noguera">
           </div>
+          <div class="campo" data-solo="correo whatsapp" data-destino="dircom">
+            <label for="f-dircom">Contacto de comunicación, con su título</label>
+            <input id="f-dircom" placeholder="Ej.: Lic. Andrea Torres">
+            <span class="pista">Director o directora de comunicación de la institución.</span>
+          </div>
+          <div class="campo" data-solo="correo whatsapp" data-destino="dircom">
+            <label for="f-entidad">Institución</label>
+            <input id="f-entidad" placeholder="Ej.: el Ministerio de Energía">
+            <span class="pista">Escríbela con artículo: el Ministerio…, la Alcaldía…</span>
+          </div>
           <div class="campo" data-solo="correo whatsapp llamada">
-            <label for="f-fuente">Fuente, con su título o cargo</label>
+            <label for="f-fuente" data-et-fuente="Fuente, con su título o cargo" data-et-dircom="Persona a entrevistar, con su título (opcional)">Fuente, con su título o cargo</label>
             <input id="f-fuente" placeholder="Ej.: Mag. Karla Meneses">
-            <span class="pista">Escribe el título antes del nombre: Sr., Sra., Dr., Dra., Mag., Ing., Lic.</span>
+            <span class="pista" data-et-fuente="Escribe el título antes del nombre: Sr., Sra., Dr., Dra., Mag., Ing., Lic." data-et-dircom="Si no sabes quién es, déjalo vacío y pediremos un vocero de la institución.">Escribe el título antes del nombre: Sr., Sra., Dr., Dra., Mag., Ing., Lic.</span>
           </div>
           <div class="campo ancho" data-solo="correo whatsapp llamada">
-            <label for="f-porque">Por qué buscas a esta fuente</label>
+            <label for="f-porque" data-et-fuente="Por qué buscas a esta fuente" data-et-dircom="Cargo o área de la persona a entrevistar (opcional)" data-et-afectada="Relación con el hecho (no aparece en el mensaje)">Por qué buscas a esta fuente</label>
             <input id="f-porque" placeholder="Ej.: docente de economía especializada en política energética">
             <span class="pista">Completa la frase «por su experiencia como…»</span>
+          </div>
+          <div class="campo ancho" data-solo="correo whatsapp llamada" data-afectada-campo>
+            <label for="f-afectada">¿La fuente vivió el hecho o es familiar de alguien afectado?</label>
+            <select id="f-afectada">
+              <option value="">Elige…</option>
+              <option value="si">Sí, está afectada por el hecho</option>
+              <option value="no">No, es otro tipo de fuente</option>
+            </select>
+            <span class="pista">Si respondes que sí, el mensaje no presiona con fechas ni cierres, y explica por qué su testimonio importa.</span>
           </div>
           <div class="campo ancho" data-solo="correo whatsapp llamada">
             <label for="f-tema">Tema del reportaje</label>
@@ -321,6 +359,11 @@ textarea{resize:vertical}
           <div class="campo ancho" data-solo="correo">
             <label for="f-asunto">Asunto del correo</label>
             <input id="f-asunto" placeholder="Ej.: Entrevista para UDLA Channel: apagones y comercio en Quito">
+          </div>
+          <div class="campo" data-solo="correo">
+            <label for="f-telefono">Tu teléfono (opcional)</label>
+            <input id="f-telefono" type="tel" placeholder="Ej.: 099 123 4567">
+            <span class="pista">Se agrega a la firma del correo.</span>
           </div>
           <div class="campo" data-solo="correo whatsapp" data-esc="anticipado">
             <label for="f-fecha">Fecha propuesta</label>
@@ -456,9 +499,9 @@ const RE = {
   rol: /periodist|reporter|productor|productora|\beditor|corresponsal|presentador|presentadora|estudiante de periodismo|\bprensa\b/,
   presentacion: /\b(soy|me llamo|mi nombre es|por parte de)\s+[a-z]{3,}/,
   temaGenerico: /reportaje|\bnota\b|cobertura|investigacion|cronica|documental|programa|noticia/,
-  pedidoGeneral: /entrevist|conversar|conversacion|dialog|postura|declaracion|pronunciamiento|testimonio|opinion|criterio|confirm|verific|nota de voz|\baudio|por escrito|\bdato|documento|informe|cifra|particip|invitar|invitacion|colabor|contar con (usted|su)/,
+  pedidoGeneral: /coordinar|gestionar|facilitar|entrevist|conversar|conversacion|dialog|postura|declaracion|pronunciamiento|testimonio|opinion|criterio|confirm|verific|nota de voz|\baudio|por escrito|\bdato|documento|informe|cifra|particip|invitar|invitacion|colabor|contar con (usted|su)/,
   pedido: {
-    entrevista: /entrevist|conversa|dialog|testimonio|particip/,
+    entrevista: /entrevist|conversa|dialog|testimonio|particip|coordinar/,
     postura: /postura|declaracion|pronunciamiento|posicion|opinion|criterio|comentario|version/,
     dato: /confirm|verific|\bdato/,
     nota: /nota de voz|\baudio/,
@@ -467,19 +510,28 @@ const RE = {
   cierreSuave: /quedo atent|espero su (respuesta|confirmacion)|me (confirma|confirme)|confirmarme|agradezco su respuesta/,
   relevancia: /\b(su|tu) (experiencia|trayectoria|trabajo|investigacion|investigaciones|conocimiento|analisis|perspectiva|mirada|criterio|voz|postura|rol|cargo|estudios|especialidad)\b|\bcomo (experto|experta|especialista|docente|investigador|investigadora|autoridad|representante|vocero|vocera|director|directora|presidente|presidenta|gerente|coordinador|coordinadora|dirigente|testigo|residente|profesional|economista|abogado|abogada|medico|medica)\b|\bpor ser\b|\ben su calidad de\b/,
   fecha: new RegExp('\\b(lunes|martes|miercoles|jueves|viernes|sabado|domingo|hoy|manana|esta semana|proxima semana|semana que viene)\\b|\\b\\d{1,2}\\s+de\\s+' + MES_RE + '\\b|\\b\\d{1,2}/\\d{1,2}\\b'),
-  hora: /\b\d{1,2}(:\d{2})?\s*(a\.?\s?m|p\.?\s?m)(?![a-z])|\b\d{1,2}(:\d{2})?\s*(h|hrs?|horas)\b|\b\d{1,2}:\d{2}\b|\bmediodia\b|\ba las? \d{1,2}\b/,
+  hora: /\b\d{1,2}h\d{2}\b|\b\d{1,2}(:\d{2})?\s*(a\.?\s?m|p\.?\s?m)(?![a-z])|\b\d{1,2}(:\d{2})?\s*(h|hrs?|horas)\b|\b\d{1,2}:\d{2}\b|\bmediodia\b|\ba las? \d{1,2}\b/,
   formato: /presencial|en persona|zoom|google meet|\bmeet\b|teams|videollamada|video llamada|virtual|llamada|telefon|por escrito|nota de voz|\baudio\b|\bset\b|estudio|instalaciones/,
   duracion: /\b\d{1,3}\s*(min\b|minutos)|media hora|una hora|\b\d{1,2}\s*horas?\b/,
   cierre: /cierre|cerramos|al aire|antes de publicar|publicamos|en vivo|antes de las? \d/,
   asap: /lo antes posible|lo mas pronto posible|a la brevedad|urgente/,
-  previo: /seguimiento|mensaje anterior|correo anterior|le escribi|le contacte|te escribi|invitacion (que|enviada|anterior)|solicitud (que|enviada|anterior)|mi (mensaje|correo|invitacion|solicitud)/,
+  previo: /sobre la invitacion|seguimiento|mensaje anterior|correo anterior|le escribi|le contacte|te escribi|invitacion (que|enviada|anterior)|solicitud (que|enviada|anterior)|mi (mensaje|correo|invitacion|solicitud)/,
   docesAm: /\b12(:00)?\s*a\.?\s?m(?![a-z])/,
   diaFecha: new RegExp('\\b(lunes|martes|miercoles|jueves|viernes|sabado|domingo)\\s*,?\\s*(\\d{1,2})\\s+de\\s+' + MES_RE + '(?:\\s+(?:de|del)\\s+(\\d{4}))?', 'g'),
   fechaSola: new RegExp('\\b(\\d{1,2})\\s+de\\s+' + MES_RE + '\\b'),
   disculpas: /\bperdon\b|\bdisculp[a-z]*|\blamento (molestar|interrumpir|escribir|contactar|la molestia)|\bsiento (molestar|interrumpir|escribir)|\bmolestias?\b|\bmolestar(le|lo|la|te)?\b|\bincomodar(le|lo|la|te)?\b/,
   atenuadores: /\bbrevemente\b|\bbreves? (entrevista|conversacion|llamada|momento|consulta|espacio|reunion)\b|\b(ratito|momentito|minutito|minutitos|rapidito|cortito|poquito|preguntita|preguntitas|favorcito|llamadita|entrevistita|segundito|cosita|tiempito)\b|\b(robar|quitar)(le|te)? (un poco de |unos minutos de |unos minutos |un momento de )?(su |tu )?tiempo|\bde ser posible\b|\bsi fuera posible\b|\bsi es posible\b|\bsi (usted )?(pudiera|podria)\b|\bquisiera ver si\b|\b(solo|solamente) (queria|quisiera)\b|\bno se si (podria|pueda|tendria)\b|\bsin compromiso\b|\bqueria ver si\b/,
   burocracia: /^\s*presente\s*[.:,-]*\s*$|\bpresente\s*\.\s*-|\bse digne\b|\bdignarse\b|\bme dirijo a usted|\bpor medio de (la|el) presente\b|\bla presente\b|\bsirvase\b|\btenga a bien\b|\bcomedidamente\b|\breciban? un (cordial|respetuoso|atento|afectuoso) saludo por parte de\b|\bme permito\b|\bsin otro particular\b|\bquedo a sus ordenes\b|\bsu digno cargo\b|\bmuy respetuosamente\b/m,
-  exigencia: /\b(requerimos|requiero|requerir|requiere que|necesitamos que|necesito que|exigimos|exijo|es obligatorio|es indispensable que|debe (usted )?(responder|enviar|atender|confirmar))\b/,
+  saludoGenerico: /^(hola|buen[oa]s(?: dias| tardes| noches)?|saludos|que tal|estimad[oa]s?|mi estimad[oa])[\s,]+(?:mi |querid[oa] )?(senora|senorita|senor|sra|srta|sr|dona|don|joven|caballero|jefe|jefa|doc|doctora|doctor|licen|licenciada|licenciado|lic|inge|ingeniera|ingeniero|ing|profe|profesora|profesor|veci|vecina|vecino|amiga|amigo|autoridad)\b\.?/,
+  experto: /por su (experiencia|conocimiento|trayectoria|analisis) como|\bcomo (experto|experta|especialista)\b|\bsu analisis\b/,
+  paraQue: /contar su historia|su historia|visibiliz|dar a conocer|que se conozca|su testimonio|compartir lo que|contar lo que|contar como|su voz/,
+  valor: /(su testimonio|su voz|su historia|su participacion) (es|sigue siendo|seria|resulta) (muy |realmente )?(importante|valios|fundamental|necesari|clave)|es (muy )?(importante|valioso|fundamental|necesario) (contar con|escuchar|incluir) (su|usted)|importante contar con (su|usted)/,
+  libertad: /cuando (usted )?(pueda|prefiera|desee|quiera|le resulte|se sienta)|donde (usted )?(prefiera|se sienta|le resulte)|momento y (el )?lugar que|a su ritmo|como le resulte mas comodo|como (usted )?prefiera|lo que usted decida|en algun momento/,
+  consentimiento: /si prefiere (no|pensarlo)|lo entendemos|lo entiendo|no esta obligad|puede decir que no|no tiene que (participar|responder|hacerlo)|si no desea|si no quiere|respetamos su decision|es su decision|si decide no/,
+  lenguajeVictima: /\b(un|el|los|unos|al|del) desa?parecid[oa]s?\b|\b(el|los|la|las|al|del) (fallecid[oa]s?|occis[oa]|cadaver|difunt[oa]s?)\b/,
+  dircomRelev: /vocer|representante|autoridad|especialista|funcionari|tecnic[oa]s? (de|del)|delegad|entrevistar a|entrevista con|coordinar/,
+  institucion: /institucion|entidad|ministerio|alcaldia|prefectura|municipio|gobierno|secretaria|direccion|agencia|empresa|organizacion|fundacion|superintendencia|fiscalia|defensoria|consejo|hospital|instituto|corporacion|cuerpo de bomberos|policia|asamblea|banco/,
+  exigencia: /\bnecesit(o|amos) (una|un|la|el|su|sus) (entrevista|declaracion|respuesta|dato|datos|nota|audio|reunion|cita|informacion|version)\b|\b(requerimos|requiero|requerir|requiere que|necesitamos que|necesito que|exigimos|exijo|es obligatorio|es indispensable que|debe (usted )?(responder|enviar|atender|confirmar))\b/,
   reclamo: /\bcomo no (me |nos )?(ha|han|habia) (respondido|contestado)|\bno (he|hemos) (recibido|tenido) (respuesta|contestacion)|\bsigo esperando\b|\bseguimos esperando\b|\baun no (me |nos )?(responde|contesta|ha respondido)|\bpor (segunda|tercera|cuarta|enesima) vez\b|\bvuelvo a insistir\b|\binsisto\b|\ble vuelvo a escribir\b|\bsi nos va a (dar|conceder) [a-z ]{0,30}o no\b/,
   tu: /\bte (escribo|contacto|busco|invito|pido|agradezco|comento|cuento|propongo|llamo)\b|\bcontigo\b|\b(podrias|tendrias|puedes|tienes|quieres)\b|\btu (experiencia|trabajo|opinion|postura|tiempo|perspectiva|analisis|agenda|respuesta)\b/,
   usted: /\busted\b|\ble (escribo|contacto|invito|agradezco|propongo|llamo|pido|comento)\b|\b(podria|tendria)\b|\bsu (experiencia|trabajo|opinion|postura|tiempo|perspectiva|analisis|agenda|respuesta|participacion)\b/,
@@ -489,7 +541,7 @@ const RE = {
   informal: /\b(bro|brother|broder|mi pana|panita|panas|nanito|nanita|mi llave|parce|parcero|xq|pq|porq|xfa|xfavor|porfa|porfis|plis|pliss|please|tqm|grax+|salu2|ntp|tmb|jaj[aj]*|jej[ej]*|jij[ij]*|jsjs[a-z]*|xd+|lol|oki|okis|chevere|bacan|bacansote|full|cachas|dale)\b|(?:^|\s)[qk](?=\s[a-z])/,
   vocativo: /\b(hola|oye|buenas|buenos dias|buenas tardes|que fue|q fue|que mas|ey|hey|saludos)\s*,?\s*(pana|bro|man|loco|loca|veci|compa|parce|mae|nano|nana|amigo|amiga|jefe|jefa|mi pana)\b/,
   familiar: /\b(mija|mijo|mijita|mijito|mi amor|mi reina|mi rey|mi vida|mamita|papito|corazoncito|mi cielo|carino|carinito|besos|besitos|abrazote)\b|\b(hola|buenos dias|buenas tardes|buenas noches|buenas|gracias)\s*,?\s*(linda|lindo|guapa|guapo|preciosa|bella|hermosa|reina|corazon)\b/,
-  sensible: /\b(victima|fallecid|muert|asesinat|femicidio|feminicidio|desaparecid|accidente|incendio|terremoto|sismo|inundacion|deslave|aluvion|damnificad|herid|violencia|agresion|abuso|secuestr|masacre|tragedia|duelo|atentado|explosion)/,
+  sensible: /\b(victima|fallecid|muert|asesinat|femicidio|feminicidio|desa?parecid|accidente|incendio|terremoto|sismo|inundacion|deslave|aluvion|damnificad|herid|violencia|agresion|abuso|secuestr|masacre|tragedia|duelo|atentado|explosion)/,
   autoridad: /\b(ministr|viceministr|alcald|prefect|gobernador|concejal|asambleista|secretari[oa] (de|general|nacional)|director[a]? (general|nacional|ejecutiv)|gerente|vocer|presidente|presidenta|comandante|jefe de|jefa de|fiscal|juez|jueza|superintendente|rector|rectora|defensor del pueblo)/,
   menores: /\b(nino|nina|ninos|ninas|menores? de edad|adolescentes?|colegial|colegiales|escolares?|infancia|infantil|estudiantes de colegio|bebes?)\b/,
   saludo: /^(estimad|buen(os|as)|hola|senor|senora|distinguid|apreciad|saludos|mag\b|dr\b|dra\b|ing\b|lic\b|econ\b)/
@@ -506,7 +558,7 @@ const ORTO = [
   ['nesecito','necesito'],['nesecitamos','necesitamos'],['conversacion','conversación'],['participacion','participación'],
   ['investigacion','investigación'],['opinion','opinión'],['telefono','teléfono'],['numero','número'],['area','área'],
   ['rapido','rápido'],['tecnico','técnico'],['politica','política'],['porfavor','por favor'],['enserio','en serio'],
-  ['apartir','a partir']
+  ['apartir','a partir'],['psicologico','psicológico'],['psicologica','psicológica'],['psicologicos','psicológicos'],['desparecido','desaparecido'],['desparecidos','desaparecidos'],['desparecida','desaparecida'],['desparecidas','desaparecidas'],['victima','víctima'],['victimas','víctimas']
 ].map(([m, s]) => [new RegExp('(^|[^\\p{L}])' + m + '(?![\\p{L}])', 'iu'), m, s]);
 
 const RANGOS = [
@@ -517,6 +569,8 @@ const RANGOS = [
   { min: 0,  titulo: 'Remitente desconocido', nota: 'Así, la fuente difícilmente sabría que le escribe un periodista.' }
 ];
 const RANGO_RETIRADA = { min: 0, titulo: 'Credencial retirada', nota: 'Con este lenguaje ninguna fuente respondería, y el nombre de UDLA Channel quedaría expuesto.' };
+const ETIQUETAS_DIRCOM = { saludo: 'Saludo con el nombre de tu contacto', porque: 'A quién quieres entrevistar', entidad: 'Institución' };
+const ETIQUETAS_AFECTADA = { para: 'Para qué sirve su testimonio', valor: 'Por qué su testimonio es importante', consentimiento: 'Le dices que puede no participar' };
 const ETIQUETAS_ESTRUCTURA = {
   saludo: 'Saludo con el nombre de la fuente', identidad: 'Quién eres y de qué medio', tema: 'Tema del reportaje',
   porque: 'Por qué buscas a esa persona', pedido: 'Qué le pides', cuandoA: 'Fecha y hora propuestas', cuandoU: 'Cierre de edición',
@@ -593,12 +647,17 @@ function evaluar(raw, f, canal, escenario){
   } else if (!RE.temaGenerico.test(tn)){
     add('proposito', 'falta', 8, 'No explicas el tema', 'Di en una frase sobre qué es el reportaje: «Preparamos un reportaje sobre…».');
   }
-  if (!RE.pedidoGeneral.test(tn)){
+  if (!(RE.pedidoGeneral.test(tn) || (f.afectada === 'si' && /llam(emos|arle)|convers/.test(tn)))){
     add('proposito', 'falta', 8, 'No queda claro qué le pides', 'Nombra la acción concreta: una entrevista, su postura, confirmar un dato o una nota de voz.');
   } else if (f.peticion && !RE.pedido[f.peticion].test(tn)){
     add('proposito', 'ajustar', 4, 'Lo que pides no coincide con la ficha', `En la ficha indicas que buscas ${PETICION[f.peticion].sust}, pero el mensaje no lo dice con claridad.`);
   }
-  const ultimaPregunta = raw.lastIndexOf('?');
+  const sinSignos = raw.split(/[.!\n]+/).map(x => x.trim()).filter(x => x && !x.includes('?') && /^(y\s+)?((a|en|de|para|con|por|desde|hasta)\s+)?(qué|cuándo|dónde|cómo|cuál|cuáles|quién|quiénes|cuánto|cuánta|podría|podrías|podríamos|podrían|tendría|tendrías|le parece|te parece)(?=\s|$)/i.test(x));
+  let ultimaPregunta = raw.lastIndexOf('?');
+  if (sinSignos.length){
+    add('forma', 'ajustar', 3, 'Pregunta sin signos de interrogación', 'Escríbela entre «¿» y «?»: sin ellos, la fuente puede leerla como una afirmación.', sinSignos);
+    if (ultimaPregunta === -1) ultimaPregunta = raw.lastIndexOf(sinSignos[sinSignos.length - 1]) + sinSignos[sinSignos.length - 1].length;
+  }
   if (ultimaPregunta === -1){
     if (RE.cierreSuave.test(tn)) add('proposito', 'ajustar', 4, 'Cierra con una pregunta directa', 'Una pregunta que se responde con un sí («¿Podemos contar con su participación?») facilita la respuesta más que «quedo atento».');
     else add('proposito', 'falta', 7, 'El mensaje no pide una respuesta', 'Termina con una pregunta concreta: «¿Tendría disponibilidad el jueves a las 10:00 a. m.?».');
@@ -612,11 +671,31 @@ function evaluar(raw, f, canal, escenario){
   }
 
   /* Por qué esa fuente */
-  if (f.fuente && !mencionaNombre(tn, f.fuente)){
-    add('fuente', 'ajustar', canal === 'correo' ? 5 : 3, 'No nombras a la fuente', `Saludar por su nombre («${f.fuente}») demuestra que el mensaje es para esa persona y no una plantilla masiva.`);
+  const esDircom = f.destino === 'dircom';
+  const destinatario = esDircom ? f.dircom : f.fuente;
+  if (destinatario && !mencionaNombre(tn, destinatario)){
+    add('fuente', 'ajustar', canal === 'correo' ? 5 : 3, esDircom ? 'No nombras a tu contacto' : 'No nombras a la fuente', `Saludar por su nombre («${destinatario}») demuestra que el mensaje es para esa persona y no una plantilla masiva.`);
   }
-  const relevante = RE.relevancia.test(tn) || palabrasClave(f.porque).some(k => tieneRaiz(tn, k));
-  if (!relevante){
+  const mg = alinear((raw.split('\n').find(l => l.trim()) || '').trim()).match(RE.saludoGenerico);
+  const primeraRaw = (raw.split('\n').find(l => l.trim()) || '').trim();
+  const saludoGenerico = mg && !/^\s*,?\s*[A-ZÁÉÍÓÚÑ][a-záéíóúñü]+/.test(primeraRaw.slice(mg[0].length));
+  if (saludoGenerico){
+    add('tono', 'falta', 12, 'Saludo genérico y demasiado cercano', `«${primeraRaw.slice(0, mg[0].length).trim()}» trata a la persona de forma impersonal y con una confianza que no existe. Salúdala con su título y apellido: «Buenos días, Dra. Pérez:». Si todavía no sabes su nombre, averígualo antes de escribir: también es parte de la reportería.`, [primeraRaw.slice(0, mg[0].length).trim()]);
+  }
+  if (esDircom && !(palabrasClave(f.entidad).some(k => tieneRaiz(tn, k)) || RE.institucion.test(tn))){
+    add('fuente', 'ajustar', 5, 'No mencionas la institución', 'La dirección de comunicación necesita saber que buscas la voz de su institución: «Nos interesa incluir la versión del Ministerio de Energía».');
+  }
+  const relevante = esDircom
+    ? (RE.dircomRelev.test(tn) || RE.relevancia.test(tn) || (f.fuente && mencionaNombre(tn, f.fuente)) || palabrasClave(f.porque).some(k => tieneRaiz(tn, k)))
+    : (RE.relevancia.test(tn) || palabrasClave(f.porque).some(k => tieneRaiz(tn, k)));
+  const afectada = !esDircom && f.afectada === 'si';
+  if (afectada){
+    const exp = hallar(RE.experto, raw, tn);
+    if (exp.length) add('fuente', 'falta', 10, 'Trata a la persona como experta, no como afectada', 'Con quien vive una pérdida o un hecho doloroso, «por su experiencia como…» suena a consulta técnica y la deshumaniza. Explica para qué sirve el reportaje: «Queremos que las familias puedan contar su historia, si así lo desean».', exp);
+    if (!RE.paraQue.test(tn)) add('fuente', 'ajustar', 6, 'No explicas para qué sirve su testimonio', 'Dile qué busca el reportaje con su participación: «Queremos que las personas afectadas puedan contar su historia».');
+  } else if (!relevante && esDircom){
+    add('fuente', escenario === 'anticipado' ? 'falta' : 'ajustar', escenario === 'anticipado' ? 8 : 4, 'No dices a quién quieres entrevistar', 'Indica la persona o el cargo que buscas, o pide el vocero más indicado: «Nos interesa entrevistar a un vocero del área técnica».');
+  } else if (!relevante){
     if (escenario === 'anticipado') add('fuente', 'falta', 8, 'No explicas por qué buscas a esta persona', 'Es el mejor incentivo para que participe: «Por su experiencia como…, su análisis aporta…».');
     else add('fuente', 'ajustar', 4, 'Agrega por qué su voz importa', 'Una frase sobre su experiencia o su rol le da a la fuente una razón para responder.');
   }
@@ -637,7 +716,15 @@ function evaluar(raw, f, canal, escenario){
       break;
     }
   }
-  if (escenario === 'anticipado'){
+  if (afectada){
+    const cond = [];
+    if (RE.cierre.test(tn)) cond.push('tu cierre de edición');
+    if (RE.duracion.test(tn)) cond.push('una duración');
+    if (RE.fecha.test(tn) && RE.hora.test(tn)) cond.push('fecha y hora exactas');
+    if (cond.length) add('logistica', 'ajustar', 6, 'Condiciones que pueden presionar', `Tu mensaje menciona ${cond.join(', ')}. Con alguien que vive el hecho, eso se siente como presión. Ofrece primero una llamada para explicarle la entrevista: la fecha, la hora y el lugar se acuerdan en esa conversación.`);
+    if (!RE.valor.test(tn)) add('fuente', 'ajustar', 5, 'No le dices por qué su testimonio es importante', 'Hazle saber que contar con su voz es necesario para el reportaje: «Su testimonio es muy importante para que el reportaje muestre con fidelidad lo que están viviendo.»');
+    if (escenario === 'seguimiento' && !RE.previo.test(tn)) add('logistica', 'ajustar', 4, 'No recuerdas el primer contacto', 'Menciona la invitación que le enviaste antes para que ubique el tema.');
+  } else if (escenario === 'anticipado'){
     if (!RE.fecha.test(tn)) add('logistica', 'falta', 8, 'No propones una fecha', 'Una fecha concreta convierte la invitación en una decisión fácil. Ofrece flexibilidad después de proponerla.');
     if (!RE.hora.test(tn)) add('logistica', 'ajustar', 6, 'No propones una hora', 'Indica la hora exacta con a. m. o p. m.');
     if (!RE.formato.test(tn)) add('logistica', 'ajustar', 5, 'No dices el formato', 'Aclara si es presencial, por videollamada, por teléfono o por escrito.');
@@ -661,7 +748,7 @@ function evaluar(raw, f, canal, escenario){
   const disc = hallar(RE.disculpas, raw, tn);
   if (disc.length) add('tono', 'falta', 10, 'Pides disculpas por hacer tu trabajo', 'Contactar fuentes es parte del oficio. Empieza por presentarte y agradece al final por su tiempo.', disc);
   const aten = hallar(RE.atenuadores, raw, tn);
-  if (aten.length) add('tono', 'ajustar', Math.min(10, 4 * aten.length), 'Atenuadores que restan seguridad', 'Reemplázalos por datos concretos: «15 minutos» en lugar de «un ratito» o «brevemente»; una fecha y hora concretas en lugar de «de ser posible».', aten);
+  if (aten.length && !afectada) add('tono', 'ajustar', Math.min(10, 4 * aten.length), 'Atenuadores que restan seguridad', 'Reemplázalos por datos concretos: «15 minutos» en lugar de «un ratito» o «brevemente»; una fecha y hora concretas en lugar de «de ser posible».', aten);
   const buro = hallar(RE.burocracia, raw, tn);
   if (buro.length) add('tono', 'ajustar', Math.min(12, 6 * buro.length), 'Fórmulas de oficio administrativo', 'Suenan a trámite, no a sala de redacción. Abre con «Buenos días, [nombre]:» y preséntate en primera persona: «Soy…».', buro);
   const exig = hallar(RE.exigencia, raw, tn);
@@ -718,9 +805,11 @@ function evaluar(raw, f, canal, escenario){
     tope = Math.min(tope, 20);
   }
   const apuro = hallar(RE.apuro, raw, tn).map(x => x.replace(/^[,;:¡!¿.\s]+|[.!\s]+$/g, '')).filter(Boolean);
-  if (apuro.length) add('tono', 'ajustar', Math.min(12, 5 * apuro.length), 'Suena a apuro o presión', 'Tu prisa es real, pero la fuente no tiene por qué compartirla y apurarla suele jugar en contra. En lugar de pedirle rapidez, dile tu hora de cierre y facilítale la respuesta: «Nuestro cierre es hoy a las 5:00 p. m. ¿Tendría disponibilidad para confirmarnos el dato antes de esa hora?».', apuro);
+  if (apuro.length) add('tono', 'ajustar', Math.min(12, 5 * apuro.length), 'Suena a apuro o presión', afectada ? 'Con una persona afectada por el hecho, cualquier apuro se siente como presión. Déjale decidir cuándo conversar y no menciones tus tiempos.' : 'Tu prisa es real, pero la fuente no tiene por qué compartirla y apurarla suele jugar en contra. En lugar de pedirle rapidez, dile tu hora de cierre y facilítale la respuesta: «Nuestro cierre es hoy a las 5:00 p. m. ¿Tendría disponibilidad para confirmarnos el dato antes de esa hora?».', apuro);
   const inf = [...hallar(RE.informal, raw, tn), ...hallar(RE.vocativo, raw, tn)];
   if (inf.length) add('tono', 'ajustar', Math.min(20, 5 * inf.length), 'Lenguaje demasiado informal', 'Con una fuente, incluso por WhatsApp, el registro es profesional. Escribe las palabras completas y evita jerga, abreviaciones y risas escritas.', inf);
+  const lv = hallar(RE.lenguajeVictima, raw, tn);
+  if (lv.length) add('tono', 'ajustar', 4, 'Nombra a la persona antes que a su condición', 'Escribe «personas desaparecidas», «su familiar desaparecido» o «las personas fallecidas». Así no reduces a nadie a lo que le ocurrió.', lv);
   const fam = hallar(RE.familiar, raw, tn);
   if (fam.length) add('tono', 'falta', 15, 'Trato demasiado familiar', 'Las expresiones afectivas pueden incomodar a la fuente y restan seriedad. Usa su nombre y su título: «Buenos días, Mag. Meneses».', fam);
 
@@ -728,18 +817,21 @@ function evaluar(raw, f, canal, escenario){
   const avisos = [];
   const nota = (titulo, detalle) => avisos.push({ nivel: 'nota', titulo, detalle, frag: [] });
   const contexto = norm([f.tema, f.angulo, f.porque, raw].join(' '));
-  if (RE.sensible.test(contexto)) nota('Si la fuente vivió el hecho', 'Si es víctima, familiar o testigo afectado, reconoce la situación en una frase, pregunta si está en condiciones de hablar y acepta un no. Evita pedir detalles dolorosos por mensaje.');
-  if (RE.autoridad.test(norm((f.fuente || '') + ' ' + (f.porque || '')))) nota('Fuente institucional', 'Las autoridades suelen canalizar las entrevistas por su área de comunicación. Escribe también a esa dirección y guarda constancia de la solicitud y la hora en que la hiciste.');
+  const sensible = !esDircom && RE.sensible.test(contexto);
+  if (afectada) nota('Fuente afectada por el hecho', 'La revisión no te pide fecha, hora ni lugar: se acuerdan en la llamada. En la entrevista, explícale cómo se usará su testimonio, pregúntale cómo quiere ser identificada y recuérdale que puede detenerse cuando quiera.');
+  if (esDircom && RE.sensible.test(contexto)) nota('Si la fuente vivió el hecho', 'Si es víctima, familiar o testigo afectado, reconoce la situación en una frase, pregunta si está en condiciones de hablar y acepta un no. Evita pedir detalles dolorosos por mensaje.');
+  if (f.destino !== 'dircom' && RE.autoridad.test(norm((f.fuente || '') + ' ' + (f.porque || '')))) nota('Fuente institucional', 'Las autoridades suelen canalizar las entrevistas por su área de comunicación. Escribe también a esa dirección (opción «A dirección de comunicación») y guarda constancia de la solicitud y la hora en que la hiciste.');
   if (RE.menores.test(contexto)) nota('Si involucra a menores de edad', 'Para entrevistarles necesitas la autorización de su madre, padre o representante legal, y debes cuidar su identidad según la edad y el tema.');
   if (canal === 'correo' && escenario === 'urgencia') nota('El correo es lento para urgencias', 'Envíalo como respaldo, pero busca a la fuente también por WhatsApp o por teléfono.');
-  if (escenario === 'anticipado' && f.fecha){
+  if (escenario === 'anticipado' && f.fecha && !afectada){
     const dias = diasHasta(f.fecha);
     if (dias >= 0 && dias < 2) nota('Poca anticipación', `Propones ${dias === 0 ? 'hoy' : 'mañana'}. Con menos de 48 horas, ${canal === 'correo' ? 'el correo puede no leerse a tiempo: refuérzalo con WhatsApp o una llamada' : 'confirma con una llamada si no hay respuesta en unas horas'}.`);
     const [yy, mm, dd] = f.fecha.split('-').map(Number);
     const dow = new Date(yy, mm - 1, dd).getDay();
     if (dow === 0 || dow === 6) nota('Propones un fin de semana', 'Confirma que la fuente atiende ese día y ofrece una alternativa entre semana.');
   }
-  if (escenario === 'anticipado' && f.hora && !RE.docesAm.test(tn)){
+  if (escenario === 'anticipado' && f.hora && !afectada && Number(f.hora.split(':')[1]) % 15 !== 0) nota('Hora poco natural', `Propones ${horaTexto(f.hora)}. Una hora redonda se lee más clara y es más fácil de agendar.`);
+  if (escenario === 'anticipado' && f.hora && !afectada && !RE.docesAm.test(tn) && !/\b\d{1,2}h\d{2}\b/.test(tn)){
     const hh = Number(f.hora.split(':')[0]);
     if (hh < 7 || hh >= 20) add('logistica', 'ajustar', 4, 'Horario poco habitual', `Propones ${horaTexto(f.hora)}. Un horario laboral facilita que la fuente acepte.`);
   }
@@ -748,21 +840,34 @@ function evaluar(raw, f, canal, escenario){
     if (d > 0) add('logistica', 'ajustar', 3, 'La fecha del primer contacto es futura', 'Revisa esa fecha en la ficha.');
     else if (d === 0 && !(f.cierre && f.cierre.slice(0, 10) === hoyIso())) nota('Seguimiento el mismo día', 'Si tu cierre no es hoy, espera al menos un día hábil antes de insistir.');
   }
-  if (escenario !== 'anticipado' && f.cierre && new Date(f.cierre) < new Date()) add('logistica', 'ajustar', 3, 'El cierre de la ficha ya pasó', 'Actualiza la hora de cierre en la ficha.');
+  if (escenario !== 'anticipado' && !afectada && f.cierre && new Date(f.cierre) < new Date()) add('logistica', 'ajustar', 3, 'El cierre de la ficha ya pasó', 'Actualiza la hora de cierre en la ficha.');
 
   /* Estructura: qué elementos tiene el mensaje */
   const primeraLinea = alinear((raw.split('\n').find(l => l.trim()) || '').trim());
   const saludoOk = RE.saludo.test(primeraLinea);
-  const fuenteOk = f.fuente ? mencionaNombre(tn, f.fuente) : (primeraLinea.match(/[a-z]+/g) || []).length >= 3;
+  const fuenteOk = !saludoGenerico && (destinatario ? mencionaNombre(tn, destinatario) : (primeraLinea.match(/[a-z]+/g) || []).length >= 3);
   const nombreOk = f.nombre ? mencionaNombre(tn, f.nombre) : RE.presentacion.test(tn);
   const nId = [nombreOk, RE.medioCompleto.test(tn), RE.rol.test(tn)].filter(Boolean).length;
   const est = (ok, parcial) => ok ? 'ok' : parcial ? 'parcial' : 'falta';
   const E = ejemplosEstructura(f, canal, escenario);
-  const filas = [
-    ['saludo', est(saludoOk && fuenteOk, saludoOk || (f.fuente && fuenteOk))],
+  const filaPregunta = ['pregunta', ultimaPregunta === -1 ? est(false, RE.cierreSuave.test(tn)) : est(!(raw.length > 200 && ultimaPregunta < raw.length * 0.55), true)];
+  const filaFirma = canal === 'correo' ? ['firma', est((f.nombre && mencionaNombre(tn.slice(-220), f.nombre)) || RE.medioCompleto.test(tn.slice(-220)), false)] : null;
+  const filasBase = [
+    ['saludo', est(saludoOk && fuenteOk, saludoOk || (destinatario && fuenteOk))],
     ['identidad', est(nId === 3, nId > 0)],
-    ['tema', est(kwTema.length ? kwTema.some(k => tieneRaiz(tn, k)) : RE.temaGenerico.test(tn), false)],
+    ['tema', est(kwTema.length ? kwTema.some(k => tieneRaiz(tn, k)) : RE.temaGenerico.test(tn), false)]
+  ];
+  const filas = afectada ? [
+    ...filasBase,
+    ['para', est(RE.paraQue.test(tn), false)],
+    ['pedido', est(RE.pedidoGeneral.test(tn) || /llam(emos|arle)|convers/.test(tn), false)],
+    ['valor', est(RE.valor.test(tn), false)],
+    escenario === 'seguimiento' ? ['previo', est(RE.previo.test(tn), false)] : null,
+    filaPregunta, filaFirma
+  ].filter(Boolean) : [
+    ...filasBase,
     ['porque', est(relevante, false)],
+    esDircom ? ['entidad', est(palabrasClave(f.entidad).some(k => tieneRaiz(tn, k)) || RE.institucion.test(tn), false)] : null,
     ['pedido', est(RE.pedidoGeneral.test(tn), false)],
     escenario === 'anticipado'
       ? ['cuandoA', est(RE.fecha.test(tn) && RE.hora.test(tn), RE.fecha.test(tn) || RE.hora.test(tn))]
@@ -771,7 +876,7 @@ function evaluar(raw, f, canal, escenario){
     ['pregunta', ultimaPregunta === -1 ? est(false, RE.cierreSuave.test(tn)) : est(!(raw.length > 200 && ultimaPregunta < raw.length * 0.55), true)],
     canal === 'correo' ? ['firma', est((f.nombre && mencionaNombre(tn.slice(-220), f.nombre)) || RE.medioCompleto.test(tn.slice(-220)), false)] : null
   ].filter(Boolean);
-  const estructura = filas.map(([id, estado]) => ({ id, estado, etiqueta: ETIQUETAS_ESTRUCTURA[id], ejemplo: E[id] }));
+  const estructura = filas.map(([id, estado]) => ({ id, estado, etiqueta: (esDircom && ETIQUETAS_DIRCOM[id]) || ETIQUETAS_AFECTADA[id] || ETIQUETAS_ESTRUCTURA[id], ejemplo: E[id] }));
 
   if (palabras < 8) for (let i = obs.length - 1; i > 0; i--) if (!obs[i].grave) obs.splice(i, 1);
   puntos = Math.min(puntos, tope);
@@ -783,11 +888,34 @@ function evaluar(raw, f, canal, escenario){
     estadoCrit[id] = palabras < 8 || del.some(o => o.nivel === 'falta') ? 'falta' : del.length ? 'ajustar' : 'ok';
   }
   obs.sort((a, b) => (a.nivel === 'falta' ? 0 : 1) - (b.nivel === 'falta' ? 0 : 1));
-  return { prob, rango, obs, estadoCrit, palabras, estructura, avisos };
+  return { prob, rango, obs, estadoCrit, palabras, estructura, avisos, sensible, afectada };
 }
 
 function ejemplosEstructura(f, canal, escenario){
   const x = (v, e) => v || `[${e}]`;
+  if (f.destino !== 'dircom' && f.afectada === 'si'){
+    const base = ejemplosEstructura({ ...f, afectada: '' }, canal, escenario);
+    return { ...base,
+      para: 'Queremos que las personas y familias afectadas puedan contar su historia, si así lo desean.',
+      pedido: '¿Le gustaría que le llamemos para contarle cómo sería la entrevista?',
+      valor: 'Su testimonio es muy importante para que el reportaje muestre con fidelidad lo que están viviendo.',
+      pregunta: '¿Le gustaría que le llamemos para contarle cómo sería la entrevista?',
+      previo: `Le escribo sobre la invitación que le envié ${f.previo ? 'el ' + fechaLarga(f.previo) : 'anteriormente'} para el reportaje.`
+    };
+  }
+  if (f.destino === 'dircom'){
+    const base = ejemplosEstructura({ ...f, destino: 'fuente', afectada: '' }, canal, escenario);
+    const d = datosDircom(f, x);
+    return { ...base,
+      saludo: `${saludoHora()}, ${x(f.dircom, 'nombre de tu contacto')}${canal === 'correo' ? ':' : '.'}`,
+      porque: pulir(`Nos interesa entrevistar a ${d.vocero}.`),
+      entidad: pulir(`Queremos incluir la postura de ${x(f.entidad, 'institución')} en el reportaje.`),
+      pedido: pulir(`Queremos solicitar su apoyo para ${d.accion}.`),
+      cuandoA: pulir(`¿Podríamos coordinarla para el ${x(fechaLarga(f.fecha), 'fecha')} ${f.hora ? aLas(f.hora) : 'a las [hora]'}${d.detalles ? ', ' + d.detalles : ''}?`),
+      previo: `Le escribo para dar seguimiento a la solicitud que le envié ${f.previo ? 'el ' + fechaLarga(f.previo) : 'anteriormente'}.`,
+      pregunta: escenario === 'urgencia' ? pulir(`¿Podrían ayudarnos a ${d.accion} antes de esa hora?`) : '¿Podríamos contar con la participación de la institución?'
+    };
+  }
   const pet = PETICION[f.peticion] || PETICION.entrevista;
   const fmt = FORMATO[f.formato];
   const dur = f.duracion && !['escrito','nota'].includes(f.formato) ? ` de ${f.duracion} minutos` : '';
@@ -804,6 +932,65 @@ function ejemplosEstructura(f, canal, escenario){
     firma: `Atentamente, ${x(f.nombre, 'tu nombre')}, periodista de UDLA Channel.`
   };
 }
+function datosDircom(f, x){
+  const pet = f.peticion || 'entrevista';
+  const ang = f.angulo ? sinPuntoFinal(minInicial(f.angulo)) : '';
+  const cargo = f.porque ? sinPuntoFinal(minInicial(f.porque)) : '';
+  const vocero = f.fuente ? `${f.fuente}${cargo ? `, ${cargo}` : ''}` : cargo ? `la persona a cargo de ${cargo.replace(/^(el|la) /, '')}` : 'un vocero o vocera de la institución';
+  const fmt = FORMATO[f.formato];
+  const dur = f.duracion && !['escrito','nota'].includes(f.formato) ? ` de ${f.duracion} minutos` : '';
+  const sobre = ang ? `${f.fuente && cargo ? ',' : ''} sobre ${ang}` : '';
+  const modo = { presencial: 'de forma presencial', video: 'por videollamada', telefono: 'por teléfono' }[f.formato] || '';
+  const detalles = [modo, f.duracion && !['escrito','nota'].includes(f.formato) ? `con una duración de ${f.duracion} minutos` : ''].filter(Boolean).join(' y ');
+  const accion = {
+    entrevista: `coordinar una entrevista con ${vocero}${sobre}`,
+    postura: `obtener la postura institucional${sobre || ' sobre el tema'}`,
+    dato: 'confirmar un dato puntual',
+    nota: `obtener una nota de voz de ${vocero}${sobre}`,
+    documentos: 'acceder a los datos o documentos disponibles'
+  }[pet];
+  return { vocero, accion, fmtCorto: fmt ? fmt.corto : '', dur, fmt, detalles, tieneAngulo: !!ang };
+}
+function modeloDircom(f, canal, escenario){
+  const d = datosDircom(f);
+  const nombre = hueco(f.nombre, 'tu nombre');
+  const contacto = hueco(f.dircom, 'contacto de comunicación');
+  const entidad = hueco(f.entidad, 'institución');
+  const tema = hueco(sinPuntoFinal(minInicial(f.tema)), 'tema');
+  const fecha = hueco(fechaLarga(f.fecha), 'fecha');
+  const hora = f.hora ? aLas(f.hora) : 'a las ⟦hora⟧';
+  const lugar = f.formato === 'presencial' ? `, en ${hueco(minInicial(f.lugar), 'lugar')}` : '';
+  const cierre = hueco(cierreTexto(f.cierre), 'hora de cierre');
+  const saludo = saludoHora();
+  const tel = f.telefono ? `\n${f.telefono}` : '';
+  const firma = `${nombre}\nPeriodista | UDLA Channel${tel}`;
+  const temaCorto = f.tema ? recortar(sinPuntoFinal(f.tema).replace(/^(el|la|los|las|un|una)\s+/i, ''), 40) : '⟦tema⟧';
+  const porEscrito = ['escrito','nota'].includes(f.formato);
+  const propuesta = (f.peticion || 'entrevista') === 'entrevista'
+    ? (porEscrito
+        ? `¿Podrían enviarnos ${d.fmt.frase} hasta el ${fecha} ${hora}?`
+        : `¿Podríamos coordinarla para el ${fecha} ${hora}${d.detalles ? ', ' + d.detalles : ''}${lugar}? Si la agenda no lo permite, nos ajustamos al horario que nos indiquen.`)
+    : `¿Podrían ayudarnos con esto hasta el ${fecha} ${hora}?`;
+
+  if (canal === 'correo'){
+    if (escenario === 'anticipado'){
+      return `Asunto: ${f.asunto || `Solicitud de entrevista de UDLA Channel: ${temaCorto}`}\n\n${saludo}, ${contacto}:\n\nSoy ${nombre}, periodista de UDLA Channel, el canal de la Universidad de Las Américas. Estamos preparando un reportaje sobre ${tema} y nos interesa incluir la postura de ${entidad}.\n\nPor eso, queremos solicitar su apoyo para ${d.accion}.\n\n${propuesta}\n\nSi les resulta útil, podemos enviarles con anticipación los ejes temáticos de la entrevista.\n\nGracias por su apoyo.\n\nAtentamente,\n${firma}`;
+    }
+    if (escenario === 'urgencia'){
+      return `Asunto: ${f.asunto || `Consulta de UDLA Channel sobre ${temaCorto}`}\n\n${saludo}, ${contacto}:\n\nSoy ${nombre}, periodista de UDLA Channel. Estamos cubriendo ${tema} y queremos incluir la versión de ${entidad}.\n\nNuestro cierre de edición es ${cierre}. Si les resulta más práctico, un comunicado o una respuesta por escrito también nos sirve. ¿Podrían ayudarnos a ${d.accion} antes de esa hora?\n\nGracias por su apoyo.\n\n${firma}`;
+    }
+    const previo = f.previo ? `el ${fechaLarga(f.previo)}` : 'anteriormente';
+    return `Asunto: ${f.asunto || `Seguimiento: solicitud de UDLA Channel sobre ${temaCorto}`}\n\n${saludo}, ${contacto}:\n\nLe escribo para dar seguimiento a la solicitud que le envié ${previo} para ${d.accion}, en el marco de nuestro reportaje sobre ${tema}.\n\nPara presentar el tema con equilibrio, nos interesa incluir la versión de ${entidad}. Cerramos la edición ${cierre}.\n\nSi la agenda no permite una entrevista, una respuesta por escrito o un comunicado también nos sirve. ¿Podríamos contar con la participación de la institución?\n\nGracias por su apoyo.\n\nAtentamente,\n${firma}`;
+  }
+  if (escenario === 'anticipado'){
+    return `${saludo}, ${contacto}. Soy ${nombre}, periodista de UDLA Channel. Preparamos un reportaje sobre ${tema} y nos interesa incluir la postura de ${entidad}. Queremos solicitar su apoyo para ${d.accion}.\n\n${propuesta}`;
+  }
+  if (escenario === 'urgencia'){
+    return `${saludo}, ${contacto}. Soy ${nombre}, periodista de UDLA Channel. Estamos cubriendo ${tema} y queremos incluir la versión de ${entidad}. Nuestro cierre es ${cierre}. ¿Podrían ayudarnos a ${d.accion} antes de esa hora?`;
+  }
+  return `${saludo}, ${contacto}. Soy ${nombre}, periodista de UDLA Channel. Doy seguimiento a la solicitud para ${d.accion}${d.tieneAngulo ? '' : `, para nuestro reportaje sobre ${tema}`}. Cerramos ${cierre} y nos interesa incluir la versión de ${entidad}. Una respuesta por escrito también nos sirve. ¿Podríamos contar con su apoyo?`;
+}
+
 function sustantivoPedido(f){
   const pet = PETICION[f.peticion] || PETICION.entrevista;
   const ang = f.angulo ? sinPuntoFinal(minInicial(f.angulo)) : '';
@@ -831,7 +1018,7 @@ function detectar(raw){
   const d = {};
   const tn = alinear(raw);
   const limpio = v => { v = (v || '').replace(/^[¿¡\s]+|[\s,;:]+$/g, '').replace(/\s+(y|e|o)$/i, '').trim(); return v && !RE.placeholder.test(norm(v)) ? v : ''; };
-  const NOM = "[A-ZÁÉÍÓÚÑ][a-záéíóúñü]+(?: [A-ZÁÉÍÓÚÑ][a-záéíóúñü]+){0,2}";
+  const NOM = "[A-ZÁÉÍÓÚÑ][a-záéíóúñü]+(?: [A-ZÁÉÍÓÚÑ][a-záéíóúñü]+){0,2}(?: [A-ZÁÉÍÓÚÑ]\\.)?";
   const TIT = "(?:(?:Mag|Msc|MSc|Mgs|Dr|Dra|Ing|Lic|Econ|Abg|Arq|Prof|Sr|Sra|Srta)\\.? )?";
   const lineas = raw.split('\n').map(l => l.trim()).filter(Boolean);
   const primera = lineas[0] || '';
@@ -853,20 +1040,45 @@ function detectar(raw){
   m = tn.match(/\b(\d{1,3})\s*(?:min\b|minutos)/); if (m) d.duracion = m[1];
   m = tn.match(RE.fechaSola);
   if (m){ const mesIdx = MESES.indexOf(m[2] === 'setiembre' ? 'septiembre' : m[2]); d.fecha = `${anioProbable(Number(m[1]), mesIdx)}-${pad(mesIdx + 1)}-${pad(Number(m[1]))}`; }
-  const horaEn = t => { let x = t.match(/\b(\d{1,2})(?::(\d{2}))?\s*(a\.?\s?m|p\.?\s?m)(?![a-z])/); if (x) return a24(x[1], x[2], x[3]); x = t.match(/\b(\d{1,2}):(\d{2})\b/); return x ? a24(x[1], x[2]) : ''; };
+  const horaEn = t => { let x = t.match(/\b(\d{1,2})(?::(\d{2}))?\s*(a\.?\s?m|p\.?\s?m)(?![a-z])/); if (x) return a24(x[1], x[2], x[3]); x = t.match(/\b(\d{1,2})h(\d{2})\b/); if (x) return a24(x[1], x[2]); x = t.match(/\b(\d{1,2}):(\d{2})\b/); return x ? a24(x[1], x[2]) : ''; };
   const ic = tn.search(/cierre|cerramos|al aire|publicamos/);
   if (ic >= 0){
     const tramo = tn.slice(ic, ic + 70); const hc = horaEn(tramo);
     if (hc) d.cierre = `${(/manana/.test(tramo) && !/de la manana/.test(tramo)) ? masDiasIso(1) : hoyIso()}T${hc}`;
     const resto = tn.slice(0, ic) + ' ' + tn.slice(ic + 70); const h2 = horaEn(resto); if (h2) d.hora = h2;
   } else { const h = horaEn(tn); if (h) d.hora = h; }
+  if (!d.fecha){ const sinCierre = ic >= 0 ? tn.slice(0, ic) + ' ' + tn.slice(ic + 70) : tn; if (/\bhoy\b/.test(sinCierre)) d.fecha = hoyIso(); else if (/\bmanana\b/.test(sinCierre) && !/de la manana/.test(sinCierre)) d.fecha = masDiasIso(1); }
+  m = raw.match(/\b((?:el |la )?(?:Ministerio|Alcald[ií]a|Prefectura|Secretar[ií]a|Municipio|Gobernaci[oó]n|Agencia|Superintendencia|Defensor[ií]a|Fiscal[ií]a|Consejo|Cuerpo de Bomberos|Empresa|Instituto|Hospital|Corporaci[oó]n|Asamblea|Polic[ií]a|Banco)[^.,;:\n?¿]{0,50})/);
+  if (m && !/américas|udla/i.test(m[1])) d.entidad = limpio(m[1]);
   m = raw.match(/\ben\s+((?:las|los|el|la)\s+(?:instalaciones|set|estudio|sala|campus|oficinas?|auditorio)[^.,;\n]{0,60})/i);
   if (m) d.lugar = limpio(m[1].split(/\s+a\s+las?\s+\d/)[0]);
   return d;
 }
 
 const hueco = (v, etiqueta) => v ? v : `⟦${etiqueta}⟧`;
+function modeloAfectada(f, canal, escenario){
+  const nombre = hueco(f.nombre, 'tu nombre');
+  const fuente = hueco(f.fuente, 'fuente');
+  const ang = f.angulo ? ` y ${sinPuntoFinal(minInicial(f.angulo))}` : '';
+  const tema = hueco(sinPuntoFinal(minInicial(f.tema)), 'tema') + ang;
+  const saludo = saludoHora();
+  const firma = `${nombre}\nPeriodista | UDLA Channel${f.telefono ? `\n${f.telefono}` : ''}`;
+  const temaCorto = f.tema ? recortar(sinPuntoFinal(f.tema).replace(/^(el|la|los|las|un|una)\s+/i, ''), 40) : '⟦tema⟧';
+  const previo = f.previo ? `el ${fechaLarga(f.previo)}` : 'anteriormente';
+  const valor = 'Su testimonio es muy importante para que el reportaje muestre con fidelidad lo que están viviendo.';
+  if (canal === 'correo'){
+    if (escenario === 'anticipado') return `Asunto: ${f.asunto || `Invitación de UDLA Channel: ${temaCorto}`}\n\n${saludo}, ${fuente}:\n\nSoy ${nombre}, periodista de UDLA Channel, el canal de la Universidad de Las Américas. Estamos preparando un reportaje sobre ${tema}, en el que queremos que las personas y familias afectadas puedan contar su historia.\n\n${valor}\n\n¿Le gustaría que le llamemos para contarle cómo sería la entrevista?\n\nGracias por su tiempo.\n\nAtentamente,\n${firma}`;
+    if (escenario === 'urgencia') return `Asunto: ${f.asunto || `UDLA Channel: ${temaCorto}`}\n\n${saludo}, ${fuente}:\n\nSoy ${nombre}, periodista de UDLA Channel. Estamos cubriendo ${tema}. Sentimos mucho lo que está atravesando.\n\nQueremos que las personas afectadas puedan contar su historia. ${valor}\n\n¿Le gustaría que le llamemos para conversar?\n\nAtentamente,\n${firma}`;
+    return `Asunto: ${f.asunto || `Invitación de UDLA Channel: ${temaCorto}`}\n\n${saludo}, ${fuente}:\n\nLe escribo sobre la invitación que le envié ${previo} para el reportaje sobre ${tema}, en el que queremos que las personas afectadas puedan contar su historia.\n\nSu testimonio sigue siendo muy importante para que el reportaje muestre con fidelidad lo que están viviendo.\n\n¿Le gustaría que le llamemos para conversar?\n\nAtentamente,\n${firma}`;
+  }
+  if (escenario === 'anticipado') return `${saludo}, ${fuente}. Soy ${nombre}, periodista de UDLA Channel. Estamos preparando un reportaje sobre ${tema}, en el que queremos que las personas y familias afectadas puedan contar su historia. ${valor}\n\n¿Le gustaría que le llamemos para contarle cómo sería la entrevista?`;
+  if (escenario === 'urgencia') return `${saludo}, ${fuente}. Soy ${nombre}, periodista de UDLA Channel. Estamos cubriendo ${tema}. Sentimos mucho lo que está atravesando. Su testimonio es muy importante para que la cobertura muestre lo que viven las personas afectadas. ¿Le gustaría que le llamemos para conversar?`;
+  return `${saludo}, ${fuente}. Soy ${nombre}, periodista de UDLA Channel. Le escribo sobre la invitación para el reportaje sobre ${tema}, en el que queremos que las personas afectadas puedan contar su historia. Su testimonio sigue siendo muy importante. ¿Le gustaría que le llamemos para conversar?`;
+}
+
 function modelo(f, canal, escenario){
+  if (f.destino === 'dircom') return modeloDircom(f, canal, escenario);
+  if (f.afectada === 'si') return modeloAfectada(f, canal, escenario);
   const nombre = hueco(f.nombre, 'tu nombre');
   const fuente = hueco(f.fuente, 'fuente');
   const tema = hueco(sinPuntoFinal(minInicial(f.tema)), 'tema');
@@ -877,10 +1089,10 @@ function modelo(f, canal, escenario){
   const dur = f.duracion && !porEscrito ? ` de ${f.duracion} minutos` : '';
   const fecha = hueco(fechaLarga(f.fecha), 'fecha');
   const hora = f.hora ? aLas(f.hora) : 'a las ⟦hora⟧';
-  const lugar = f.formato === 'presencial' ? `, en ${hueco(f.lugar, 'lugar')}` : '';
+  const lugar = f.formato === 'presencial' ? `, en ${hueco(minInicial(f.lugar), 'lugar')}` : '';
   const cierre = hueco(cierreTexto(f.cierre), 'hora de cierre');
   const saludo = saludoHora();
-  const firma = `${nombre}\nPeriodista | UDLA Channel`;
+  const firma = `${nombre}\nPeriodista | UDLA Channel${f.telefono ? `\n${f.telefono}` : ''}`;
   const temaCorto = f.tema ? recortar(sinPuntoFinal(f.tema).replace(/^(el|la|los|las|un|una)\s+/i, ''), 40) : '⟦tema⟧';
   const sust = sustantivoPedido(f);
 
@@ -909,9 +1121,18 @@ function modelo(f, canal, escenario){
   }
   return `${saludo}, ${fuente}. Soy ${nombre}, periodista de UDLA Channel. Doy seguimiento a la invitación para nuestro reportaje sobre ${tema}. Cerramos ${cierre} y nos interesa incluir su voz. Una nota de voz o una respuesta por escrito también nos sirve. ¿Podemos contar con su participación?`;
 }
-const pulir = t => t.replace(/(a\. m\.|p\. m\.)\./g, '$1');
+const pulir = t => t.replace(/(a\. m\.|p\. m\.)\./g, '$1').replace(/([^.\s])\.\.(?!\.)/g, '$1.').replace(/\bde el /g, 'del ').replace(/\ba el /g, 'al ').replace(/ ,/g, ',');
 const aHtml = t => esc(pulir(t)).replace(/⟦(.+?)⟧/g, '<mark>$1</mark>');
 const aPlano = t => pulir(t).replace(/⟦(.+?)⟧/g, '[$1]');
+
+function avisosDatos(f){
+  const textos = [f.tema, f.angulo, f.porque, f.lugar, f.fuente].filter(Boolean).join(' ').toLowerCase();
+  const orto = ORTO.filter(([re]) => re.test(textos)).map(([, malo, bueno]) => `«${malo}» → «${bueno}»`);
+  const out = [];
+  if (orto.length) out.push(`Revisa la ortografía en los datos: ${orto.join(', ')}.`);
+  if (f.hora && f.afectada !== 'si' && Number(f.hora.split(':')[1]) % 15 !== 0) out.push(pulir(`Considera una hora redonda en lugar de ${horaTexto(f.hora)}.`));
+  return out;
+}
 
 /* Capa 2: devuelve null mientras CONFIG_IA esté apagada o si la conexión falla */
 async function analisisIA(payload){
@@ -928,13 +1149,24 @@ async function analisisIA(payload){
 <script>
 const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
-const estado = { modo: 'correo', escenario: 'anticipado', borradores: { correo: '', whatsapp: '' }, revisado: false, generado: false, faltantes: new Map(), editados: new Set() };
+const estado = { modo: 'correo', escenario: 'anticipado', borradores: { correo: '', whatsapp: '' }, destino: 'fuente', sensible: false, revisado: false, generado: false, faltantes: new Map(), editados: new Set() };
 const CAMPOS_POR_ELEMENTO = { saludo: ['f-fuente'], identidad: ['f-nombre'], tema: ['f-tema', 'f-angulo'], porque: ['f-porque'], pedido: ['f-peticion'],
   cuandoA: ['f-formato', 'f-fecha', 'f-hora', 'f-duracion', 'f-lugar'], cuandoU: ['f-cierre'], previo: ['f-previo'], pregunta: ['f-peticion'], firma: ['f-nombre'] };
 const MAPA_DET = { nombre: 'f-nombre', fuente: 'f-fuente', tema: 'f-tema', angulo: 'f-angulo', porque: 'f-porque', peticion: 'f-peticion',
   formato: 'f-formato', duracion: 'f-duracion', fecha: 'f-fecha', hora: 'f-hora', lugar: 'f-lugar', cierre: 'f-cierre' };
+function camposDe(id){
+  if (estado.destino === 'dircom'){
+    if (id === 'saludo') return ['f-dircom'];
+    if (id === 'entidad') return ['f-entidad'];
+    if (id === 'porque') return ['f-fuente', 'f-porque'];
+  }
+  if (['para', 'valor', 'consentimiento'].includes(id)) return [];
+  return CAMPOS_POR_ELEMENTO[id] || [];
+}
 function aplicarDeteccion(d){
-  for (const [k, id] of Object.entries(MAPA_DET)){
+  if (estado.destino === 'dircom'){ d = { ...d, dircom: d.fuente }; delete d.fuente; }
+  const mapa = { ...MAPA_DET, entidad: 'f-entidad', dircom: 'f-dircom' };
+  for (const [k, id] of Object.entries(mapa)){
     if (estado.editados.has(id)) continue;
     $('#' + id).value = k === 'peticion' ? (d.peticion || 'entrevista') : (d[k] || '');
   }
@@ -966,7 +1198,7 @@ const PLACEHOLDERS = {
 
 function leerFicha(){
   const v = id => ($('#' + id)?.value || '').trim();
-  return { nombre: v('f-nombre'), fuente: v('f-fuente'), porque: v('f-porque'), tema: v('f-tema'), angulo: v('f-angulo'), peticion: v('f-peticion'), asunto: v('f-asunto'),
+  return { nombre: v('f-nombre'), fuente: v('f-fuente'), porque: v('f-porque'), tema: v('f-tema'), angulo: v('f-angulo'), dircom: v('f-dircom'), afectada: v('f-afectada'), entidad: v('f-entidad'), telefono: v('f-telefono'), destino: estado.modo === 'llamada' ? 'fuente' : estado.destino, peticion: v('f-peticion'), asunto: v('f-asunto'),
     formato: v('f-formato'), duracion: v('f-duracion'), fecha: v('f-fecha'), hora: v('f-hora'), lugar: v('f-lugar'), previo: v('f-previo'),
     cierre: v('f-cierre'), objetivo: v('f-objetivo'), preguntas: $('#f-preguntas').value, graba: v('f-graba') };
 }
@@ -987,6 +1219,10 @@ function actualizarVista(){
     if (ver && enMensaje && el.dataset.esc) ver = el.dataset.esc.split(' ').includes(escenario);
     if (ver && enMensaje && el.dataset.formato) ver = el.dataset.formato === formato;
     if (ver && enMensaje && el.dataset.sinFormato) ver = !el.dataset.sinFormato.split(' ').includes(formato);
+    if (ver && el.dataset.destino) ver = enMensaje && el.dataset.destino === estado.destino;
+    const esAfectada = enMensaje && estado.destino === 'fuente' && $('#f-afectada').value === 'si';
+    if (ver && el.hasAttribute('data-afectada-campo') && enMensaje) ver = estado.destino === 'fuente' && (estado.sensible || !!$('#f-afectada').value);
+    if (ver && esAfectada && el.classList.contains('campo') && ['f-formato','f-fecha','f-hora','f-duracion','f-lugar','f-cierre'].includes(el.querySelector('input,select,textarea').id)) ver = false;
     el.hidden = !ver;
     if (el.classList.contains('campo')){
       const tipo = enMensaje ? estado.faltantes.get(el.querySelector('input,select,textarea').id) : null;
@@ -1000,10 +1236,17 @@ function actualizarVista(){
     $('#faltan-txt').textContent = n ? `${n} ${n === 1 ? 'dato falta' : 'datos faltan'} en tu mensaje` : 'Tu mensaje incluye los datos esenciales';
   }
   $$('.modo').forEach(b => b.setAttribute('aria-selected', b.dataset.modo === modo));
-  $$('.seg').forEach(b => b.setAttribute('aria-checked', b.dataset.esc === escenario));
+  $$('.seg[data-esc]').forEach(b => b.setAttribute('aria-checked', b.dataset.esc === escenario));
+  $$('.dest').forEach(b => b.setAttribute('aria-checked', b.dataset.dest === estado.destino));
+  const clave = !enMensaje ? 'etFuente' : estado.destino === 'dircom' ? 'etDircom' : $('#f-afectada').value === 'si' ? 'etAfectada' : 'etFuente';
+  $$('[data-et-fuente]').forEach(el => { el.textContent = el.dataset[clave] || el.dataset.etFuente; });
   if (modo !== 'llamada'){
     const c = CONSEJOS[escenario];
-    $('#consejo').textContent = c.corto[modo];
+    $('#consejo').textContent = estado.destino === 'fuente' && $('#f-afectada').value === 'si'
+      ? 'La fuente está afectada por el hecho: explica para qué sirve su testimonio y por qué es importante, y propón una llamada para acordar los detalles.'
+      : estado.destino === 'dircom'
+      ? 'Con instituciones, escribe a su dirección de comunicación: presenta el tema, di a quién quieres entrevistar (o pide un vocero) y ofrece enviar los ejes temáticos.'
+      : c.corto[modo];
     $('#consejos-lista').innerHTML = c.lista.map(t => `<li>${esc(t)}</li>`).join('');
     $('#borrador').placeholder = PLACEHOLDERS[modo];
   }
@@ -1035,12 +1278,14 @@ async function revisar(auto = false){
   aplicarDeteccion(detectar(texto));
   const f = leerFicha();
   const r = evaluar(texto, f, modo, escenario);
+  estado.sensible = r.sensible;
   const F = new Map();
   const marcar = (id, tipo) => { if (F.get(id) !== 'falta') F.set(id, tipo); };
-  for (const e of r.estructura) if (e.estado !== 'ok' && e.id !== 'pregunta') (CAMPOS_POR_ELEMENTO[e.id] || []).forEach(id => { if (!(e.id === 'tema' && id === 'f-angulo')) marcar(id, 'falta'); });
+  for (const e of r.estructura) if (e.estado !== 'ok' && e.id !== 'pregunta') camposDe(e.id).forEach(id => { if (!(e.id === 'tema' && id === 'f-angulo')) marcar(id, estado.destino === 'dircom' && e.id === 'porque' ? 'ajuste' : 'falta'); });
   if (modo === 'correo' && (!f.asunto || r.obs.some(o => /asunto/i.test(o.titulo)))) marcar('f-asunto', f.asunto ? 'ajuste' : 'falta');
   if (r.obs.some(o => o.titulo === 'Demasiados subtemas')) marcar('f-angulo', 'ajuste');
-  if (escenario === 'anticipado'){
+  if (r.sensible && !f.afectada) marcar('f-afectada', 'falta');
+  if (escenario === 'anticipado' && !r.afectada){
     const tn = alinear(texto);
     if (!RE.formato.test(tn)) marcar('f-formato', 'falta');
     if (!['escrito','nota'].includes(f.formato) && !RE.duracion.test(tn)) marcar('f-duracion', 'falta');
@@ -1059,7 +1304,8 @@ async function revisar(auto = false){
   }).join('');
   const obsHtml = r.obs.map(o => `<li class="${o.nivel}"><b>${esc(o.titulo)}</b><p>${esc(o.detalle)}</p>${o.frag.length ? `<div class="frags">${o.frag.map(x => `<q>${esc(x)}</q>`).join('')}</div>` : ''}</li>`).join('');
   const oks = CRITERIOS.filter(([id]) => r.estadoCrit[id] === 'ok').map(([id]) => {
-    const t = TEXTO_OK[id]; return `<li class="ok"><b>${esc(typeof t === 'string' ? t : t[escenario])}</b></li>`;
+    const t = r.afectada && id === 'logistica' ? 'No presionas con fechas, horas ni cierres: los detalles se acuerdan en la llamada.' : r.afectada && id === 'fuente' ? 'Explicas para qué sirve su testimonio y por qué es importante.' : TEXTO_OK[id];
+    return `<li class="ok"><b>${esc(typeof t === 'string' ? t : t[escenario])}</b></li>`;
   }).join('');
   const escTxt = { anticipado: 'con anticipación', urgencia: 'urgencia', seguimiento: 'seguimiento' }[escenario];
 
@@ -1076,9 +1322,14 @@ async function revisar(auto = false){
       </div>
     </article>
     <ul class="criterios" aria-label="Resumen por criterio">${criteriosHtml}</ul>
+    ${r.sensible && !f.afectada ? `<section class="bloque pregunta-afectada">
+      <h3>¿La fuente vivió el hecho o es familiar de alguien afectado?</h3>
+      <p class="ayuda">El tema parece sensible. Si la respuesta es sí, ajustamos la revisión y el mensaje para no presionar a la persona.</p>
+      <div class="acciones"><button type="button" class="btn btn-pri btn-mini" data-afectada="si">Sí, está afectada</button><button type="button" class="btn btn-sec btn-mini" data-afectada="no">No, es otro tipo de fuente</button></div>
+    </section>` : ''}
     <section class="bloque">
       <div class="bloque-h"><h3>Estructura del mensaje</h3><small>${r.estructura.filter(e => e.estado === 'ok').length} de ${r.estructura.length} elementos</small></div>
-      <ul class="estructura">${r.estructura.map(e => `<li class="e-${e.estado}"><i aria-hidden="true">${e.estado === 'ok' ? '✓' : e.estado === 'parcial' ? '!' : '✕'}</i><span>${esc(e.etiqueta)}${e.estado === 'parcial' ? ' (incompleto)' : e.estado === 'falta' ? ' (falta)' : ''}</span>${e.estado !== 'ok' ? `<em>${esc(e.ejemplo)}</em><div class="acc">${/\[/.test(e.ejemplo) && CAMPOS_POR_ELEMENTO[e.id] ? `<button type="button" class="btn-link" data-campo="${CAMPOS_POR_ELEMENTO[e.id][0]}">Completar el dato</button>` : `<button type="button" class="btn-link" data-copiar="${esc(e.ejemplo)}">Copiar frase</button>`}</div>` : ''}</li>`).join('')}</ul>
+      <ul class="estructura">${r.estructura.map(e => `<li class="e-${e.estado}"><i aria-hidden="true">${e.estado === 'ok' ? '✓' : e.estado === 'parcial' ? '!' : '✕'}</i><span>${esc(e.etiqueta)}${e.estado === 'parcial' ? ' (incompleto)' : e.estado === 'falta' ? ' (falta)' : ''}</span>${e.estado !== 'ok' ? `<em>${esc(e.ejemplo)}</em><div class="acc">${/\[/.test(e.ejemplo) && camposDe(e.id).length ? `<button type="button" class="btn-link" data-campo="${camposDe(e.id)[0]}">Completar el dato</button>` : `<button type="button" class="btn-link" data-copiar="${esc(e.ejemplo)}">Copiar frase</button>`}</div>` : ''}</li>`).join('')}</ul>
     </section>
     <section class="bloque">
       <h3>Observaciones</h3>
@@ -1106,12 +1357,14 @@ async function revisar(auto = false){
 }
 
 function generar(auto = false){
-  const t = modelo(leerFicha(), estado.modo, estado.escenario);
+  const fd = leerFicha();
+  const t = modelo(fd, estado.modo, estado.escenario);
   estado.textoModelo = aPlano(t);
   $('#modelo-txt').innerHTML = aHtml(t);
-  $('#modelo-nota').textContent = /⟦/.test(t)
+  const base = /⟦/.test(t)
     ? 'Lo resaltado sale de datos vacíos: complétalos arriba y el mensaje se actualiza.'
     : 'Compáralo con tu borrador y reescribe el tuyo con lo que aprendiste. Si cambias un dato, el mensaje se actualiza.';
+  $('#modelo-nota').textContent = [...avisosDatos(fd), base].join(' ');
   $('#generado').hidden = false;
   estado.generado = true;
   if (auto !== true) $('#generado').scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -1128,10 +1381,14 @@ function hojaLlamada(){
   const n = preguntas.length;
   const saludo = saludoHora();
   const cant = n === 0 ? 'Son pocas preguntas' : n === 1 ? 'Es una pregunta' : `Son ${n} preguntas`;
-  const respaldo = `${saludo}, ${fuente}. Soy ${nombre}, periodista de UDLA Channel. Le llamé por el reportaje sobre ${tema}. Nuestro cierre es ${cierre}. ¿En qué momento le puedo llamar antes de esa hora?`;
-  const grab = f.graba === 'si'
+  const af = f.afectada === 'si';
+  const respaldo = af
+    ? `${saludo}, ${fuente}. Soy ${nombre}, periodista de UDLA Channel. Le llamé por el reportaje sobre ${tema}. Si desea conversar, puede escribirme o llamarme a este número.`
+    : `${saludo}, ${fuente}. Soy ${nombre}, periodista de UDLA Channel. Le llamé por el reportaje sobre ${tema}. Nuestro cierre es ${cierre}. ¿En qué momento le puedo llamar antes de esa hora?`;
+  const cuidado = af ? `<li><h4>Antes de empezar</h4><p class="guion">Puede no responder cualquier pregunta o pedirme que paremos en cualquier momento. ¿Cómo le gustaría aparecer en el reportaje: con su nombre completo, solo con su nombre o sin identificarse?</p><p class="nota">Respeta lo que decida sobre su identificación y anótalo tal cual.</p></li>` : '';
+  const grab = cuidado + (f.graba === 'si'
     ? `<li><h4>Consentimiento de grabación</h4><p class="guion">Para citarle con precisión, ¿me autoriza a grabar esta llamada?</p><p class="nota">Espera un sí explícito antes de grabar y deja registrada su respuesta al inicio del audio. Si dice que no, toma notas y confirma las citas textuales antes de colgar.</p></li>`
-    : `<li><h4>Aviso de notas</h4><p class="guion">Voy a tomar notas mientras conversamos y, al final, le confirmo las frases que citaré textualmente.</p></li>`;
+    : `<li><h4>Aviso de notas</h4><p class="guion">Voy a tomar notas mientras conversamos y, al final, le confirmo las frases que citaré textualmente.</p></li>`);
   const respaldoLimpio = pulir(respaldo);
   const cab = [f.fuente, f.tema].filter(Boolean).map(esc).join('. ');
 
@@ -1145,20 +1402,25 @@ function hojaLlamada(){
           <li>${f.graba === 'si' ? 'Prueba la grabadora y verifica que tenga espacio y batería.' : 'Prepara tus notas para registrar frases textuales con la hora exacta.'}</li>
           <li>Busca un lugar silencioso y con buena señal.</li>
           <li>Ten listo el mensaje de respaldo por si no contesta.</li>
+          ${af ? '<li>Infórmate bien del caso antes de llamar, para no pedirle que repita lo que ya es público.</li>' : ''}
         </ul></li>
         <li><h4>Apertura</h4><p class="guion">${saludo}, ${fuente}. Soy ${nombre}, periodista de UDLA Channel. Le llamo por el reportaje que preparamos sobre ${tema}.</p></li>
-        <li><h4>Propósito</h4><p class="guion">Por su experiencia como ${porque}, queremos incluir su análisis sobre ${objetivo}. ${cant}. ¿Podemos conversar ahora?</p>
-          <p class="nota">Si no puede en ese momento: «¿En qué momento le puedo llamar? Nuestro cierre es ${pulir(cierre)}.»</p></li>
+        ${af
+          ? `<li><h4>Propósito</h4><p class="guion">Queremos que las personas y familias afectadas puedan contar su historia, y su testimonio es muy importante para mostrar con fidelidad lo que están viviendo. ¿Es un buen momento para conversar o prefiere que le llame en otro momento?</p>
+          <p class="nota">Si no puede o no quiere participar, agradece y respeta su decisión sin insistir. No menciones tu cierre de edición.</p></li>`
+          : `<li><h4>Propósito</h4><p class="guion">Por su experiencia como ${porque}, queremos incluir su análisis sobre ${objetivo}. ${cant}. ¿Podemos conversar ahora?</p>
+          <p class="nota">Si no puede en ese momento: «¿En qué momento le puedo llamar? Nuestro cierre es ${pulir(cierre)}.»</p></li>`}
         ${grab}
         <li><h4>Preguntas clave</h4>
           <ul>${n ? preguntas.map(p => `<li>${esc(p)}</li>`).join('') : '<li><mark>Escribe tus preguntas en la ficha</mark></li>'}</ul>
-          <p class="nota">Escucha la respuesta completa antes de pasar a la siguiente. Para profundizar: «¿Me puede dar un ejemplo?», «¿En qué dato se basa?», «¿Qué significa esto para la ciudadanía?».</p></li>
+          <p class="nota">${af ? 'Empieza con preguntas abiertas y amplias, como «¿Cómo ha sido este tiempo para su familia?». Respeta los silencios, no presiones por detalles dolorosos y evita preguntar «¿cómo se siente?» en los momentos más difíciles.' : 'Escucha la respuesta completa antes de pasar a la siguiente. Para profundizar: «¿Me puede dar un ejemplo?», «¿En qué dato se basa?», «¿Qué significa esto para la ciudadanía?».'}</p></li>
         <li><h4>Cierre</h4><ul>
           <li>«¿Cómo prefiere que aparezcan su nombre y su cargo?» Confirma la escritura letra por letra.</li>
           <li>«¿Hay algo importante que no le haya preguntado?»</li>
           <li>«¿A quién más recomienda consultar sobre este tema?»</li>
           <li>Acuerda cómo contactarle si surge una duda antes del cierre.</li>
           <li>Agradece su tiempo y cuéntale cuándo se publica o emite la nota, si ya lo sabes.</li>
+          ${af ? '<li>Si la entrevista no es en esta llamada, acuerden juntos la fecha, la hora y el lugar, según lo que le resulte más cómodo.</li><li>Dile cómo puede contactarte si quiere aclarar o retirar algo de lo que compartió.</li>' : ''}
         </ul></li>
         <li><h4>Después de colgar</h4><ul>
           <li>Anota las citas textuales con el minuto de la grabación o la hora de tus notas.</li>
@@ -1188,30 +1450,18 @@ function copiaAlterna(texto, listo){
   ta.remove();
 }
 
-function cargarEjemplo(){
-  const { modo, escenario } = estado;
-  $$('#ficha input, #ficha select, #ficha textarea').forEach(el => { if (!['f-graba'].includes(el.id)) el.value = el.tagName === 'SELECT' ? el.options[0].value : ''; });
-  estado.editados = new Set(); reiniciarFicha();
-  if (escenario === 'anticipado'){
-    $('#borrador').value = modo === 'correo'
-      ? `Mag. Karla Meneses\nDocente de economía en la Universidad de las Américas\nPresente.-\n\nEstimada Karla, reciba un respetuoso saludo por parte de Daniela Noguera, periodista de UDLA CHANNEL, canal de la Universidad de las Américas (UDLA).\n\nDesde UDLA CHANNEL queremos realizar un reportaje sobre ¿Cuáles pueden ser las alternativas para lidiar con la crisis energética en Ecuador?\n\nConversar acerca de diferentes propuestas que plantean expertos para afrontar esta problemática. Nos queremos enfocar en el impacto de los apagones en la economía local, posibles soluciones implementadas y por implementar, consecuencias en la vida diaria, soluciones alrededor de las energías renovables, y como podemos disminuir los cortes de energía.\n\nMotivo por el cual, nos gustaría poder entrevistarle a usted sobre el tema.\n\nDe ser posible esta reportería la quisiéramos ejecutar el martes 1 de octubre en las instalaciones de periodismo en Udla Park a las 12:00 am\n\nDe antemano le agradezco por la atención que se digne a la presente.\n\nAtentamente,\nDaniela Noguera A.`
-      : `Buenos días, reciba un respetuoso saludo por parte de Nicole Chávez, periodista de UDLA CHANNEL, canal de la Universidad de las Américas.\n\nDesde UDLA CHANNEL queremos realizar un reportaje sobre XXXXXX.\n\nNos queremos enforcar en XXXXXXXX.\n\nQuisiéramos tener un testimonio de uno de los expertos.\n\nDe ser posible esta reportería la quisiéramos ejecutar el xxxxxx a las 09:00 am`;
-  } else if (escenario === 'urgencia'){
-    $('#borrador').value = `Hola buenas tardes, perdón la molestia, soy estudiante de la udla y quería ver si me podría ayudar con un ratito de su tiempo para una entrevista sobre el incendio, necesito que me responda lo antes posible. Gracias!!`;
-  } else {
-    $('#borrador').value = `Buenos días, como no me ha respondido le vuelvo a escribir. Necesitamos que nos confirme si nos va a dar la entrevista o no porque tenemos que entregar. Saludos`;
-  }
-  actualizarVista();
-  revisar();
-}
-
 $$('.modo').forEach(b => b.addEventListener('click', () => {
   if (estado.modo !== 'llamada') estado.borradores[estado.modo] = $('#borrador').value;
   estado.modo = b.dataset.modo;
   if (estado.modo !== 'llamada') $('#borrador').value = estado.borradores[estado.modo] || '';
   reiniciarFicha(); actualizarVista(); vacio();
 }));
-$$('.seg').forEach(b => b.addEventListener('click', () => { estado.escenario = b.dataset.esc; reiniciarFicha(); actualizarVista(); vacio(); }));
+$$('.seg[data-esc]').forEach(b => b.addEventListener('click', () => { estado.escenario = b.dataset.esc; reiniciarFicha(); actualizarVista(); vacio(); }));
+$$('.dest').forEach(b => b.addEventListener('click', () => {
+  if (estado.destino === b.dataset.dest) return;
+  estado.destino = b.dataset.dest;
+  if (estado.revisado) revisar(true); else actualizarVista();
+}));
 $('#btn-generar').addEventListener('click', () => generar(false));
 $('#btn-copiar').addEventListener('click', e => copiar(estado.textoModelo || '', e.currentTarget));
 let temporizador;
@@ -1223,8 +1473,9 @@ $('#ficha').addEventListener('input', e => {
   temporizador = setTimeout(() => revisar(true), 500);
 });
 $('#resultado').addEventListener('click', e => {
-  const b = e.target.closest('[data-campo],[data-copiar],[data-ir]');
+  const b = e.target.closest('[data-campo],[data-copiar],[data-ir],[data-afectada]');
   if (!b) return;
+  if (b.dataset.afectada){ $('#f-afectada').value = b.dataset.afectada; estado.editados.add('f-afectada'); return revisar(true); }
   if (b.dataset.copiar) return copiar(b.dataset.copiar, b);
   if (b.dataset.ir) return $('#' + b.dataset.ir).scrollIntoView({ behavior: 'smooth', block: 'start' });
   const campo = $('#' + b.dataset.campo);
@@ -1233,7 +1484,6 @@ $('#resultado').addEventListener('click', e => {
 $('#f-formato').addEventListener('change', () => { estado.editados.add('f-formato'); if (estado.revisado && estado.modo !== 'llamada') revisar(true); else actualizarVista(); });
 $('#borrador').addEventListener('input', contar);
 $('#btn-revisar').addEventListener('click', () => revisar(false));
-$('#btn-ejemplo').addEventListener('click', cargarEjemplo);
 $('#btn-hoja').addEventListener('click', hojaLlamada);
 
 actualizarVista(); vacio();
